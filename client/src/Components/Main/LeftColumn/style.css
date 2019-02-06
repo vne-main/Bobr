@@ -1,0 +1,50 @@
+.select_flow{
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
+}
+.tab_panel{
+    display: flex;
+    margin-bottom: 20px;
+    color: #6f7577;
+    border-bottom: 1px solid #d5dddf;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.tab_panel span{
+    padding: 20px 0;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.tab_panel span:hover{
+    color: #77a8d0;
+}
+.tab_panel_active{
+    color: #77a8d0;
+    border-bottom: 2px solid #77a8d0;
+}
+/* Time line*/
+.time_sort{
+    display: flex;
+    border: 1px solid #d5dddf;
+    align-content: flex-start;
+    border-radius: 5px;
+    width: 285px;
+    align-items: center;
+}
+.time_sort span{
+    padding: 14px 15px;
+    color: #6c797f;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.time_sort span:hover{
+    color: #77a8d0;
+}
+.active_time_btn {
+    border: 2px solid #77a8d0;
+    color: #77a8d0;
+}

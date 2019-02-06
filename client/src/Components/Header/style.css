@@ -1,0 +1,38 @@
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #d5dddf;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+.header .container{
+    justify-content: space-between;
+}
+.header_right{
+    display: flex;
+    align-items: center;
+}
+.header_right h1{
+    margin-right: 35px;
+}
+.header_logo{
+    font-size: 28px;
+    font-weight: bold;
+    /*text-transform: uppercase;*/
+}
+.header_navigation a{
+    margin-right: 25px;
+    color: #838a92;
+}
+.header_navigation a:hover{
+    color: #548eaa;
+}
+.header_search{
+    display: flex;
+    align-items: center;
+}
+.sign_in_btn{
+    margin-left: 20px!important;
+}

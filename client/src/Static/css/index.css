@@ -1,0 +1,9 @@
+@import "reset.css";
+.container{
+    width: 100%;
+    max-width: 1140px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 20px;
+}
