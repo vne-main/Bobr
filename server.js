@@ -1,27 +1,19 @@
 const express = require('express');
 const app = express();
 const BodyParser = require('body-parser');
-const post  = require('./posts');
+const posts  = require('./posts');
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
-const test = [
-    {
-        id: 1,
-        name: "Amatory"
-    },
-    {
-        id: 2,
-        name: "Skrillex"
-    },
-    {
-        id: 3,
-        name: "Povar"
-    }
-];
-
 app.get('/api/', (req, res) => {
+    res.send(posts);
+});
+
+app.get('/api/post/:id', (req, res) => {
+    const post = posts.array.find((post) => {
+        return post.id === Number(req.params.id);
+    });
     res.send(post);
 });
 

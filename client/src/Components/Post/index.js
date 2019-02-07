@@ -4,80 +4,83 @@ import favoriteImg from "../../Static/img/stats/favorite.png";
 import eyeImg from "../../Static/img/stats/eye.png";
 import commentsImg from "../../Static/img/stats/comments.png";
 
-export default class Post extends Component {
+import {bindActionCreators} from "redux";
+import {getCurrentPost} from "../../Store/actions";
+import connect from "react-redux/es/connect/connect";
+
+class Post extends Component {
+
+    getPost = async (id) => {
+        const requestPost = await fetch(`/api/post/${id}`);
+        const post = await requestPost.json();
+        this.props.getCurrentPost(post);
+    };
+
+    componentWillMount() {
+        const hashWindow = window.location.hash.split('/');
+        const idPost = hashWindow[hashWindow.length - 1];
+        this.getPost(idPost);
+        window.scrollTo(0, 0);
+    }
+
     render() {
+        const {currentPost} = this.props;
         return (
             <section className="main_left">
                 <div className="top_news">
                     <div className="user_icon">
-                        <img src="https://storage.googleapis.com/vasenking/user_icon/user_0.jpg" alt=""/>
+                        <img src={currentPost.author_img} alt=""/>
                     </div>
-                    <p className="user_name">User Name</p>
-                    <p className="news_time">вчера в 16:00</p>
+                    <p className="user_name">{currentPost.author_name}</p>
+                    <p className="news_time">{currentPost.time}</p>
                 </div>
                 <h1 className="title_news">
-                    Название новости
+                    {currentPost.title}
                 </h1>
                 <div className="heading_news">
-                    <p>DIY или Сделай сам</p>
-                    <p>Машинное обучение</p>
-                    <p>Работа с видео</p>
+                    {currentPost.tags && currentPost.tags.map((tag, i) => {
+                        return (
+                            <p key={i}>{tag}</p>
+                        )
+                    })}
                 </div>
                 <div className="text_news">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.<br/><br/>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aut, autem consectetur dolore doloribus, dolorum
-                    earum est et eum facilis ipsam ipsum minima nam natus nisi
-                    quisquam temporibus ullam velit.
+                    {currentPost.text}
                 </div>
                 <div className="news_stats">
                     <div className="news_vote">
                         <img src={arrowImg} alt="arrowUp"/>
-                        <i>+22</i>
+                        <i>+{currentPost.likes}</i>
                         <img src={arrowImg} alt="arrowDown" className="stats_arrow_down"/>
                     </div>
                     <div className="news_favorite">
                         <img src={favoriteImg} alt="favorite"/>
-                        <i>32</i>
+                        <i>{currentPost.favorites}</i>
                     </div>
                     <div className="news_views">
                         <img src={eyeImg} alt="eye"/>
-                        <i>11,5k</i>
+                        <i>{currentPost.views}k</i>
                     </div>
-
                     <div className="news_comments">
                         <img src={commentsImg} alt="comments"/>
-                        <i>90</i>
+                        <i>{currentPost.comment}</i>
                     </div>
                 </div>
             </section>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currentPost: state.currentPost
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCurrentPost: bindActionCreators(getCurrentPost, dispatch),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
