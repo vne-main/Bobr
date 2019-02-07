@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
 import Icon from '../../../../Static/img/icon.png';
+import arrowImg from '../../../../Static/img/stats/arrow.png';
+import eyeImg from '../../../../Static/img/stats/eye.png';
+import favoriteImg from '../../../../Static/img/stats/favorite.png';
+import commentsImg from '../../../../Static/img/stats/comments.png';
 
 export default class NewsItem extends Component {
     render(){
@@ -36,18 +40,23 @@ export default class NewsItem extends Component {
                 </span>
                 <div className="news_stats">
                     <div className="news_vote">
-
+                        <img src={arrowImg} alt="arrowUp"/>
                         <i>+22</i>
-                        <i>+1</i>
+                        <img src={arrowImg} alt="arrowDown" className="stats_arrow_down"/>
                     </div>
                     <div className="news_favorite">
-                        233
+                        <img src={favoriteImg} alt="favorite"/>
+                        <i>32</i>
                     </div>
-                    <div className="news_favorite">
-                        233
+
+                    <div className="news_views">
+                        <img src={eyeImg} alt="eye"/>
+                        <i>11,5k</i>
                     </div>
-                    <div className="news_favorite">
-                        233
+
+                    <div className="news_comments">
+                        <img src={commentsImg} alt="comments"/>
+                        <i>90</i>
                     </div>
                 </div>
             </section>

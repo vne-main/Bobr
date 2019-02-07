@@ -23,11 +23,15 @@
     /*text-transform: uppercase;*/
 }
 .header_navigation a{
+    font-size: 15px;
     margin-right: 25px;
     color: #838a92;
 }
 .header_navigation a:hover{
     color: #548eaa;
+}
+.active_page{
+    color: #464646!important;
 }
 .header_search{
     display: flex;

@@ -84,9 +84,31 @@
     border: 2px solid #e5e9eb;
     border-radius: 5px;
 }
-.news_vote{
+.news_vote, .news_views, .news_favorite, .news_comments{
     display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #548eaa;
 }
-.news_favorite{
-    display: flex;
+.news_vote img{
+    width: 10px;
+}
+.news_vote i{
+    margin: 0 10px;
+    color: #6c9007;
+}
+.stats_arrow_down{
+    transform: rotate(180deg);
+}
+.news_views img{
+    width: 30px;
+    margin-right: 5px;
+}
+.news_favorite img{
+    width: 14px;
+    margin-right: 8px;
+}
+.news_comments img{
+    width: 20px;
+    margin-right: 5px;
 }

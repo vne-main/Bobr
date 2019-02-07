@@ -11,6 +11,7 @@ export default class LeftColumn extends Component {
         super(props);
         this.state = {
             tabIndex: 0,
+            tabArray: ['Лучшее', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки','Неделя','Месяц','Год'],
         };
@@ -25,21 +26,21 @@ export default class LeftColumn extends Component {
     }
 
     render(){
-        const {tabIndex, timeSort, timeIndex} = this.state;
+        const {tabIndex, timeSort, timeIndex, tabArray} = this.state;
         return(
             <section className="main_left">
                 <SelectFlow/>
                 <div className="tab_panel">
-                    <span
-                        onClick={() => this.changeTab(0)}
-                        className={tabIndex === 0 && 'tab_panel_active'}>
-                        Лучшие
-                    </span>
-                    <span
-                        onClick={() => this.changeTab(1)}
-                        className={tabIndex === 1 && 'tab_panel_active'}>
-                        Все подряд
-                    </span>
+                    {tabArray.map((el, i) => {
+                        return(
+                            <span
+                                key={i}
+                                onClick={() => this.changeTab(i)}
+                                className={tabIndex === i ? "tab_panel_active" : ""}>
+                                {el}
+                            </span>
+                        )
+                    })}
                 </div>
                 <div className="time_sort">
                     {timeSort.map((el, i) => {
@@ -47,7 +48,7 @@ export default class LeftColumn extends Component {
                             <span
                                 key={i}
                                 onClick={() => this.changeTimeLine(i)}
-                                className={timeIndex === i && 'active_time_btn'}
+                                className={timeIndex === i ? 'active_time_btn' : ""}
                             >
                                 {el}
                             </span>
@@ -56,6 +57,7 @@ export default class LeftColumn extends Component {
                 </div>
                 {tabIndex === 0 && <NewsList />}
                 {tabIndex === 1}
+
             </section>
         )
     }

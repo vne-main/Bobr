@@ -20,7 +20,7 @@ export default class Header extends Component {
                     <div className="header_right">
                         <h1 className="header_logo" onClick={() => this.sendGet()}>bobr</h1>
                         <nav className="header_navigation">
-                            <a href="#">Публикации</a>
+                            <a href="#" className="active_page">Публикации</a>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
                             <a href="#">Песочница</a>
