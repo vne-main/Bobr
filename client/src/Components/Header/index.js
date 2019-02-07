@@ -9,9 +9,9 @@ import Button from "@material-ui/core/Button/Button";
 export default class Header extends Component {
 
     sendGet = async () => {
-        const response = await fetch('/api/test');
-        const body = await response.json();
-        console.log(body);
+        // const response = await fetch('/api/test');
+        // const body = await response.json();
+        // console.log(body);
     };
 
     render(){
@@ -19,14 +19,13 @@ export default class Header extends Component {
             <section className="header">
                 <div className="container">
                     <div className="header_right">
-                        <h1 className="header_logo" onClick={() => this.sendGet()}>bobr</h1>
+                        <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
                             <Link to="/" className="active_page">Главная</Link>
-                            <Link to="/post" className="active_page">Публикации</Link>
+                            <Link to="/post">Публикации</Link>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
                             <a href="#">Аккаунты</a>
-
                         </nav>
                     </div>
                     <div className="header_search">

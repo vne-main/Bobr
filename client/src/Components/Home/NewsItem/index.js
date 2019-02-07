@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './style.css';
-import Icon from '../../../Static/img/icon.png';
 import arrowImg from '../../../Static/img/stats/arrow.png';
 import eyeImg from '../../../Static/img/stats/eye.png';
 import favoriteImg from '../../../Static/img/stats/favorite.png';
@@ -12,7 +11,7 @@ export default class NewsItem extends Component {
             <section className="news_item">
                 <div className="top_news">
                     <div className="user_icon">
-                        <img src="https://storage.googleapis.com/vasenking/user_icon/icon.png" alt=""/>
+                        <img src="https://storage.googleapis.com/vasenking/user_icon/user_0.jpg" alt=""/>
                     </div>
                     <p className="user_name">User Name</p>
                     <p className="news_time">вчера в 16:00</p>

@@ -20,7 +20,7 @@
 .header_logo{
     font-size: 28px;
     font-weight: bold;
-    /*text-transform: uppercase;*/
+    margin-right: 30px;
 }
 .header_navigation a{
     font-size: 15px;

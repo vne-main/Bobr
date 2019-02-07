@@ -1,17 +1,95 @@
 {
-    "posts": [
-        {
-            "id": 0,
-            "author_name": "",
-            "author_img": "",
-            "time": "",
-            "title": "",
-            "tags": "",
-            "text": "",
-            "likes": "",
-            "favorites": "",
-            "views": "",
-            "comment": ""
-        }
-    ]
+  "posts": [
+    {
+        "id": 0,
+        "author_name": "New User",
+        "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
+        "time": "вчера в 16.00",
+        "title": "Тестовая новость",
+        "tags": ["First News","My News", "Тестим"],
+        "text": "Это тестовая новость, которую я смог написать...",
+        "likes": 25,
+        "favorites": 3,
+        "views": 10,
+        "comment": 9
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_1.jpg",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_2.png",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_3.jpg",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_4.png",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_5.jpg",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    },
+    {
+      "id": 0,
+      "author_name": "",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_6.jpg",
+      "time": "",
+      "title": "",
+      "tags": "",
+      "text": "",
+      "likes": "",
+      "favorites": "",
+      "views": "",
+      "comment": ""
+    }
+  ]
 }
