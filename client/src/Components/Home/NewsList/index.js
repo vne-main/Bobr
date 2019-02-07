@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import './style.css';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+import {likeIncrement} from "../../../Store/actions";
 import NewsItem from '../NewsItem';
 
-export default class NewsList extends Component {
+class NewsList extends Component {
     render(){
+        console.log(this.props.news);
         return(
             <section className="news_list">
                 <NewsItem/>
@@ -13,3 +16,17 @@ export default class NewsList extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        news: state.news
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        likeIncrement: bindActionCreators(likeIncrement, dispatch),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsList);
