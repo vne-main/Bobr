@@ -8,12 +8,6 @@ import Button from "@material-ui/core/Button/Button";
 
 export default class Header extends Component {
 
-    sendGet = async () => {
-        // const response = await fetch('/api/test');
-        // const body = await response.json();
-        // console.log(body);
-    };
-
     render(){
         return(
             <section className="header">
@@ -25,7 +19,7 @@ export default class Header extends Component {
                             <Link to={`/post/${0}`}>Пост</Link>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
-                            <a href="#">Аккаунты</a>
+                            <a href="#">Аккаунт</a>
                         </nav>
                     </div>
                     <div className="header_search">
