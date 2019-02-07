@@ -1,0 +1,35 @@
+.main_right div {
+    border-radius: 10px;
+    background: #f7f7f7;
+    margin-bottom: 20px;
+}
+
+.advertising {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right_streams {
+    padding: 20px;
+}
+
+.right_streams h3 {
+    color: #505c66;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8e9;
+}
+
+.right_streams_list {
+    color: #548eaa;
+}
+
+.right_streams_list li {
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8e9;
+}

@@ -9,7 +9,7 @@ const flow = [
     { value: '4', label: 'Разное'}
 ];
 
-export default class SelectFlow extends Component {
+export default class SelectStream extends Component {
 
     state = {
         selectedOption: { value: '0', label: 'Разработка' },
@@ -25,7 +25,7 @@ export default class SelectFlow extends Component {
                 value={this.state.selectedOption}
                 onChange={this.handleChange}
                 options={flow}
-                className="select_flow"
+                className="select_stream"
             />
         )
     }

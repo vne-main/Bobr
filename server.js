@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const BodyParser = require('body-parser');
+const post  = require('./posts');
+
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
@@ -20,12 +22,13 @@ const test = [
 ];
 
 app.get('/api/test/', (req, res) => {
-    res.send(test);
+    res.send(post);
 });
 
 app.post('/api/test', (req, res) => {
     test.push(req.body);
-    return res.send(test);
+    res.send(test);
+    res.sendStatus(200);
 });
 
 // PUT - для изменения

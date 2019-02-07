@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
-import Icon from '../../../../Static/img/icon.png';
-import arrowImg from '../../../../Static/img/stats/arrow.png';
-import eyeImg from '../../../../Static/img/stats/eye.png';
-import favoriteImg from '../../../../Static/img/stats/favorite.png';
-import commentsImg from '../../../../Static/img/stats/comments.png';
+import Icon from '../../../Static/img/icon.png';
+import arrowImg from '../../../Static/img/stats/arrow.png';
+import eyeImg from '../../../Static/img/stats/eye.png';
+import favoriteImg from '../../../Static/img/stats/favorite.png';
+import commentsImg from '../../../Static/img/stats/comments.png';
 
 export default class NewsItem extends Component {
     render(){
@@ -12,7 +12,7 @@ export default class NewsItem extends Component {
             <section className="news_item">
                 <div className="top_news">
                     <div className="user_icon">
-                        <img src={Icon} alt=""/>
+                        <img src="https://storage.googleapis.com/vasenking/user_icon/icon.png" alt=""/>
                     </div>
                     <p className="user_name">User Name</p>
                     <p className="news_time">вчера в 16:00</p>
@@ -48,7 +48,6 @@ export default class NewsItem extends Component {
                         <img src={favoriteImg} alt="favorite"/>
                         <i>32</i>
                     </div>
-
                     <div className="news_views">
                         <img src={eyeImg} alt="eye"/>
                         <i>11,5k</i>

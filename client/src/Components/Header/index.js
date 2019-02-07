@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 import './style.css';
 
 /* MATERIAL */
@@ -20,10 +21,12 @@ export default class Header extends Component {
                     <div className="header_right">
                         <h1 className="header_logo" onClick={() => this.sendGet()}>bobr</h1>
                         <nav className="header_navigation">
-                            <a href="#" className="active_page">Публикации</a>
+                            <Link to="/" className="active_page">Главная</Link>
+                            <Link to="/post" className="active_page">Публикации</Link>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
                             <a href="#">Аккаунты</a>
+
                         </nav>
                     </div>
                     <div className="header_search">
