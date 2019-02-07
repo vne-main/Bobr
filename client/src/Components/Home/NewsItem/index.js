@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import './style.css';
+
+/** Img **/
 import arrowImg from '../../../Static/img/stats/arrow.png';
 import eyeImg from '../../../Static/img/stats/eye.png';
 import favoriteImg from '../../../Static/img/stats/favorite.png';
 import commentsImg from '../../../Static/img/stats/comments.png';
+
+/** Module **/
+import { Link } from 'react-router-dom'
+
 
 export default class NewsItem extends Component {
     render(){
@@ -16,9 +22,9 @@ export default class NewsItem extends Component {
                     <p className="user_name">User Name</p>
                     <p className="news_time">вчера в 16:00</p>
                 </div>
-                <h1 className="title_news">
+                <Link to={`/post/${0}`} className="title_news">
                     Название новости
-                </h1>
+                </Link>
                 <div className="heading_news">
                     <p>DIY или Сделай сам</p>
                     <p>Машинное обучение</p>
@@ -34,9 +40,9 @@ export default class NewsItem extends Component {
                     earum est et eum facilis ipsam ipsum minima nam natus nisi
                     quisquam temporibus ullam velit.
                 </div>
-                <span className="news_more">
+                <Link to={`/post/${0}`} className="news_more">
                     Читать дальше →
-                </span>
+                </Link>
                 <div className="news_stats">
                     <div className="news_vote">
                         <img src={arrowImg} alt="arrowUp"/>
