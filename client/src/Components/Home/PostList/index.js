@@ -6,12 +6,15 @@ import PostItem from '../PostItem';
 import connect from "react-redux/es/connect/connect";
 
 class PostList extends Component {
-    render(){
-        const { postList } = this.props;
-        return(
+    render() {
+        const {postList} = this.props;
+        return (
             <section className="news_list">
-                <PostItem/>
-                <PostItem/>
+                {postList.map((el, i) => {
+                    return (
+                        <PostItem post={el} key={i}/>
+                    )
+                })}
             </section>
         )
     }
@@ -19,7 +22,7 @@ class PostList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        postList : state.postList
+        postList: state.postList
     }
 };
 
