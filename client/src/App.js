@@ -8,7 +8,23 @@ import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Post from './Components/Post';
 
-export default class App extends Component {
+/** Redux **/
+import {bindActionCreators} from "redux";
+import {getPostList} from "./Store/actions";
+import connect from "react-redux/es/connect/connect";
+
+class App extends Component {
+
+    startRequest = async () => {
+        const requestPosts = await fetch('/api');
+        const postList = await requestPosts.json();
+        this.props.getPostList(postList);
+    };
+
+    componentWillMount(){
+        this.startRequest();
+    };
+
     render() {
         return (
             <HashRouter>
@@ -27,3 +43,11 @@ export default class App extends Component {
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getPostList: bindActionCreators(getPostList, dispatch),
+    }
+};
+
+export default connect("", mapDispatchToProps)(App);

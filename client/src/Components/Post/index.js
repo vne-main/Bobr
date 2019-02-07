@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NewsItem from "../Home/NewsItem";
 import arrowImg from "../../Static/img/stats/arrow.png";
 import favoriteImg from "../../Static/img/stats/favorite.png";
 import eyeImg from "../../Static/img/stats/eye.png";

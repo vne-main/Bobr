@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import './style.css';
 
 /** Components **/
-import NewsList from "./NewsList";
+import PostList from "./PostList";
 import SelectStream from "./SelectStream";
 
-export default class Home extends Component {
+class Home extends Component {
 
     constructor(props) {
         super(props);
@@ -55,9 +55,11 @@ export default class Home extends Component {
                         )
                     })}
                 </div>
-                {tabIndex === 0 && <NewsList/>}
+                {tabIndex === 0 && <PostList/>}
                 {tabIndex === 1}
             </section>
         )
     }
 }
+
+export default Home;

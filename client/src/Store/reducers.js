@@ -1,18 +1,21 @@
 import {
-    LIKE_INCREMENT
+    GET_POST_LIST,
 } from "./const";
 
 const initialState = {
-    news: [
-        {id: 0, name: "news"}
-    ]
+    postList: []
 };
 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case LIKE_INCREMENT:
-            console.log("YES!");
-            return state;
+
+        case GET_POST_LIST:
+            const new_post_list = action.payload.array;
+            return {
+                ...state,
+                postList:
+                new_post_list
+            };
 
         default:
             return state;

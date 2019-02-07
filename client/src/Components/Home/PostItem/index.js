@@ -10,8 +10,7 @@ import commentsImg from '../../../Static/img/stats/comments.png';
 /** Module **/
 import { Link } from 'react-router-dom'
 
-
-export default class NewsItem extends Component {
+export default class PostItem extends Component {
     render(){
         return(
             <section className="news_item">

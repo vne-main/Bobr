@@ -1,10 +1,10 @@
 import {
-    LIKE_INCREMENT
+    GET_POST_LIST
 } from "./const";
 
-export const likeIncrement = (id) => {
+export const getPostList = (arrayPosts) => {
     return {
-        type: LIKE_INCREMENT,
-        payload: id
+        type: GET_POST_LIST,
+        payload: arrayPosts
     }
 };

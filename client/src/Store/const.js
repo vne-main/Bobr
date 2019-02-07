@@ -1,1 +1,1 @@
-export const LIKE_INCREMENT = "LIKE_INCREMENT";
+export const GET_POST_LIST = "GET_POST_LIST";
