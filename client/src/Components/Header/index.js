@@ -23,7 +23,7 @@ export default class Header extends Component {
                             <a href="#" className="active_page">Публикации</a>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
-                            <a href="#">Песочница</a>
+                            <a href="#">Аккаунты</a>
                         </nav>
                     </div>
                     <div className="header_search">
