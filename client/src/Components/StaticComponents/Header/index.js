@@ -27,7 +27,6 @@ class Header extends Component {
                                 Опубликовать
                             </Link>
 
-                            <a href="#">Пост</a>
                         </nav>
                     </div>
                     <div className="header_panel">
