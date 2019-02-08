@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PostItem from "../StaticComponents/PostItem";
+import Comments from './Comments';
 
 import {bindActionCreators} from "redux";
 import {
@@ -29,6 +30,7 @@ class Post extends Component {
         return (
             <section>
                 <PostItem post={currentPost}/>
+                <Comments/>
             </section>
         )
     }

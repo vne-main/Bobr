@@ -16,10 +16,8 @@ class PostItem extends Component {
         const {post, currentPage} = this.props;
         return (
             <section className="news_item">
-                <div className="top_news">
-                    <div className="user_icon">
-                        <img src={post.author_img} alt="user_icon"/>
-                    </div>
+                <div className="top_user">
+                    <img src={post.author_img} alt="user_icon" className="user_icon"/>
                     <p className="user_name">{post.author_name}</p>
                     <p className="news_time">{post.time}</p>
                 </div>

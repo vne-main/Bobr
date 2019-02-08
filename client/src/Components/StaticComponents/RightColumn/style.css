@@ -1,22 +1,17 @@
-.main_right div {
-    border-radius: 10px;
-    background: #f7f7f7;
-    margin-bottom: 20px;
-    color: #9e9ea8;
-}
-
 .advertising {
     height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.right_streams {
+.right_column_box{
+    background: #f7f7f7;
     padding: 20px;
+    color: #9e9ea8;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-
-.right_streams h3 {
+.right_column_box h3 {
     color: #505c66;
     text-transform: uppercase;
     font-size: 14px;
@@ -25,6 +20,32 @@
     border-bottom: 1px solid #e2e8e9;
 }
 
+.sponsor_box{
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+.sponsor_box p{
+    color: #222;
+}
+.title_sponsor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.title_sponsor h5{
+    color: #333333;
+    font-weight: bold;
+}
+.title_sponsor img{
+    margin: 0 0 5px 10px;
+    border-radius: 3px;
+    width: 32px;
+    height: 32px;
+}
 .right_streams_list {
     color: #548eaa;
 }
