@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import './style.css';
 import {bindActionCreators} from "redux";
@@ -50,7 +49,7 @@ class Publish extends Component {
     render() {
         const {title, tags, text} = this.state;
         return (
-            <section>
+            <section className="publish_page">
                 <h3 className="title_h3 publish_title">
                     Опубликовать новость
                 </h3>

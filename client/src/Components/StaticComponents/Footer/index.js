@@ -7,37 +7,41 @@ export default class Footer extends Component {
             <footer>
                 <section className="footer_information">
                     <div className="container">
-                        <div className="footer_column">
-                            <h3>Аккаунт</h3>
-                            <ol>
-                                <li>Войти</li>
-                                <li>Регистрация</li>
-                            </ol>
+                        <div className="footer_half">
+                            <div className="footer_column">
+                                <h3>Аккаунт</h3>
+                                <ol>
+                                    <li>Войти</li>
+                                    <li>Регистрация</li>
+                                </ol>
+                            </div>
+                            <div className="footer_column">
+                                <h3>Разделы</h3>
+                                <ol>
+                                    <li>Публикации</li>
+                                    <li>Хабры</li>
+                                    <li>Компании</li>
+                                    <li>Пользователи</li>
+                                </ol>
+                            </div>
                         </div>
-                        <div className="footer_column">
-                            <h3>Разделы</h3>
-                            <ol>
-                                <li>Публикации</li>
-                                <li>Хабры</li>
-                                <li>Компании</li>
-                                <li>Пользователи</li>
-                            </ol>
-                        </div>
-                        <div className="footer_column">
-                            <h3>Информация</h3>
-                            <ol>
-                                <li>Правила</li>
-                                <li>Помощь</li>
-                                <li>Документация</li>
-                            </ol>
-                        </div>
-                        <div className="footer_column">
-                            <h3>Реклама</h3>
-                            <ol>
-                                <li>Реклама</li>
-                                <li>Контент</li>
-                                <li>Тарифы</li>
-                            </ol>
+                        <div className="footer_half">
+                            <div className="footer_column">
+                                <h3>Информация</h3>
+                                <ol>
+                                    <li>Правила</li>
+                                    <li>Помощь</li>
+                                    <li>Документация</li>
+                                </ol>
+                            </div>
+                            <div className="footer_column">
+                                <h3>Реклама</h3>
+                                <ol>
+                                    <li>Реклама</li>
+                                    <li>Контент</li>
+                                    <li>Тарифы</li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </section>
