@@ -1,7 +1,39 @@
 @import "reset.css";
+/* Start */
 body{
     min-width: 850px;
 }
+img{
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+textarea{
+    font-family: 'Roboto', sans-serif;
+}
+::-webkit-input-placeholder { color: #5e6973 }
+::-moz-placeholder          { color: #5e6973 }
+:-moz-placeholder           { color: #5e6973 }
+:-ms-input-placeholder      { color: #5e6973 }
+
+/****/
+.blue_button{
+    background: #65a3be;
+    border: 1px solid transparent;
+    color: #ffffff;
+    font-size: 13px;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.blue_button:hover{
+    background: rgba(61,144,190,0.93);
+}
+
+
+
+
 .vh_block{
     min-height: 100vh;
     display: flex;

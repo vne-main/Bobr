@@ -53,11 +53,3 @@
     color: #65a3be;
     border: 1px solid #65a3be;
 }
-.sign_up_btn{
-    background: #65a3be;
-    border: 1px solid transparent;
-    color: #ffffff;
-}
-.sign_up_btn:hover{
-    background: rgba(61,144,190,0.93);
-}
