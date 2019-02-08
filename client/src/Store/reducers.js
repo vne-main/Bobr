@@ -1,6 +1,6 @@
 import {
     GET_POST_LIST,
-    GET_CURRENT_POST,
+    CHANGE_CURRENT_POST,
 } from "./const";
 
 const initialState = {
@@ -12,17 +12,15 @@ export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_POST_LIST:
-            const new_post_list = action.payload.array;
             return {
                 ...state,
-                postList: new_post_list
+                postList: action.payload
             };
 
-        case GET_CURRENT_POST:
-            const current_post = action.payload;
+        case CHANGE_CURRENT_POST:
             return {
                 ...state,
-                currentPost: current_post
+                currentPost: action.payload
             };
 
         default:

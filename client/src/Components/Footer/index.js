@@ -14,7 +14,6 @@ export default class Footer extends Component {
                                 <li>Регистрация</li>
                             </ol>
                         </div>
-
                         <div className="footer_column">
                             <h3>Разделы</h3>
                             <ol>
@@ -24,7 +23,6 @@ export default class Footer extends Component {
                                 <li>Пользователи</li>
                             </ol>
                         </div>
-
                         <div className="footer_column">
                             <h3>Информация</h3>
                             <ol>
@@ -33,7 +31,6 @@ export default class Footer extends Component {
                                 <li>Документация</li>
                             </ol>
                         </div>
-
                         <div className="footer_column">
                             <h3>Реклама</h3>
                             <ol>

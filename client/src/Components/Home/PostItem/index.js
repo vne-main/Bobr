@@ -26,7 +26,7 @@ export default class PostItem extends Component {
                     {post.title}
                 </Link>
                 <div className="heading_news">
-                    {post.tags.map((tag, i) => {
+                    {post.tags && post.tags.map((tag, i) => {
                         return (
                             <p key={i}>{tag}</p>
                         )
