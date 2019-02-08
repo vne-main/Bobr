@@ -1,11 +1,13 @@
 import {
     GET_POST_LIST,
     CHANGE_CURRENT_POST,
+    CHANGE_CURRENT_PAGE,
 } from "./const";
 
 const initialState = {
     postList: [],
     currentPost: {},
+    currentPage: "",
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -21,6 +23,12 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPost: action.payload
+            };
+
+        case CHANGE_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload
             };
 
         default:

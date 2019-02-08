@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './style.css';
-import PostItem from '../PostItem';
+import PostItem from '../../StaticComponents/PostItem';
 
 /** Redux **/
 import connect from "react-redux/es/connect/connect";

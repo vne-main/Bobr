@@ -1,6 +1,7 @@
 import {
     GET_POST_LIST,
     CHANGE_CURRENT_POST,
+    CHANGE_CURRENT_PAGE,
 } from "./const";
 
 export const getPostList = (postList) => {
@@ -10,9 +11,16 @@ export const getPostList = (postList) => {
     }
 };
 
-export const changeCurrentPost = (currentPost) => {
+export const changeCurrentPost = (post) => {
     return {
         type: CHANGE_CURRENT_POST,
-        payload: currentPost
+        payload: post
+    }
+};
+
+export const changeCurrentPage = (page) => {
+    return {
+        type: CHANGE_CURRENT_PAGE,
+        payload: page
     }
 };

@@ -37,6 +37,10 @@
     color: #77a8d0;
     cursor: pointer;
 }
+.title_news_open{
+    cursor: default!important;
+    color: #333333!important;
+}
 .heading_news{
     display: flex;
     margin-bottom: 15px;

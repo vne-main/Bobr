@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import {Route, HashRouter} from 'react-router-dom';
 
 /*** Components ***/
-import RightColumn from './Components/RightColumn';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+import RightColumn from './Components/StaticComponents/RightColumn';
+import Header from './Components/StaticComponents/Header';
+import Footer from './Components/StaticComponents/Footer';
 import Home from './Components/Home';
 import Post from './Components/Post';
 
