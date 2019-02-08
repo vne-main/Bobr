@@ -31,12 +31,33 @@
     color: #548eaa;
 }
 .active_page{
-    color: #464646!important;
+    color: #000!important;
 }
-.header_search{
+.header_panel{
     display: flex;
     align-items: center;
 }
+.header_panel button{
+    font-size: 13px;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 .sign_in_btn{
-    margin-left: 20px!important;
+    margin: 0 10px;
+    background: #ffffff;
+    border: 1px solid #a4afba;
+    color: #838a92;
+}
+.sign_in_btn:hover{
+    color: #65a3be;
+    border: 1px solid #65a3be;
+}
+.sign_up_btn{
+    background: #65a3be;
+    border: 1px solid transparent;
+    color: #ffffff;
+}
+.sign_up_btn:hover{
+    background: rgba(61,144,190,0.93);
 }

@@ -4,7 +4,6 @@ import './style.css';
 
 /* MATERIAL */
 import SearchIcon from '@material-ui/icons/Search';
-import Button from "@material-ui/core/Button/Button";
 
 export default class Header extends Component {
 
@@ -15,20 +14,15 @@ export default class Header extends Component {
                     <div className="header_right">
                         <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
-                            <Link to="/" className="active_page">Главная</Link>
-                            <Link to={`/post/0`}>Пост</Link>
+                            <Link to="/" className="active_page">Публикации</Link>
                             <a href="#">Пользователи</a>
-                            <a href="#">Хабы</a>
-                            <a href="#">Аккаунт</a>
+                            <a href="#">Пост</a>
                         </nav>
                     </div>
-                    <div className="header_search">
+                    <div className="header_panel">
                         <SearchIcon />
-                        <Button
-                            variant="outlined"
-                            className="sign_in_btn">
-                                Вход
-                        </Button>
+                        <button className="sign_in_btn">Войти</button>
+                        <button className="sign_up_btn">Регистрация</button>
                     </div>
                 </div>
             </section>
