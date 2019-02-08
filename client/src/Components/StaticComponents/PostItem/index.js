@@ -8,12 +8,13 @@ import favoriteImg from '../../../Static/img/stats/favorite.png';
 import commentsImg from '../../../Static/img/stats/comments.png';
 
 /** Module **/
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import connect from "react-redux/es/connect/connect";
 
-export default class PostItem extends Component {
-    render(){
-        const {post} = this.props;
-        return(
+class PostItem extends Component {
+    render() {
+        const {post, currentPage} = this.props;
+        return (
             <section className="news_item">
                 <div className="top_news">
                     <div className="user_icon">
@@ -22,9 +23,14 @@ export default class PostItem extends Component {
                     <p className="user_name">{post.author_name}</p>
                     <p className="news_time">{post.time}</p>
                 </div>
-                <Link to={`/post/${post.id}`} className="title_news">
-                    {post.title}
-                </Link>
+                <div>
+                    {currentPage !== "post" ?
+                        <Link to={`/post/${post.id}`} className="title_news">
+                            {post.title}
+                        </Link> :
+                        <h3 className="title_h3">{post.title}</h3>
+                    }
+                </div>
                 <div className="heading_news">
                     {post.tags && post.tags.map((tag, i) => {
                         return (
@@ -35,9 +41,11 @@ export default class PostItem extends Component {
                 <div className="text_news">
                     {post.text}
                 </div>
+                {currentPage !== "post" &&
                 <Link to={`/post/${post.id}`} className="news_more">
                     Читать дальше →
                 </Link>
+                }
                 <div className="news_stats">
                     <div className="news_vote">
                         <img src={arrowImg} alt="arrowUp"/>
@@ -61,3 +69,11 @@ export default class PostItem extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currentPage: state.currentPage,
+    }
+};
+
+export default connect(mapStateToProps)(PostItem);

@@ -5,6 +5,11 @@ import './style.css';
 import PostList from "./PostList";
 import SelectStream from "./SelectStream";
 
+/** Redux **/
+import {bindActionCreators} from "redux";
+import {changeCurrentPage} from "../../Store/actions";
+import {connect} from "react-redux";
+
 class Home extends Component {
 
     constructor(props) {
@@ -23,6 +28,10 @@ class Home extends Component {
 
     changeTimeLine(index) {
         this.setState({timeIndex: index});
+    }
+
+    componentWillMount() {
+        this.props.changeCurrentPage('home');
     }
 
     render() {
@@ -62,4 +71,9 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
+    }
+};
+export default connect("", mapDispatchToProps)(Home);
