@@ -16,7 +16,7 @@ export default class Header extends Component {
                         <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
                             <Link to="/" className="active_page">Главная</Link>
-                            <Link to={`/post/${0}`}>Пост</Link>
+                            <Link to={`/post/0`}>Пост</Link>
                             <a href="#">Пользователи</a>
                             <a href="#">Хабы</a>
                             <a href="#">Аккаунт</a>

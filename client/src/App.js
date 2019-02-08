@@ -16,12 +16,12 @@ import connect from "react-redux/es/connect/connect";
 class App extends Component {
 
     startRequest = async () => {
-        const requestPosts = await fetch('/api');
-        const postList = await requestPosts.json();
+        const requestGetPosts = await fetch('/api');
+        const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
     };
 
-    componentWillMount(){
+    componentWillMount() {
         this.startRequest();
     };
 

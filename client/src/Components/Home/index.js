@@ -28,7 +28,7 @@ class Home extends Component {
     render() {
         const {tabIndex, timeSort, timeIndex, tabArray} = this.state;
         return (
-            <section className="main_left">
+            <section>
                 <SelectStream/>
                 <div className="tab_panel">
                     {tabArray.map((el, i) => {

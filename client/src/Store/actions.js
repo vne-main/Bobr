@@ -1,18 +1,18 @@
 import {
     GET_POST_LIST,
-    GET_CURRENT_POST,
+    CHANGE_CURRENT_POST,
 } from "./const";
 
-export const getPostList = (arrayPosts) => {
+export const getPostList = (postList) => {
     return {
         type: GET_POST_LIST,
-        payload: arrayPosts
+        payload: postList
     }
 };
 
-export const getCurrentPost = (post) => {
+export const changeCurrentPost = (currentPost) => {
     return {
-        type: GET_CURRENT_POST,
-        payload: post
+        type: CHANGE_CURRENT_POST,
+        payload: currentPost
     }
 };
