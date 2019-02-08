@@ -12,6 +12,10 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
 }
+.footer_half{
+    display: flex;
+    width: 50%;
+}
 .footer_column {
     width: 100%;
     display: flex;
@@ -40,4 +44,30 @@ footer {
 }
 .footer_bottom span{
     color: #77a8d0;
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 630px){
+    .footer_information .container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer_half{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .footer_column ol, .footer_column h3{
+        text-align: center;
+    }
+    .footer_bottom .container{
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .footer_half{
+        flex-direction: column;
+    }
+    .footer_column{
+        margin: 15px 0 10px 0!important;
+    }
 }

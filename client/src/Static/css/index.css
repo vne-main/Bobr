@@ -1,7 +1,7 @@
 @import "reset.css";
 /* Start */
 body{
-    min-width: 850px;
+    min-width: 320px;
 }
 img{
     -ms-user-select: none;
@@ -17,7 +17,7 @@ textarea{
 :-moz-placeholder           { color: #5e6973 }
 :-ms-input-placeholder      { color: #5e6973 }
 
-/****/
+/** Button **/
 .blue_button{
     background: #65a3be;
     border: 1px solid transparent;
@@ -30,10 +30,7 @@ textarea{
 .blue_button:hover{
     background: rgba(61,144,190,0.93);
 }
-
-
-
-
+/* Container */
 .vh_block{
     min-height: 100vh;
     display: flex;
@@ -60,4 +57,10 @@ textarea{
     min-width: 280px;
     display: flex;
     flex-direction: column;
+}
+/* Main media */
+@media only screen and (max-width: 850px) {
+    .main_right{
+        display: none;
+    }
 }
