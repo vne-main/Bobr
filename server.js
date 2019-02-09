@@ -1,4 +1,6 @@
 const express = require('express');
+var subdomain = require('express-subdomain');
+var router = express.Router();
 const dbJSON  = require('./dbJSON');
 const BodyParser = require('body-parser');
 const app = express();
@@ -50,8 +52,11 @@ app.get('/api/post/:id', (req, res) => {
 // PUT - для изменения
 // delete - для удаления
 
-app.listen(3012, function () {
-    console.log("listen port: 3012")
-});
+// app.listen(3012, function () {
+//     console.log("listen port: 3012")
+// });
+
+app.use(subdomain('www', router));
+app.listen(3012);
 
 
