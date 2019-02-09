@@ -30,7 +30,7 @@ class Post extends Component {
         return (
             <section>
                 <PostItem post={currentPost}/>
-                <Comments/>
+                <Comments comments={currentPost.comments}/>
             </section>
         )
     }

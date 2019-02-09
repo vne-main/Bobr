@@ -6,7 +6,19 @@ import {
 
 const initialState = {
     postList: [],
-    currentPost: {},
+    currentPost: {
+        "id": null,
+        "author_name": "",
+        "author_img": "",
+        "time": "",
+        "title": "",
+        "tags": [],
+        "text": "",
+        "likes": 0,
+        "favorites": 0,
+        "views": 0,
+        "comments": []
+    },
     currentPage: "",
 };
 

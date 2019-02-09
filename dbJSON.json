@@ -1,35 +1,39 @@
 {
   "postList": [
     {
-        "id": 0,
-        "author_name": "New User",
-        "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
-        "time": "вчера в 16:00",
-        "title": "Тестовая новость",
-        "tags": ["First News","My News", "Тестим"],
-        "text": "Это тестовая новость, которую я смог написать...",
-        "likes": 25,
-        "favorites": 3,
-        "views": 10,
-        "comment": 9
+      "id": 0,
+      "author_name": "Lady De",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_2.png",
+      "time": "сегодня в 14:20",
+      "title": "Окей, Google! Как твои дела?",
+      "tags": ["Google App", "Google Cloud", "ИБ"],
+      "text": "Вот и случилось так, что компания добра, которую я так любил и восхищался, причинила мне столько зла. Но обо всём по порядку.",
+      "likes": 0,
+      "favorites": 0,
+      "views": 1,
+      "comments": [
+        {"id": 0, "author_name": "Хороший Комментатор", "time": "23.02.13", "like": 0, "text": "Первый комментарий"},
+        {"id": 1, "author_name": "Хороший Аниматор", "time": "02.11.14", "like": 0, "text": "Второй комментарий"},
+        {"id": 2, "author_name": "Хороший Декларатор", "time": "13.11.12", "like": 0, "text": "Третий комментарий"}
+      ]
     },
     {
       "id": 1,
-      "author_name": "Master Soda",
-      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_2.png",
-      "time": "сегодня в 14:20",
-      "title": "Окей, Google! Ты добро или зло?",
-      "tags": ["Google App", "Google Cloud", "ИБ"],
-      "text": "Вот и случилось так, что компания добра, которую я так любил и восхищался, причинила мне столько зла. Но обо всём по порядку.",
-      "likes": "61",
-      "favorites": "23",
-      "views": "12,3",
-      "comment": "96"
+      "author_name": "React ZBS",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_3.jpg",
+      "time": "завтра в 00:00",
+      "title": "Использование функции connect() из пакета react-redux",
+      "tags": ["Блог", "ReactJS", "Разработка веб-сайтов"],
+      "text": "В статье, перевод которой мы публикуем сегодня, речь пойдёт о том, как создавать в React-приложениях компоненты-контейнеры, которые связаны с состоянием Redux. Этот материал основан на описании механизма управления состоянием в React с применением пакета react-redux. Предполагается, что у вас уже есть базовое понимание архитектуры и API библиотек, о которых мы будем говорить. Если это не так — обратитесь к документации по React и Redux.",
+      "likes": -2,
+      "favorites": 0,
+      "views": 1,
+      "comments": []
     },
     {
       "id": 2,
       "author_name": "Ya Redux",
-      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_3.jpg",
+      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_4.png",
       "time": "вчера в 20:00",
       "title": "Rust новости #5 (январь 2019)",
       "tags": ["Open source","Rust","Программирование"],
@@ -37,20 +41,7 @@
       "likes": "100",
       "favorites": "61",
       "views": "15",
-      "comment": "129"
-    },
-    {
-      "id": 3,
-      "author_name": "React ZBS",
-      "author_img": "https://storage.googleapis.com/vasenking/user_icon/user_4.png",
-      "time": "завтра в 00:00",
-      "title": "Использование функции connect() из пакета react-redux",
-      "tags": ["Блог", "ReactJS", "Разработка веб-сайтов"],
-      "text": "В статье, перевод которой мы публикуем сегодня, речь пойдёт о том, как создавать в React-приложениях компоненты-контейнеры, которые связаны с состоянием Redux. Этот материал основан на описании механизма управления состоянием в React с применением пакета react-redux. Предполагается, что у вас уже есть базовое понимание архитектуры и API библиотек, о которых мы будем говорить. Если это не так — обратитесь к документации по React и Redux.",
-      "likes": "212",
-      "favorites": "87",
-      "views": "25",
-      "comment": "140"
+      "comments": []
     },
     {
       "id": 4,
@@ -63,7 +54,7 @@
       "likes": "12",
       "favorites": "3",
       "views": "40",
-      "comment": "0"
+      "comments": []
     },
     {
       "id": 5,
@@ -76,7 +67,7 @@
       "likes": "128",
       "favorites": "64",
       "views": "256",
-      "comment": "32"
+      "comments": []
     }
   ]
 }

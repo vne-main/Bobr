@@ -14,6 +14,11 @@ import connect from "react-redux/es/connect/connect";
 class PostItem extends Component {
     render() {
         const {post, currentPage} = this.props;
+
+        let colorVote = {
+            color: post.likes >= 0 ? post.likes === 0 ? "#548eaa" : "#6c9007" : "#d53c30"
+        };
+
         return (
             <section className="news_item">
                 <div className="top_user">
@@ -30,7 +35,7 @@ class PostItem extends Component {
                     }
                 </div>
                 <div className="heading_news">
-                    {post.tags && post.tags.map((tag, i) => {
+                    {post.tags.map((tag, i) => {
                         return (
                             <p key={i}>{tag}</p>
                         )
@@ -47,7 +52,7 @@ class PostItem extends Component {
                 <div className="news_stats">
                     <div className="news_vote">
                         <img src={arrowImg} alt="arrowUp"/>
-                        <i>+{post.likes}</i>
+                        <i style={colorVote}>{post.likes > 0 && <b>+</b>}{post.likes}</i>
                         <img src={arrowImg} alt="arrowDown" className="stats_arrow_down"/>
                     </div>
                     <div className="news_favorite">
@@ -56,11 +61,11 @@ class PostItem extends Component {
                     </div>
                     <div className="news_views">
                         <img src={eyeImg} alt="eye"/>
-                        <i>{post.views}k</i>
+                        <i>{post.views}</i>
                     </div>
                     <div className="news_comments">
                         <img src={commentsImg} alt="comments"/>
-                        <i>{post.comment}</i>
+                        <i>{post.comments.length}</i>
                     </div>
                 </div>
             </section>
