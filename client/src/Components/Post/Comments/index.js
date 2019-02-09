@@ -12,8 +12,10 @@ class Comments extends Component {
                 <aside className="comment">
                     <div className="comment_title">
                         <div className="top_user">
-                            <img src={spImg2} alt="user_icon" className="user_icon"/>
-                            <p className="user_name">Оставил комментарий</p>
+                            <div className="flex_comm_name">
+                                <img src={spImg2} alt="user_icon" className="user_icon"/>
+                                <p className="user_name">Оставил комментарий</p>
+                            </div>
                             <p className="news_time">примерно вчера</p>
                         </div>
                         <div className="news_vote">
