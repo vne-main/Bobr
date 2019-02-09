@@ -11,6 +11,7 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api/publish', (req, res) => {
+    console.log(req.body);
     const postList = dbJSON.postList;
     const lastID = postList[postList.length - 1].id + 1;
     let currentDate = new Date().toISOString();
@@ -23,10 +24,10 @@ app.post('/api/publish', (req, res) => {
         "title": req.body.title,
         "tags": req.body.tags,
         "text": req.body.text,
-        "likes": "0",
-        "favorites": "0",
-        "views": "1",
-        "comment": "0"
+        "likes": 0,
+        "favorites": 0,
+        "views": 0,
+        "comments": []
     };
     dbJSON.postList.unshift(newPost);
     res.sendStatus(200);
@@ -36,7 +37,8 @@ app.get('/api/post/:id', (req, res) => {
     const post = dbJSON.postList.find((post) => {
         return post.id === Number(req.params.id);
     });
-    res.send(post);
+    console.log(`POST = ${post}`);
+    !post ? res.sendStatus(500) : res.send(post);
 });
 
 // app.post('/api/test', (req, res) => {
@@ -47,13 +49,6 @@ app.get('/api/post/:id', (req, res) => {
 
 // PUT - для изменения
 // delete - для удаления
-
-// app.get('/test/:id', function (req, res) {
-//     const artist = test.find(function(artist) {
-//          return artist.id === Number(req.params.id)
-//     });
-//     res.send(artist);
-// });
 
 app.listen(3012, function () {
     console.log("listen port: 3012")

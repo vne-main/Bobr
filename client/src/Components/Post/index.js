@@ -11,10 +11,20 @@ import connect from "react-redux/es/connect/connect";
 
 class Post extends Component {
 
+    state = {
+        success: true,
+    };
+
     getPost = async (id) => {
         const requestPost = await fetch(`/api/post/${id}`);
-        const post = await requestPost.json();
-        this.props.changeCurrentPost(post);
+        if (requestPost.status !== 500){
+            const post = await requestPost.json();
+            this.props.changeCurrentPost(post);
+            this.setState({success: true});
+        } else {
+            this.setState({success: false});
+            console.log(requestPost);
+        }
     };
 
     componentWillMount() {
@@ -26,11 +36,18 @@ class Post extends Component {
     }
 
     render() {
+        const {success} = this.state;
         const {currentPost} = this.props;
         return (
             <section>
-                <PostItem post={currentPost}/>
-                <Comments comments={currentPost.comments}/>
+                {!success ?
+                    <h3 className="title_h3">Пост не найден</h3>
+                    :
+                    <div>
+                        <PostItem post={currentPost}/>
+                        <Comments comments={currentPost.comments}/>
+                    </div>
+                }
             </section>
         )
     }

@@ -9,36 +9,65 @@ class Publish extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "Заголовок Новости",
-            tags: "Мои теги, Текст Тега",
-            text: "Текстовы тест",
+            title: "",
+            tags: "",
+            text: "",
+            success: false,
+            error: false,
+            fill: false,
         };
     }
 
-    publishPost = async () => {
+    checkData(){
         const {title, tags, text} = this.state;
-        if(title === "" || tags === "" || text === "") return false;
+        if (title === "" || tags === "" || text === "") {
+            this.setState({
+                success: false,
+                error: false,
+                fill: true,
+            });
+            return false;
+        }
+        return {
+            text: text,
+            tags: [tags],
+            title: title
+        };
+    };
+
+    successSend = async () => {
+        const requestGetPosts = await fetch('/api');
+        const postList = await requestGetPosts.json();
+        this.props.getPostList(postList);
+        this.setState({
+            title: "",
+            tags: "",
+            text: "",
+            success: true,
+            error: false,
+            fill: false,
+        });
+    };
+
+    publishPost = async () => {
+        const jsonData = this.checkData();
+        if (!jsonData) return false;
         const requestPublish = await fetch('/api/publish', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: title,
-                tags: [tags],
-                text: text
-            }),
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(jsonData),
         });
         const statusPublish = await requestPublish.text();
         if (statusPublish === "OK") {
-            const requestGetPosts = await fetch('/api');
-            const postList = await requestGetPosts.json();
-            this.props.getPostList(postList);
-            this.setState({
-                title: "", tags: "", text: ""
-            });
+            this.successSend();
         } else {
+            this.setState({
+                success: false,
+                fill: false,
+                error: true,
+            });
             console.log("Error");
+            console.log(statusPublish);
         }
     };
 
@@ -47,7 +76,7 @@ class Publish extends Component {
     }
 
     render() {
-        const {title, tags, text} = this.state;
+        const {title, tags, text, success, error, fill} = this.state;
         return (
             <section className="publish_page">
                 <h3 className="title_h3 publish_title">
@@ -79,12 +108,18 @@ class Publish extends Component {
                         onChange={(e) => this.setState({text: e.target.value})}
                     />
                 </aside>
-                <button
-                    className="blue_button publish_form"
-                    onClick={() => this.publishPost()}
-                >
-                    Опубликовать
-                </button>
+                <div className="send_comment_panel">
+                    <button
+                        className="blue_button publish_form"
+                        onClick={() => this.publishPost()}
+                    >
+                        Опубликовать
+                    </button>
+                    {success && <p>Новость опубликована</p>}
+                    {error && <p className="error_color">Ошибка сервера</p>}
+                    {fill && <p className="error_color">Заполните все поля</p>}
+                </div>
+
             </section>
         )
     }

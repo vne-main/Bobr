@@ -10,7 +10,7 @@ class Comments extends Component {
         return (
             <div className="comment_box">
                 {comments.length !== 0 &&
-                <h3 className="title_h3 h3_com">Комментарии <i>{comments.length}</i></h3>
+                    <h3 className="title_h3 h3_com">Комментарии <i>{comments.length}</i></h3>
                 }
                 {comments.map((el, i) => {
                     return (
