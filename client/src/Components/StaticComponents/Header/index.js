@@ -31,7 +31,7 @@ class Header extends Component {
                     </div>
                     <div className="header_panel">
                         <SearchIcon/>
-                        <button className="sign_in_btn">Войти</button>
+                        <button className="sign_in_btn">Вход</button>
                         <button className="blue_button sign_up_btn">Регистрация</button>
                     </div>
                 </div>
