@@ -16,17 +16,14 @@ class Header extends Component {
                     <div className="header_right">
                         <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
-
                             <Link to="/"
                                   className={currentPage === "home" ? "active_page" : ""}>
                                   Публикации
                             </Link>
-
                             <Link to="/publish"
                                   className={currentPage === "publish" ? "active_page" : ""}>
                                 Опубликовать
                             </Link>
-
                         </nav>
                     </div>
                     <div className="header_panel">

@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import './style.css';
 
@@ -15,6 +16,14 @@ class PostItem extends Component {
     render() {
         const {post, currentPage} = this.props;
 
+        const options = {
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+        };
+        console.log(post.time);
+        const timePost = new Date(post.time).toLocaleString(options);
         let colorVote = {
             color: post.likes >= 0 ? post.likes === 0 ? "#548eaa" : "#6c9007" : "#d53c30"
         };
@@ -24,7 +33,7 @@ class PostItem extends Component {
                 <div className="top_user">
                     <img src={post.author_img} alt="user_icon" className="user_icon"/>
                     <p className="user_name">{post.author_name}</p>
-                    <p className="news_time">{post.time}</p>
+                    <p className="news_time">{timePost}</p>
                 </div>
                 <div>
                     {currentPage !== "post" ?

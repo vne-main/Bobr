@@ -1,6 +1,4 @@
 const express = require('express');
-var subdomain = require('express-subdomain');
-var router = express.Router();
 const dbJSON  = require('./dbJSON');
 const BodyParser = require('body-parser');
 const app = express();
@@ -39,7 +37,6 @@ app.get('/api/post/:id', (req, res) => {
     const post = dbJSON.postList.find((post) => {
         return post.id === Number(req.params.id);
     });
-    console.log(`POST = ${post}`);
     !post ? res.sendStatus(500) : res.send(post);
 });
 
@@ -52,11 +49,9 @@ app.get('/api/post/:id', (req, res) => {
 // PUT - для изменения
 // delete - для удаления
 
-// app.listen(3012, function () {
-//     console.log("listen port: 3012")
-// });
+app.listen(3012, function () {
+    console.log("listen port: 3012")
+});
 
-app.use(subdomain('www', router));
-app.listen(3012);
 
 
