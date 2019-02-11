@@ -7,8 +7,8 @@ class Fetch {
         res.send(posts);
     }
 
-    static async create(req, res) {
-        const post = await postData.create(req.body);
+    static async addPost(req, res) {
+        const post = await postData.addPost(req.body);
         res.send(post);
     }
 

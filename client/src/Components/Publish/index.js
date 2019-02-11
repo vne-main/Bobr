@@ -62,7 +62,7 @@ class Publish extends Component {
     publishPost = async () => {
         const jsonData = this.checkData();
         if (!jsonData) return false;
-        const requestPublish = await fetch('/api/publish', {
+        const requestPublish = await fetch('/api/add_post', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonData),
@@ -88,6 +88,8 @@ class Publish extends Component {
             return false;
         }
         return {
+            author_name: "Admin",
+            author_img: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
             text: text,
             tags: tagsData,
             title: title
