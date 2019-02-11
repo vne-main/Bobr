@@ -15,15 +15,7 @@ import connect from "react-redux/es/connect/connect";
 class PostItem extends Component {
     render() {
         const {post, currentPage} = this.props;
-
-        const options = {
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-        };
-        console.log(post.time);
-        const timePost = new Date(post.time).toLocaleString(options);
+        const timePost = new Date(post.time).toLocaleString();
         let colorVote = {
             color: post.likes >= 0 ? post.likes === 0 ? "#548eaa" : "#6c9007" : "#d53c30"
         };

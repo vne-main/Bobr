@@ -14,8 +14,7 @@ app.post('/api/publish', (req, res) => {
     console.log(req.body);
     const postList = dbJSON.postList;
     const lastID = postList[postList.length - 1].id + 1;
-    let currentDate = new Date().toISOString();
-    currentDate = currentDate.split('T')[0].replace(/-/g, ':');
+    let currentDate = new Date();
     const newPost = {
         "id": lastID,
         "author_name": "Admin Admin",
