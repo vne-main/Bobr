@@ -4,6 +4,9 @@ import {bindActionCreators} from "redux";
 import {changeCurrentPage, getPostList} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
+/** MATERIAL **/
+import Chip from '@material-ui/core/Chip';
+
 class Publish extends Component {
 
     constructor(props) {
@@ -12,41 +15,48 @@ class Publish extends Component {
             title: "",
             tags: "",
             text: "",
-            success: false,
-            error: false,
-            fill: false,
+            statusSent: {
+                text: "",
+                active: false
+            },
+            tagsData: ['Bobr'],
         };
     }
 
-    checkData(){
-        const {title, tags, text} = this.state;
-        if (title === "" || tags === "" || text === "") {
-            this.setState({
-                success: false,
-                error: false,
-                fill: true,
-            });
-            return false;
-        }
-        return {
-            text: text,
-            tags: [tags],
-            title: title
-        };
+    addTag() {
+        if (this.state.tags === "") return false;
+        let tagsArray = this.state.tagsData;
+        tagsArray.push(this.state.tags);
+        this.setState({
+            tagsData: tagsArray,
+            tags: ""
+        });
+    };
+
+    handleDelete = data => () => {
+        this.setState(state => {
+            const tagsData = [...state.tagsData];
+            const chipToDelete = tagsData.indexOf(data);
+            tagsData.splice(chipToDelete, 1);
+            return {tagsData};
+        });
     };
 
     successSend = async () => {
         const requestGetPosts = await fetch('/api');
         const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
-        this.setState({
+        this.setState(prevState => ({
+            statusSent: {
+                ...prevState.statusSent,
+                active: true,
+                text: "Новость опубликована",
+            },
+            tagsData: ["Bobr"],
             title: "",
             tags: "",
-            text: "",
-            success: true,
-            error: false,
-            fill: false,
-        });
+            text: ""
+        }));
     };
 
     publishPost = async () => {
@@ -61,14 +71,27 @@ class Publish extends Component {
         if (statusPublish === "OK") {
             this.successSend();
         } else {
-            this.setState({
-                success: false,
-                fill: false,
-                error: true,
-            });
-            console.log("Error");
             console.log(statusPublish);
         }
+    };
+
+    checkData() {
+        const {title, text, tagsData} = this.state;
+        if (title === "" || tagsData.length === 0 || text === "") {
+            this.setState(prevState => ({
+                statusSent: {
+                    ...prevState.statusSent,
+                    active: true,
+                    text: "Введите все данные"
+                }
+            }));
+            return false;
+        }
+        return {
+            text: text,
+            tags: tagsData,
+            title: title
+        };
     };
 
     componentWillMount() {
@@ -76,7 +99,7 @@ class Publish extends Component {
     }
 
     render() {
-        const {title, tags, text, success, error, fill} = this.state;
+        const {title, tags, text, statusSent} = this.state;
         return (
             <section className="publish_page">
                 <h3 className="title_h3 publish_title">
@@ -93,12 +116,31 @@ class Publish extends Component {
                 </aside>
                 <aside className="publish_label">
                     <label>Теги</label>
-                    <input
-                        type="text"
-                        placeholder="Теги..."
-                        value={tags}
-                        onChange={(e) => this.setState({tags: e.target.value})}
-                    />
+                    <div className="tags_aside">
+                        <input
+                            type="text"
+                            placeholder="Введите тег..."
+                            value={tags}
+                            onChange={(e) => this.setState({tags: e.target.value})}
+                        />
+                        <button className="blue_button"
+                                onClick={() => this.addTag()}
+                        >
+                            Добавить
+                        </button>
+                    </div>
+                </aside>
+                <aside className="tags_array">
+                    {this.state.tagsData.map((data, i) => {
+                        return (
+                            <Chip
+                                key={i}
+                                className="new_tag"
+                                label={data}
+                                onDelete={this.handleDelete(data)}
+                            />
+                        );
+                    })}
                 </aside>
                 <aside className="publish_label">
                     <label>Текст</label>
@@ -115,11 +157,8 @@ class Publish extends Component {
                     >
                         Опубликовать
                     </button>
-                    {success && <p>Новость опубликована</p>}
-                    {error && <p className="error_color">Ошибка сервера</p>}
-                    {fill && <p className="error_color">Заполните все поля</p>}
+                    {statusSent.active && <p>{statusSent.text}</p>}
                 </div>
-
             </section>
         )
     }
