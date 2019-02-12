@@ -29,12 +29,13 @@
 .news_time {
     color: #5e6973;
 }
-
+.сont_title{
+    margin-bottom: 10px;
+}
 .title_news {
     font-size: 28px;
     color: #333333;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .title_news:hover {

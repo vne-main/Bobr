@@ -16,7 +16,7 @@ class Publish extends Component {
             tags: "",
             text: "",
             statusSent: {
-                text: "",
+                status: "",
                 active: false
             },
             tagsData: ['Bobr'],
@@ -43,14 +43,14 @@ class Publish extends Component {
     };
 
     successSend = async () => {
-        const requestGetPosts = await fetch('/api');
+        const requestGetPosts = await fetch('/api/posts');
         const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
         this.setState(prevState => ({
             statusSent: {
                 ...prevState.statusSent,
                 active: true,
-                text: "Новость опубликована",
+                status: "Новость опубликована",
             },
             tagsData: ["Bobr"],
             title: "",
@@ -67,12 +67,9 @@ class Publish extends Component {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonData),
         });
-        const statusPublish = await requestPublish.text();
-        if (statusPublish === "OK") {
-            this.successSend();
-        } else {
-            console.log(statusPublish);
-        }
+        const statusPublish = await requestPublish.json();
+        console.log(statusPublish);
+        this.successSend();
     };
 
     checkData() {
@@ -82,7 +79,7 @@ class Publish extends Component {
                 statusSent: {
                     ...prevState.statusSent,
                     active: true,
-                    text: "Введите все данные"
+                    status: "Введите все данные"
                 }
             }));
             return false;
@@ -159,7 +156,7 @@ class Publish extends Component {
                     >
                         Опубликовать
                     </button>
-                    {statusSent.active && <p>{statusSent.text}</p>}
+                    {statusSent.active && <p>{statusSent.status}</p>}
                 </div>
             </section>
         )

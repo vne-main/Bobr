@@ -19,7 +19,6 @@ class App extends Component {
     startRequest = async () => {
         const requestGetPosts = await fetch('/api/posts');
         const postList = await requestGetPosts.json();
-        console.log(postList);
         this.props.getPostList(postList);
     };
 

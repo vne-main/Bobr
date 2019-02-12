@@ -3,8 +3,6 @@ const posts = require('../models/schema/posts');
 class Place {
 
     static async getCurrentPost (id) {
-        console.log(`Curren ID = ${id}`);
-        console.log(posts.find({_id: id}));
         return posts.find({_id: id});
     }
 
@@ -17,7 +15,7 @@ class Place {
             author_name: postObject.author_name,
             author_img: postObject.author_img,
             title: postObject.title,
-            text: postObject.title,
+            text: postObject.text,
             tags: postObject.tags,
         });
         newPost.save(err => console.log(err));

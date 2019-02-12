@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import './style.css';
 
@@ -27,7 +26,7 @@ class PostItem extends Component {
                     <p className="user_name">{post.author_name}</p>
                     <p className="news_time">{timePost}</p>
                 </div>
-                <div>
+                <div className="сont_title">
                     {currentPage !== "post" ?
                         <Link to={`/post/${post._id}`} className="title_news">
                             {post.title}
@@ -46,7 +45,7 @@ class PostItem extends Component {
                     {post.text}
                 </div>
                 {currentPage !== "post" &&
-                <Link to={`/post/${post.id}`} className="news_more">
+                <Link to={`/post/${post._id}`} className="news_more">
                     Читать дальше →
                 </Link>
                 }
