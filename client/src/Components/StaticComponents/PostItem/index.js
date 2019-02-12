@@ -29,7 +29,7 @@ class PostItem extends Component {
                 </div>
                 <div>
                     {currentPage !== "post" ?
-                        <Link to={`/post/${post.id}`} className="title_news">
+                        <Link to={`/post/${post._id}`} className="title_news">
                             {post.title}
                         </Link> :
                         <h3 className="title_h3">{post.title}</h3>

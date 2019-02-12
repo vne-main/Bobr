@@ -16,15 +16,16 @@ class Post extends Component {
     };
 
     getPost = async (id) => {
-        const requestPost = await fetch(`/api/post/${id}`);
-        if (requestPost.status !== 500){
-            const post = await requestPost.json();
-            this.props.changeCurrentPost(post);
-            this.setState({success: true});
-        } else {
-            this.setState({success: false});
-            console.log(requestPost);
-        }
+        const requestPost = await fetch(`/api/current_post/${id}`);
+        const currentPost = await requestPost.json();
+        this.props.changeCurrentPost(currentPost[0]);
+        // if (requestPost.status !== 500){
+        //     this.props.changeCurrentPost(post);
+        //     this.setState({success: true});
+        // } else {
+        //     this.setState({success: false});
+        //     console.log(requestPost);
+        // }
     };
 
     componentWillMount() {

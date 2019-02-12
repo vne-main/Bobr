@@ -2,6 +2,12 @@ const posts = require('../models/schema/posts');
 
 class Place {
 
+    static async getCurrentPost (id) {
+        console.log(`Curren ID = ${id}`);
+        console.log(posts.find({_id: id}));
+        return posts.find({_id: id});
+    }
+
     static async getAll () {
         return posts.find().catch(err => console.log(err));
     }
