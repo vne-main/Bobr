@@ -18,15 +18,11 @@ export default class RightColumn extends Component {
     render() {
         return (
             <section className="main_right">
-
                 <div className="right_column_box advertising">
                     Банер для рекламы
                 </div>
-
-
                 <div className="right_column_box">
                     <h3>Спонсоры Бобра</h3>
-
                     {this.state.sponsors.map((el, i) => {
                         return (
                             <div className="sponsor_box" key={i}>
