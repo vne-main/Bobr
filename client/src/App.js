@@ -17,7 +17,7 @@ import connect from "react-redux/es/connect/connect";
 class App extends Component {
 
     startRequest = async () => {
-        const requestGetPosts = await fetch('/api/posts');
+        const requestGetPosts = await fetch('/post');
         const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
     };
@@ -52,5 +52,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(() => {
-}, mapDispatchToProps)(App);
+export default connect("", mapDispatchToProps)(App);

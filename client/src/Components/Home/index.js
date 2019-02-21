@@ -2,28 +2,28 @@ import React, {Component} from 'react';
 import './style.css';
 
 /** Components **/
-import PostList from "./PostList";
 import SelectStream from "./SelectStream";
 
 /** Redux **/
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/actions";
 import {connect} from "react-redux";
+import PostItem from "../StaticComponents/PostItem";
 
 class Home extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            tabIndex: 0,
-            tabArray: ['Лучшее', 'Все подряд'],
+            sortIndex: 0,
+            sortArray: ['Лучшее', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
         };
     }
 
     changeTab(index) {
-        this.setState({tabIndex: index});
+        this.setState({sortIndex: index});
     }
 
     changeTimeLine(index) {
@@ -35,17 +35,18 @@ class Home extends Component {
     }
 
     render() {
-        const {tabIndex, timeSort, timeIndex, tabArray} = this.state;
+        const {postList} = this.props;
+        const {sortIndex, timeSort, timeIndex, sortArray} = this.state;
         return (
             <section>
                 <SelectStream/>
                 <div className="tab_panel">
-                    {tabArray.map((el, i) => {
+                    {sortArray.map((el, i) => {
                         return (
                             <span
                                 key={i}
                                 onClick={() => this.changeTab(i)}
-                                className={tabIndex === i ? "tab_panel_active" : ""}>
+                                className={sortIndex === i ? "tab_panel_active" : ""}>
                                 {el}
                             </span>
                         )
@@ -64,16 +65,31 @@ class Home extends Component {
                         )
                     })}
                 </div>
-                {tabIndex === 0 && <PostList/>}
-                {tabIndex === 1}
+                {sortIndex === 0 &&
+                    <section className="news_list">
+                        {postList.map((el, i) => {
+                            return (
+                                <PostItem post={el} key={i}/>
+                            )
+                        })}
+                    </section>
+                }
+                {sortIndex === 1}
             </section>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        postList: state.postList
+    }
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
     }
 };
-export default connect("", mapDispatchToProps)(Home);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

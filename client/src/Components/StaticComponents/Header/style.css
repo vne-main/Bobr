@@ -53,3 +53,28 @@
     color: #65a3be;
     border: 1px solid #65a3be;
 }
+@media screen and (max-width: 630px) {
+    .header_panel {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header_logo {
+        display: none;
+    }
+
+    .header_right {
+        width: 100%;
+    }
+
+    .header_navigation {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header_navigation a {
+        margin: 0;
+    }
+}

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './style.css';
 
+/** Components **/
+import Counter from '../Counter';
+
 /** Img **/
 import arrowImg from '../../../Static/img/stats/arrow.png';
 import eyeImg from '../../../Static/img/stats/eye.png';
@@ -15,10 +18,6 @@ class PostItem extends Component {
     render() {
         const {post, currentPage} = this.props;
         const timePost = new Date(post.time).toLocaleString();
-        let colorVote = {
-            color: post.likes >= 0 ? post.likes === 0 ? "#548eaa" : "#6c9007" : "#d53c30"
-        };
-
         return (
             <section className="news_item">
                 <div className="top_user">
@@ -52,7 +51,7 @@ class PostItem extends Component {
                 <div className="news_stats">
                     <div className="news_vote">
                         <img src={arrowImg} alt="arrowUp"/>
-                        <i style={colorVote}>{post.likes > 0 && <b>+</b>}{post.likes}</i>
+                        <Counter value={post.likes}/>
                         <img src={arrowImg} alt="arrowDown" className="stats_arrow_down"/>
                     </div>
                     <div className="news_favorite">

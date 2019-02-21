@@ -23,15 +23,19 @@ class Publish extends Component {
         };
     }
 
-    addTag() {
-        if (this.state.tags === "") return false;
-        let tagsArray = this.state.tagsData;
-        tagsArray.push(this.state.tags);
-        this.setState({
-            tagsData: tagsArray,
-            tags: ""
-        });
-    };
+    writeTag(char) {
+        let searchIndex = char.trim().indexOf(',');
+        if (searchIndex !== -1) {
+            let tagsArray = this.state.tagsData;
+            tagsArray.push(char);
+            this.setState({
+                tagsData: tagsArray,
+                tags: ""
+            });
+        } else {
+            this.setState({tags: char});
+        }
+    }
 
     handleDelete = data => () => {
         this.setState(state => {
@@ -43,7 +47,7 @@ class Publish extends Component {
     };
 
     successSend = async () => {
-        const requestGetPosts = await fetch('/api/posts');
+        const requestGetPosts = await fetch('/post');
         const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
         this.setState(prevState => ({
@@ -62,7 +66,7 @@ class Publish extends Component {
     publishPost = async () => {
         const jsonData = this.checkData();
         if (!jsonData) return false;
-        const requestPublish = await fetch('/api/add_post', {
+        const requestPublish = await fetch('/post', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonData),
@@ -120,13 +124,8 @@ class Publish extends Component {
                             type="text"
                             placeholder="Введите тег..."
                             value={tags}
-                            onChange={(e) => this.setState({tags: e.target.value})}
+                            onChange={(e) => this.writeTag(e.target.value)}
                         />
-                        <button className="blue_button"
-                                onClick={() => this.addTag()}
-                        >
-                            Добавить
-                        </button>
                     </div>
                 </aside>
                 <aside className="tags_array">

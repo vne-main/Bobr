@@ -1,9 +1,11 @@
 @import "reset.css";
 /* Start */
 body{
-    min-width: 320px;
+    min-width: 340px;
 }
-img{
+img,
+.time_sort span,
+.tab_panel span {
     -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;

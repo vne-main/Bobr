@@ -30,7 +30,7 @@
     border: 1px solid #d5dddf;
     align-content: flex-start;
     border-radius: 5px;
-    width: 285px;
+    width: 298px;
     align-items: center;
 }
 .time_sort span{
@@ -40,11 +40,13 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 14px;
+    border: 2px solid transparent;
+
 }
 .time_sort span:hover{
     color: #77a8d0;
 }
 .active_time_btn {
-    border: 2px solid #77a8d0;
+    border: 2px solid #77a8d0!important;
     color: #77a8d0;
 }

@@ -16,7 +16,7 @@ class Post extends Component {
     };
 
     getPost = async (id) => {
-        const requestPost = await fetch(`/api/current_post/${id}`);
+        const requestPost = await fetch(`/post/${id}`);
         const currentPost = await requestPost.json();
         this.props.changeCurrentPost(currentPost[0]);
         // if (requestPost.status !== 500){
