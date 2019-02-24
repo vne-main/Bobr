@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
-
-
 import axios from 'axios';
 
 import spImg1 from '../../../Static/img/sponsor/sponsor_1.jpg'
 import spImg2 from '../../../Static/img/sponsor/sponsor_2.jpg'
 import spImg3 from '../../../Static/img/sponsor/sponsor_3.png'
-
-
 
 export default class RightColumn extends Component {
 
@@ -64,7 +60,7 @@ export default class RightColumn extends Component {
     }
 
     componentWillMount() {
-        this.getGif()
+        // this.getGif()
     }
 
     render() {

@@ -9,6 +9,7 @@ import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/actions";
 import {connect} from "react-redux";
 import PostItem from "../StaticComponents/PostItem";
+import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 
 class Home extends Component {
 
@@ -65,8 +66,19 @@ class Home extends Component {
                         )
                     })}
                 </div>
-                {sortIndex === 0 &&
+                {sortIndex === 0 && postList.length === 0 &&
                     <section className="news_list">
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                    </section>
+                }
+                {sortIndex === 0 &&
+                     <section className="news_list">
                         {postList.map((el, i) => {
                             return (
                                 <PostItem post={el} key={i}/>
@@ -74,7 +86,9 @@ class Home extends Component {
                         })}
                     </section>
                 }
-                {sortIndex === 1}
+                {sortIndex === 1 &&
+                    <PostSkeleton/>
+                }
             </section>
         )
     }

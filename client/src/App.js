@@ -9,6 +9,9 @@ import Home from './Components/Home';
 import Post from './Components/Post';
 import Publish from './Components/Publish';
 
+
+import Test from './Components/StaticComponents/PostItem/Skeleton/index';
+
 /** Redux **/
 import {bindActionCreators} from "redux";
 import {getPostList} from "./Store/actions";
@@ -23,7 +26,7 @@ class App extends Component {
     };
 
     componentWillMount() {
-        this.startRequest();
+        // this.startRequest();
     };
 
     render() {
