@@ -4,7 +4,7 @@ class Fetch {
 
     static async getAll(req, res) {
         const posts = await postData.getAll();
-        res.send(posts);
+        res.send(posts.reverse());
     }
 
     static async getCurrentPost(req, res) {

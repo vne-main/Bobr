@@ -74,9 +74,6 @@ class Comments extends Component {
                     <textarea
                         onChange={(e) => this.setState({text: e.target.value})}
                         value={this.state.text}
-                        onKeyPress={(e) => {
-                            if(e.key === "Enter") this.addComment()
-                        }}
                     />
                     <button
                         className="blue_button"

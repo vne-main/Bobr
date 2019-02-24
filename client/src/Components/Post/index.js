@@ -10,7 +10,7 @@ import {
 import connect from "react-redux/es/connect/connect";
 
 class Post extends Component {
-
+z
     state = {
         success: true,
     };
