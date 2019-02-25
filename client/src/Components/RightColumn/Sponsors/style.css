@@ -1,0 +1,26 @@
+.sponsor_box{
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-size: 14px;
+}
+.sponsor_box p{
+    color: #222;
+}
+.title_sponsor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.title_sponsor h5{
+    color: #333333;
+    font-weight: bold;
+}
+.title_sponsor img{
+    margin: 0 0 5px 10px;
+    border-radius: 3px;
+    width: 32px;
+    height: 32px;
+}

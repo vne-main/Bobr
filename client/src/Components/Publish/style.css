@@ -1,7 +1,7 @@
 .publish_page{
     margin-bottom: 20px ;
 }
-.publish_title{
+.title_pages{
     margin-bottom: 20px;
 }
 .publish_label{
@@ -12,15 +12,14 @@
 
 .publish_label label{
     color: #5e6973;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
 .publish_label input, .publish_label textarea{
     color: #323232;
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 3px;
-    border: 1px solid #6c797f;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #d7dee0;
     width: 100%;
 }
 .publish_label textarea{

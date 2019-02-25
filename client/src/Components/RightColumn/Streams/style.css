@@ -1,0 +1,10 @@
+
+.right_streams_list {
+    color: #548eaa;
+}
+
+.right_streams_list li {
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e8e9;
+}

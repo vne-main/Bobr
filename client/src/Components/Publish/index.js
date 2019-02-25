@@ -105,7 +105,7 @@ class Publish extends Component {
         const {title, tags, text, statusSent} = this.state;
         return (
             <section className="publish_page">
-                <h3 className="title_h3 publish_title">
+                <h3 className="title_h3 title_pages">
                     Опубликовать новость
                 </h3>
                 <aside className="publish_label">

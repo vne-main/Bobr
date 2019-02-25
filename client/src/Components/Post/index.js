@@ -14,8 +14,6 @@ import {
 } from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
-
-
 class Post extends Component {
 
     state = {

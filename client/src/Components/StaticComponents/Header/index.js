@@ -24,6 +24,10 @@ class Header extends Component {
                                   className={currentPage === "publish" ? "active_page" : ""}>
                                 Опубликовать
                             </Link>
+                            <Link to="/users"
+                                  className={currentPage === "users" ? "active_page" : ""}>
+                                Пользователи
+                            </Link>
                         </nav>
                     </div>
                     <div className="header_panel">

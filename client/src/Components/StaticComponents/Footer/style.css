@@ -44,7 +44,6 @@ footer {
 }
 .footer_bottom span{
     color: #77a8d0;
-    margin-bottom: 10px;
 }
 @media screen and (max-width: 630px){
     .footer_information .container{
@@ -60,6 +59,9 @@ footer {
     }
     .footer_bottom .container{
         flex-direction: column-reverse;
+    }
+    .footer_bottom span {
+        margin-bottom: 10px;
     }
 }
 

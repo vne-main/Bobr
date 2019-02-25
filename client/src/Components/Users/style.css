@@ -1,0 +1,86 @@
+.search_user {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #d7dee0;
+    padding: 0 10px;
+}
+
+.search_user input {
+    width: 100%;
+    height: 30px;
+    margin: 5px 10px 5px 10px;
+    border: 0;
+    font-size: 14px;
+}
+
+.table_user {
+    display: flex;
+    flex-direction: column;
+}
+
+.title_table_user, .row_table_user {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+.title_table_user {
+    color: #888888;
+    border-bottom: 1px solid #d7dee0;
+}
+
+.status_user {
+    display: flex;
+    width: 200px;
+}
+
+.status_user span {
+    text-align: right;
+    width: 100px;
+}
+
+.t_user {
+    width: 100%;
+    display: flex;
+}
+
+.t_user_icon {
+    width: 48px;
+    margin-right: 12px;
+}
+
+.t_user_icon img {
+    width: 100%;
+}
+
+.t_user_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.t_user_name span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.t_user_name i, .t_user_last_post span{
+    color: #548eaa;
+    cursor: pointer;
+}
+
+.t_user_status {
+    margin: 3px 0;
+    color: #888888;
+}
+
+.t_user_last_post i{
+    margin-left: 5px;
+    color: #888888;
+}
+
+/* Green #689d29 */
+/* Green #cd66cd */

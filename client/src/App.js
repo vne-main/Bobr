@@ -2,12 +2,13 @@ import React, {Component} from "react";
 import {Route, HashRouter} from 'react-router-dom';
 
 /*** Components ***/
-import RightColumn from './Components/StaticComponents/RightColumn';
+import RightColumn from './Components/RightColumn';
 import Header from './Components/StaticComponents/Header';
 import Footer from './Components/StaticComponents/Footer';
 import Home from './Components/Home';
 import Post from './Components/Post';
 import Publish from './Components/Publish';
+import Users from './Components/Users';
 
 /** Redux **/
 import {bindActionCreators} from "redux";
@@ -23,7 +24,7 @@ class App extends Component {
     };
 
     componentWillMount() {
-        this.startRequest();
+        // this.startRequest();
     };
 
     render() {
@@ -36,6 +37,7 @@ class App extends Component {
                             <Route exact path="/" component={Home}/>
                             <Route path="/post" component={Post}/>
                             <Route path="/publish" component={Publish}/>
+                            <Route path="/users" component={Users}/>
                             <RightColumn/>
                         </main>
                     </div>
