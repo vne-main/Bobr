@@ -1,7 +1,47 @@
-.comments_skeleton_btn{
-    margin-top: 10px;
+.sk_comments_title{
+    max-width: 260px;
+    height: 40px;
 }
 
-.comments_skeleton_line{
+.sk_comments_line{
+    height: 2px;
     margin: 10px 0;
+}
+
+.sk_comments_comment{
+    margin-bottom: 5px;
+}
+
+.sk_comments_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sk_comments_user{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sk_comments_vote{
+    max-width: 50px;
+    height: 20px;
+}
+
+.sk_comments_title_h3{
+    max-width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.sk_comments_textarea{
+    margin: 10px 0 15px 0;
+    height: 120px;
+}
+
+.sk_comments_btn{
+    max-width: 140px;
+    height: 30px;
 }

@@ -60,7 +60,7 @@ export default class RightColumn extends Component {
     }
 
     componentWillMount() {
-        // this.getGif()
+        this.getGif();
     }
 
     render() {

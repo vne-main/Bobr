@@ -41,7 +41,7 @@ class Post extends Component {
         this.props.changeCurrentPage("post");
         const hashWindow = window.location.hash.split('/');
         const idPost = hashWindow[hashWindow.length - 1];
-        // idPost !== "post" ? this.getPost(idPost) : this.getPost(0);
+        idPost !== "post" ? this.getPost(idPost) : this.getPost(0);
         window.scrollTo(0, 0);
     }
 

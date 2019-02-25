@@ -1,20 +1,64 @@
-.skeleton_container span{
-    display: flex;
-    align-items: center;
+.skeleton {
+    animation: animation-16jpnkj 1.2s ease-in-out 0s infinite normal none running;
+    background: #eeeeee linear-gradient(90deg, #eee, #f5f5f5, #eee) no-repeat;
+    background-size: 200px 100%;
+    border-radius: 4px;
+    width: 100%;
+    display: inline-block;
 }
 
-.post_skeleton_author{
+.sk_post_user_icon {
+    max-width: 24px;
+    height: 24px;
+}
+
+.sk_post_author {
+    max-width: 50px;
+    height: 15px;
     margin: 0 10px 0 5px;
 }
 
-.post_skeleton_tags {
-    margin: 10px 0 15px 0;
+.sk_post_time {
+    max-width: 115px;
+    height: 15px;
 }
 
-.post_skeleton_tags span{
+.sk_post_title {
+    max-width: 260px;
+    height: 35px;
+}
+
+.sk_post_tags {
+    display: flex;
+    margin: 10px 0 15px 0;
+    align-items: center;
+}
+
+.sk_post_tags > span {
+    height: 15px;
+    max-width: 40px;
     margin-right: 10px;
 }
 
-.post_skeleton_panel {
-    margin-top: 20px;
+.sk_post_text {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0 15px 0;
+}
+
+.sk_post_text span{
+    max-width: 450px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.sk_post_more{
+    max-width: 140px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.sk_post_panel{
+    max-width: 340px;
+    height: 45px;
 }
