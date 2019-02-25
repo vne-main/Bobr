@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './style.css';
+import Skeleton from 'react-loading-skeleton';
 
 const Comment = () => {
     return (
