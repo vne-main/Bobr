@@ -15,17 +15,15 @@ class Publish extends Component {
             title: "",
             tags: "",
             text: "",
-            statusSent: {
-                status: "",
-                active: false
-            },
+            status: "",
             tagsData: ['Bobr'],
         };
     }
 
     writeTag(char) {
-        let searchIndex = char.trim().indexOf(',');
+        let searchIndex = char.indexOf(' ');
         if (searchIndex !== -1) {
+            if(char === " ")  return false;
             let tagsArray = this.state.tagsData;
             tagsArray.push(char);
             this.setState({
@@ -50,20 +48,17 @@ class Publish extends Component {
         const requestGetPosts = await fetch('/post');
         const postList = await requestGetPosts.json();
         this.props.getPostList(postList);
-        this.setState(prevState => ({
-            statusSent: {
-                ...prevState.statusSent,
-                active: true,
-                status: "Новость опубликована",
-            },
+        this.statusSent("Новость опубликована");
+        this.setState({
             tagsData: ["Bobr"],
             title: "",
             tags: "",
             text: ""
-        }));
+        });
     };
 
     publishPost = async () => {
+        this.statusSent("Пожалуйста, подождите...");
         const jsonData = this.checkData();
         if (!jsonData) return false;
         const requestPublish = await fetch('/post', {
@@ -79,13 +74,7 @@ class Publish extends Component {
     checkData() {
         const {title, text, tagsData} = this.state;
         if (title === "" || tagsData.length === 0 || text === "") {
-            this.setState(prevState => ({
-                statusSent: {
-                    ...prevState.statusSent,
-                    active: true,
-                    status: "Введите все данные"
-                }
-            }));
+            this.statusSent("Введите все данные");
             return false;
         }
         return {
@@ -97,12 +86,17 @@ class Publish extends Component {
         };
     };
 
+    statusSent = (info) => {
+        this.setState({status: info});
+    };
+
     componentWillMount() {
         this.props.changeCurrentPage("publish");
+        window.scrollTo(0, 0);
     }
 
     render() {
-        const {title, tags, text, statusSent} = this.state;
+        const {title, tags, text, status} = this.state;
         return (
             <section className="publish_page">
                 <h3 className="title_h3 title_pages">
@@ -118,7 +112,7 @@ class Publish extends Component {
                     />
                 </aside>
                 <aside className="publish_label">
-                    <label>Теги</label>
+                    <label>Теги (Через пробел)</label>
                     <div className="tags_aside">
                         <input
                             type="text"
@@ -155,7 +149,7 @@ class Publish extends Component {
                     >
                         Опубликовать
                     </button>
-                    {statusSent.active && <p>{statusSent.status}</p>}
+                    <p>{status}</p>
                 </div>
             </section>
         )

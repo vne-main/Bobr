@@ -51,7 +51,7 @@ export default class Banner extends Component {
     }
 
     componentWillMount() {
-        // this.getGif();
+        this.getGif();
     }
 
     render() {

@@ -24,7 +24,7 @@ class App extends Component {
     };
 
     componentWillMount() {
-        // this.startRequest();
+        this.startRequest();
     };
 
     render() {
@@ -35,6 +35,7 @@ class App extends Component {
                         <Header/>
                         <main className="container main">
                             <Route exact path="/" component={Home}/>
+                            <Route path="/home" component={Home}/>
                             <Route path="/post" component={Post}/>
                             <Route path="/publish" component={Publish}/>
                             <Route path="/users" component={Users}/>
