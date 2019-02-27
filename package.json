@@ -10,12 +10,8 @@
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "dev:server": "cd client && yarn build && cd .. && yarn start",
-    "start": "node server.js && webpack-dev-server --inline --progress --port 80 --hot --host 0.0.0.0 **--public www.vasenkin.ru**",
+    "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
-  },
-  "devServer": {
-    "compress": true,
-    "disableHostCheck": true
   },
   "dependencies": {
     "body-parser": "^1.18.3",
