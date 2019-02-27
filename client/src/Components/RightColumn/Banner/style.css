@@ -4,3 +4,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.hover_banner_btn{
+    opacity: 0;
+}
+
+.advertising:hover > .hover_banner_btn {
+    opacity: 1;
+}

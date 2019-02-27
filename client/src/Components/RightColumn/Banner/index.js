@@ -6,6 +6,7 @@ export default class Banner extends Component {
 
     state = {
         gifBackground: "",
+        active: false,
     };
 
     getGif() {
@@ -36,23 +37,16 @@ export default class Banner extends Component {
                     this.setState({
                         gifBackground: res.data.data.image_original_url
                     });
-                    refreshRate();
+                    clearInterval(refresh);
+                    refresh = setInterval(function () {
+                        newGif();
+                    }, duration);
                 }
             );
-        };
-
-        let refreshRate = () => {
-            clearInterval(refresh);
-            refresh = setInterval(function() {
-                newGif();
-            }, duration);
         };
         newGif();
     }
 
-    componentWillMount() {
-        this.getGif();
-    }
 
     render() {
         const bannerStyle = {
@@ -60,7 +54,16 @@ export default class Banner extends Component {
             backgroundSize: 'cover',
         };
         return (
-            <div className="right_column_box advertising" style={bannerStyle}/>
+            <div className="right_column_box advertising" style={bannerStyle}>
+                {
+                    this.state.gifBackground === "" &&
+                    <button className="blue_button"
+                            onClick={() => this.getGif()}
+                    >
+                        Запустить
+                    </button>
+                }
+            </div>
         )
     }
 }

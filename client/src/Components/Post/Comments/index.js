@@ -9,7 +9,7 @@ import arrowImg from "../../../Static/img/stats/arrow.png";
 import Counter from "../../StaticComponents/Counter";
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, changeCurrentPost} from "../../../Store/actions";
+import {changeCurrentPage, changeCurrentPost, getPostList} from "../../../Store/actions";
 
 class Comments extends Component {
 
@@ -38,6 +38,10 @@ class Comments extends Component {
             const requestPost = await fetch(`/post/${idPost}`);
             const currentPost = await requestPost.json();
             this.props.changeCurrentPost(currentPost[0]);
+
+            const requestGetPosts = await fetch('/post');
+            const postList = await requestGetPosts.json();
+            this.props.getPostList(postList);
         }
     };
 
@@ -96,6 +100,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPost: bindActionCreators(changeCurrentPost, dispatch),
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
+        getPostList: bindActionCreators(getPostList, dispatch),
     }
 };
 
