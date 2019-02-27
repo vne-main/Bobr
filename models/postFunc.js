@@ -31,10 +31,10 @@ class Place {
             {_id: commentObject._id},
             {$push: {comments: newComment}},
             {safe: true, upsert: true},
-            function(err) {
-                if(err){
+            function (err) {
+                if (err) {
                     console.log(500);
-                }else{
+                } else {
                     console.log(200);
                 }
             }

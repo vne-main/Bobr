@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://vasenking:123123123@vasenking-mg2ow.azure.mongodb.net/bobr')
-    .then(succ => console.log("CONNECT to DB"))
+    .then(() => console.log("CONNECT to DB"))
     .catch(err => console.error(err));
 mongoose.Promise = global.Promise;
 console.log("End...");
