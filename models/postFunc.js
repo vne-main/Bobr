@@ -2,12 +2,28 @@ const posts = require('../models/schema/posts');
 
 class Place {
 
-    static async getAll() {
+    static async getAllPosts() {
         return posts.find().catch(err => console.log(err));
     }
 
-    static async getCurrentPost(id) {
-        return posts.find({_id: id});
+    static async getCurrentPost(objData) {
+        const findPost = await posts.findById(objData.id);
+        const checkIp = findPost.views.find(el => {
+            return el === objData.ip;
+        });
+        if (!checkIp) {
+            posts.update(
+                {_id: objData.id},
+                {$push: {views: objData.ip}},
+                {safe: true, upsert: true},
+                function (err) {
+                    if (err) console.log(`ERROR update VIEW`, err);
+                }
+            );
+            return posts.findById({_id: objData.id});
+        } else {
+            return posts.findById({_id: objData.id});
+        }
     }
 
     static async addPost(postObject) {

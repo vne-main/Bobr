@@ -25,7 +25,7 @@ class Publish extends Component {
         if (searchIndex !== -1) {
             if(char === " ")  return false;
             let tagsArray = this.state.tagsData;
-            tagsArray.push(char);
+            tagsArray.push(char.trim());
             this.setState({
                 tagsData: tagsArray,
                 tags: ""

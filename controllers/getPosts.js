@@ -1,15 +1,19 @@
 const postData = require('../models/postFunc');
+const checkIp = require('../function');
 
 class Fetch {
 
-    static async getAll(req, res) {
-        const posts = await postData.getAll();
+    static async getAllPosts(req, res) {
+        const posts = await postData.getAllPosts();
         res.send(posts.reverse());
     }
 
     static async getCurrentPost(req, res) {
-        const post = await postData.getCurrentPost(req.params.id);
-        console.log(post);
+        const objData = {
+            id: req.params.id,
+            ip: checkIp()
+        };
+        const post = await postData.getCurrentPost(objData);
         res.send(post);
     }
 

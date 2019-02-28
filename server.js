@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const BodyParser = require('body-parser');
 const app = express();
-
 const cors = require('cors');
 
 app.use(cors({

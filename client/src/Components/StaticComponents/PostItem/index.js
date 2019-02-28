@@ -60,7 +60,7 @@ class PostItem extends Component {
                     </div>
                     <div className="news_views">
                         <img src={eyeImg} alt="eye"/>
-                        <i>{post.views}</i>
+                        <i>{post.views.length}</i>
                     </div>
                     <div className="news_comments">
                         <img src={commentsImg} alt="comments"/>

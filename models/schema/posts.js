@@ -11,7 +11,7 @@ const PostSchema = new Schema({
     text: String,
     likes: {type: Number, default: 0},
     favorites: {type: Number, default: 0},
-    views: {type: Number, default: 0},
+    views: [String],
     comments: [{
         id: Schema.Types.ObjectId,
         author_name: String,
