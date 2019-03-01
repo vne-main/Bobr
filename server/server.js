@@ -1,19 +1,14 @@
-const config = require('nconf');
 const express = require('express');
-const http = require('http');
 const logger = require('morgan');
 const BodyParser = require('body-parser');
 const app = express();
-
-
-
 const cors = require('cors');
 
 app.use(cors({
    origin: "http://localhost",
    credentials: true
 }));
-const apiRouter = require('./routes/apiRoutes');
+const apiRouter = require('./routes/api-routes');
 
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));

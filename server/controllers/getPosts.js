@@ -1,5 +1,5 @@
 const postData = require('../models/postFunc');
-const checkIp = require('../function');
+const checkIp = require('./chekIp');
 
 class Fetch {
 

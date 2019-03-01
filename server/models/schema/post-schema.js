@@ -1,7 +1,7 @@
 const mongoose = require('../../libs/dbInit');
 const Schema = mongoose.Schema;
 
-const PostSchema = new Schema({
+const postSchema = new Schema({
     id: Schema.Types.ObjectId,
     author_name: String,
     author_img: String,
@@ -22,5 +22,5 @@ const PostSchema = new Schema({
     }]
 });
 
-mongoose.model('Post', PostSchema);
-module.exports = mongoose.model('Post');
+const Post = mongoose.model('post', postSchema);
+module.exports = Post;

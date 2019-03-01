@@ -1,4 +1,4 @@
-const posts = require('../models/schema/posts');
+const posts = require('./schema/post-schema');
 
 class Place {
 
