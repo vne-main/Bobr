@@ -7,7 +7,6 @@
 *.idea
 # testing
 /coverage
-*keys.js
 
 # production
 /build
