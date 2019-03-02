@@ -1,5 +1,4 @@
 const postData = require('../models/postFunc');
-const ip = require('ip');
 
 class Fetch {
 
@@ -9,10 +8,14 @@ class Fetch {
     }
 
     static async getCurrentPost(req, res) {
-        console.info("IP = ", ip.address());
+        const clientIp = (req.headers['x-forwarded-for'] || '').split(',').pop() ||
+            req.connection.remoteAddress ||
+            req.socket.remoteAddress ||
+            req.connection.socket.remoteAddress;
+        console.info("View IP = ", clientIp );
         const objData = {
             id: req.params.id,
-            ip: ip.address()
+            ip: clientIp
         };
         const post = await postData.getCurrentPost(objData);
         res.send(post);
