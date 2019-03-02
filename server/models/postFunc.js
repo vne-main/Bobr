@@ -1,4 +1,5 @@
 const posts = require('./schema/post-schema');
+const ObjectID = require('mongodb').ObjectID;
 
 class Place {
 
@@ -7,22 +8,15 @@ class Place {
     }
 
     static async getCurrentPost(objData) {
-        const findPost = await posts.findById(objData.id);
-        const checkIp = findPost.views.find(el => {
+        const findPost = await posts.findById({_id: objData.id});
+        const checkIp = await findPost.views.find(el => {
             return el === objData.ip;
         });
         if (!checkIp) {
-            posts.update(
-                {_id: objData.id},
-                {$push: {views: objData.ip}},
-                {safe: true, upsert: true},
-                function (err) {
-                    if (err) console.log(`ERROR update VIEW`, err);
-                }
-            );
-            return posts.findById({_id: objData.id});
+            await posts.update({_id: objData.id}, {$push: {views: objData.ip}});
+            return await posts.findById({_id: objData.id});
         } else {
-            return posts.findById({_id: objData.id});
+            return await posts.findById({_id: objData.id});
         }
     }
 

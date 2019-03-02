@@ -1,5 +1,5 @@
 const postData = require('../models/postFunc');
-const checkIp = require('./chekIp');
+const ip = require('ip');
 
 class Fetch {
 
@@ -9,9 +9,10 @@ class Fetch {
     }
 
     static async getCurrentPost(req, res) {
+        console.info("IP = ", ip.address());
         const objData = {
             id: req.params.id,
-            ip: checkIp()
+            ip: ip.address()
         };
         const post = await postData.getCurrentPost(objData);
         res.send(post);

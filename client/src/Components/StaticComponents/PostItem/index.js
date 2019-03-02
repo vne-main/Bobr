@@ -17,7 +17,6 @@ import connect from "react-redux/es/connect/connect";
 class PostItem extends Component {
     render() {
         const {post, currentPage} = this.props;
-        console.info(post);
         const timePost = new Date(post.time).toLocaleString();
         return (
             <section className="news_item">
