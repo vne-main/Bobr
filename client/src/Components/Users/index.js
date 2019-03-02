@@ -33,8 +33,8 @@ const User = () => {
             </div>
 
             <div className="status_user">
-                <span>202</span>
-                <span>12132</span>
+                <span className="user_carma">2202</span>
+                <span className="user_rating">12132</span>
             </div>
         </aside>
     )
