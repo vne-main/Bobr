@@ -1,5 +1,4 @@
 const posts = require('./schema/post-schema');
-const ObjectID = require('mongodb').ObjectID;
 
 class Place {
 
@@ -37,18 +36,7 @@ class Place {
             author_name: commentObject.author_name,
             text: commentObject.text
         };
-        posts.update(
-            {_id: commentObject._id},
-            {$push: {comments: newComment}},
-            {safe: true, upsert: true},
-            function (err) {
-                if (err) {
-                    console.log(500);
-                } else {
-                    console.log(200);
-                }
-            }
-        );
+        await posts.update({_id: commentObject._id},{$push: {comments: newComment}});
         return 200;
     };
 

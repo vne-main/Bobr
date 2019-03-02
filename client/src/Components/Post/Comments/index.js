@@ -37,8 +37,7 @@ class Comments extends Component {
             const idPost = hashWindow[hashWindow.length - 1];
             const requestPost = await fetch(`/post/${idPost}`);
             const currentPost = await requestPost.json();
-            this.props.changeCurrentPost(currentPost[0]);
-
+            this.props.changeCurrentPost(currentPost);
             const requestGetPosts = await fetch('/post');
             const postList = await requestGetPosts.json();
             this.props.getPostList(postList);
@@ -49,10 +48,10 @@ class Comments extends Component {
         const {comments} = this.props;
         return (
             <div className="comment_box">
-                {comments.length !== 0 &&
+                {comments && comments.length !== 0 &&
                 <h3 className="title_h3 h3_com">Комментарии <i>{comments.length}</i></h3>
                 }
-                {comments.map((el, i) => {
+                {comments && comments.map((el, i) => {
                     return (
                         <aside className="comment" key={i}>
                             <div className="comment_title">
