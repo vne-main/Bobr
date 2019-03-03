@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import {Route, HashRouter} from 'react-router-dom';
+import {Route, HashRouter, Switch} from 'react-router-dom';
 
 /*** Components ***/
 import RightColumn from './Components/RightColumn';
+import NotFound from './Components/StaticComponents/NotFound';
 import Header from './Components/StaticComponents/Header';
 import Footer from './Components/StaticComponents/Footer';
 import Home from './Components/Home';
@@ -34,11 +35,13 @@ class App extends Component {
                     <div>
                         <Header/>
                         <main className="container main">
-                            <Route exact path="/" component={Home}/>
-                            <Route path="/home" component={Home}/>
-                            <Route path="/post" component={Post}/>
-                            <Route path="/publish" component={Publish}/>
-                            <Route path="/users" component={Users}/>
+                            <Switch>
+                                <Route exact path="/" component={Home}/>
+                                <Route path="/post" component={Post}/>
+                                <Route path="/publish" component={Publish}/>
+                                <Route path="/users" component={Users}/>
+                                <Route component={NotFound}/>
+                            </Switch>
                             <RightColumn/>
                         </main>
                     </div>

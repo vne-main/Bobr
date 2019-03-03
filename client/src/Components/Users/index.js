@@ -66,12 +66,10 @@ class Users extends Component {
                             <span>Рейтинг</span>
                         </div>
                     </aside>
-
                     <User/>
                     <User/>
                     <User/>
-
-
+                    <User/>
                 </div>
 
 

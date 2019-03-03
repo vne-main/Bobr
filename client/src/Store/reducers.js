@@ -44,6 +44,7 @@ export const rootReducer = (state = initialState, action) => {
                 case 'publish': document.title = `${bobr} Опубликовать`; break;
                 case 'users': document.title = `${bobr} Пользователи`; break;
                 case 'post': document.title = `${bobr} Пост`; break;
+                default: document.title = `Bobr`;
             }
             return {
                 ...state,

@@ -8,10 +8,7 @@ import Comments from './Comments';
 
 /* Module */
 import {bindActionCreators} from "redux";
-import {
-    changeCurrentPost,
-    changeCurrentPage,
-} from "../../Store/actions";
+import {changeCurrentPost, changeCurrentPage,} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
 class Post extends Component {
@@ -22,9 +19,12 @@ class Post extends Component {
     };
 
     getPost = async (id) => {
+        console.info(`Post id = ${id}`);
         const requestPost = await fetch(`/post/${id}`);
-        const currentPost = await requestPost.json();
-        this.props.changeCurrentPost(currentPost);
+        console.log(await requestPost);
+        // const currentPost = await requestPost.json();
+
+        // this.props.changeCurrentPost(currentPost);
         await this.setState({skeleton: false});
     };
 
@@ -32,7 +32,13 @@ class Post extends Component {
         this.props.changeCurrentPage("post");
         const hashWindow = window.location.hash.split('/');
         const idPost = hashWindow[hashWindow.length - 1];
-        idPost !== "post" ? this.getPost(idPost) : this.getPost(0);
+
+        if(idPost) {
+            this.getPost(idPost);
+        }
+
+
+        // idPost !== "post" ? this.getPost(idPost) : this.getPost("23");
         window.scrollTo(0, 0);
     }
 
@@ -49,7 +55,7 @@ class Post extends Component {
                             <div>
                                 <PostSkeleton/>
                                 <CommentsSkeleton/>
-                            </div>:
+                            </div> :
                             <div>
                                 <PostItem post={currentPost}/>
                                 <Comments comments={currentPost.comments}/>

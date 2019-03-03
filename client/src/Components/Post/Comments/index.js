@@ -21,6 +21,7 @@ class Comments extends Component {
     }
 
     addComment = async () => {
+        if(this.state.text.trim() === "") return;
         const newComment = {
             _id: this.props.currentPost._id,
             text: this.state.text,

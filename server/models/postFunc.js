@@ -39,7 +39,6 @@ class Place {
         await posts.update({_id: commentObject._id},{$push: {comments: newComment}});
         return 200;
     };
-
 }
 
 module.exports = Place;

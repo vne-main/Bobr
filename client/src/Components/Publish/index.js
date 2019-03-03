@@ -112,7 +112,7 @@ class Publish extends Component {
                     />
                 </aside>
                 <aside className="publish_label">
-                    <label>Теги (Через пробел)</label>
+                    <label>Теги (через пробел)</label>
                     <div className="tags_aside">
                         <input
                             type="text"

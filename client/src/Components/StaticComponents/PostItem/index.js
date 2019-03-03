@@ -25,7 +25,7 @@ class PostItem extends Component {
                     <p className="user_name">{post.author_name}</p>
                     <p className="news_time">{timePost}</p>
                 </div>
-                <div className="сont_title">
+                <div className="content_title">
                     {currentPage !== "post" ?
                         <Link to={`/post/${post._id}`} className="title_news">
                             {post.title}

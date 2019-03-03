@@ -67,28 +67,26 @@ class Home extends Component {
                     })}
                 </div>
                 {sortIndex === 0 && postList.length === 0 &&
-                    <section className="news_list">
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                        <PostSkeleton/>
-                    </section>
+                <section className="news_list">
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                    <PostSkeleton/>
+                </section>
                 }
                 {sortIndex === 0 &&
-                     <section className="news_list">
-                        {postList.map((el, i) => {
-                            return (
-                                <PostItem post={el} key={i}/>
-                            )
-                        })}
-                    </section>
+                <section className="news_list">
+                    {postList.map((el, i) => {
+                        return (
+                            <PostItem post={el} key={i}/>
+                        )
+                    })}
+                </section>
                 }
-                {sortIndex === 1 &&
-                    <PostSkeleton/>
-                }
+                {sortIndex === 1 && <PostSkeleton/>}
             </section>
         )
     }

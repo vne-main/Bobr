@@ -62,7 +62,7 @@ textarea{
     flex-direction: column;
 }
 /* Main media */
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 730px) {
     .main_right{
         display: none;
     }
