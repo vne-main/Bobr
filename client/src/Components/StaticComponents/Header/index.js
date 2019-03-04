@@ -4,7 +4,9 @@ import './style.css';
 
 /* MATERIAL */
 import SearchIcon from '@material-ui/icons/Search';
+import Burger from './Burger';
 import connect from "react-redux/es/connect/connect";
+import UserImg from '../../../Static/img/header/user.svg';
 
 class Header extends Component {
 
@@ -13,6 +15,7 @@ class Header extends Component {
         return (
             <section className="header">
                 <div className="container">
+                    <Burger/>
                     <div className="header_right">
                         <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
@@ -32,8 +35,12 @@ class Header extends Component {
                     </div>
                     <div className="header_panel">
                         <SearchIcon/>
-                        <button className="sign_in_btn">Вход</button>
+                        {/*<a href={"http://localhost:3013/auth/google"} className="sign_in_btn">Вход</a>*/}
+                        <button className="sign_in_btn">Выход</button>
                         <button className="blue_button sign_up_btn">Регистрация</button>
+                    </div>
+                    <div className="header_mobile_user">
+                        <img src={UserImg} alt="user"/>
                     </div>
                 </div>
             </section>

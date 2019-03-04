@@ -19,12 +19,10 @@ class Post extends Component {
     };
 
     getPost = async (id) => {
-        console.info(`Post id = ${id}`);
         const requestPost = await fetch(`/post/${id}`);
-        console.log(await requestPost);
-        // const currentPost = await requestPost.json();
-
-        // this.props.changeCurrentPost(currentPost);
+        const currentPost = await requestPost.json();
+        console.info(currentPost);
+        this.props.changeCurrentPost(currentPost);
         await this.setState({skeleton: false});
     };
 
@@ -32,13 +30,9 @@ class Post extends Component {
         this.props.changeCurrentPage("post");
         const hashWindow = window.location.hash.split('/');
         const idPost = hashWindow[hashWindow.length - 1];
-
         if(idPost) {
             this.getPost(idPost);
         }
-
-
-        // idPost !== "post" ? this.getPost(idPost) : this.getPost("23");
         window.scrollTo(0, 0);
     }
 

@@ -7,7 +7,7 @@ class Place {
     }
 
     static async getCurrentPost(objData) {
-        const findPost = await posts.findById({_id: objData.id});
+        const findPost = await posts.findById({_id: objData.id}).catch(err => console.error(err));
         const checkIp = await findPost.views.find(el => {
             return el === objData.ip;
         });

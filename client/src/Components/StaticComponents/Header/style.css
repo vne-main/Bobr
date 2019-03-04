@@ -1,4 +1,4 @@
-.header{
+.header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -7,74 +7,106 @@
     padding: 15px 0;
     margin-bottom: 20px;
 }
-.header .container{
+
+.header .container {
     justify-content: space-between;
 }
-.header_right{
+
+.header_right {
     display: flex;
     align-items: center;
 }
-.header_right h1{
+
+.header_right h1 {
     margin-right: 35px;
 }
-.header_logo{
+
+.header_logo {
     font-size: 28px;
     font-weight: bold;
     margin-right: 30px;
 }
-.header_navigation a{
+
+.header_navigation a {
     font-size: 15px;
     margin-right: 25px;
     color: #838a92;
 }
-.header_navigation a:hover{
+
+.header_navigation a:hover {
     color: #548eaa;
 }
-.active_page{
-    color: #000!important;
+
+.active_page {
+    color: #000 !important;
 }
-.header_panel{
+
+.header_panel, .header_mobile_user {
     display: flex;
     align-items: center;
 }
-.header_panel button{
+
+.header_panel button {
     font-size: 13px;
     border-radius: 3px;
     padding: 6px 12px;
     cursor: pointer;
 }
-.sign_in_btn{
+
+.sign_in_btn {
     margin: 0 10px;
     background: #ffffff;
     border: 1px solid #a4afba;
     color: #838a92;
 }
-.sign_in_btn:hover{
+
+.sign_in_btn:hover {
     color: #65a3be;
     border: 1px solid #65a3be;
 }
+
+/* MOBILE */
+.header_mobile_user {
+    cursor: pointer;
+    display: none;
+}
+
+.header_mobile_user img {
+    width: 25px;
+}
+
+/* MEDIA */
 @media screen and (max-width: 730px) {
     .header_panel {
         display: none;
     }
-}
 
-@media screen and (max-width: 500px) {
-    .header_logo {
-        display: none;
+    .header_mobile_user {
+        display: flex;
     }
 
-    .header_right {
-        width: 100%;
+    .header_logo {
+        margin-right: 0;
+    }
+
+    .mobile_burger {
+        display: block !important;
     }
 
     .header_navigation {
-        width: 100%;
-        display: flex;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .tab_panel {
         justify-content: space-between;
     }
 
-    .header_navigation a {
-        margin: 0;
+    .tab_panel span {
+        margin-right: 0 !important;
     }
+
 }
+

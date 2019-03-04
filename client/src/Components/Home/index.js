@@ -9,6 +9,7 @@ import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/actions";
 import {connect} from "react-redux";
 import PostItem from "../StaticComponents/PostItem";
+import PostItemMobile from "../StaticComponents/PostItemMobile";
 import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 
 class Home extends Component {
@@ -17,7 +18,7 @@ class Home extends Component {
         super(props);
         this.state = {
             sortIndex: 0,
-            sortArray: ['Лучшее', 'Все подряд'],
+            sortArray: ['Лучшее', 'Разное', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
         };
@@ -66,8 +67,9 @@ class Home extends Component {
                         )
                     })}
                 </div>
+
                 {sortIndex === 0 && postList.length === 0 &&
-                <section className="news_list">
+                <section>
                     <PostSkeleton/>
                     <PostSkeleton/>
                     <PostSkeleton/>
@@ -78,15 +80,27 @@ class Home extends Component {
                 </section>
                 }
                 {sortIndex === 0 &&
-                <section className="news_list">
+                <section>
                     {postList.map((el, i) => {
                         return (
-                            <PostItem post={el} key={i}/>
-                        )
+                            <div>
+                                <section className="mobile_post_list">
+                                    <PostItemMobile post={el} key={i}/>
+                                </section>
+                                <section className="post_list">
+                                    <PostItem post={el} key={i}/>
+                                </section>
+                            </div>
+                    )
                     })}
                 </section>
                 }
-                {sortIndex === 1 && <PostSkeleton/>}
+
+                {sortIndex === 1 &&
+                    <PostSkeleton/>
+                }
+
+
             </section>
         )
     }

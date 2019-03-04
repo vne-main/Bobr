@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Route, HashRouter, Switch} from 'react-router-dom';
+// import queryString from "query-string";
 
 /*** Components ***/
 import RightColumn from './Components/RightColumn';
@@ -26,6 +27,8 @@ class App extends Component {
 
     componentWillMount() {
         this.startRequest();
+        // const query = queryString.parse(window.location.search);
+        // if(query.token) localStorage.setItem('token', JSON.stringify(query.token));
     };
 
     render() {

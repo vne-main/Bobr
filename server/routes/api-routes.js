@@ -6,3 +6,5 @@ module.exports = (server) => {
     server.post('/post', async(req, res) => await postController.addPost(req, res));
     server.post('/post/comment', async(req, res) => await postController.addComment(req, res));
 };
+
+// Promise
