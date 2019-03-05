@@ -83,7 +83,7 @@ class Home extends Component {
                 <section>
                     {postList.map((el, i) => {
                         return (
-                            <div>
+                            <div key={i}>
                                 <section className="mobile_post_list">
                                     <PostItemMobile post={el} key={i}/>
                                 </section>
