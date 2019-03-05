@@ -19,9 +19,7 @@ router.get('/checkAuth', (req, res) => {
     console.log(req.user,'check');
     if (req.user) {
         res.send(req.user);
-        res.sendStatus(
-            200
-        )
+        res.sendStatus(200)
     } else {
         res.sendStatus(401)
     }

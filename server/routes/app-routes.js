@@ -8,5 +8,4 @@ module.exports = (server) => {
             hasNotSignedIn(render('')),
             render('')
         )
-        // .get(render('main'));
 };

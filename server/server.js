@@ -6,10 +6,10 @@ const express = require('express');
 const appRoutes = require('./routes/app-routes');
 const authRoutes = require('./routes/auth-routes');
 const profileRoutes = require('./routes/profile-routes');
-const passportSetup = require('./config/passport-setup'); // Not delete!!!
+const passportSetup = require('./config/passport-setup');
 const app = express();
 
-// -----
+// -------------------
 app.set('view engine', 'ejs');
 app.use(cookieSession({
     maxAge: 24 * 3600000,
