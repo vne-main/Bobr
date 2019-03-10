@@ -1,5 +1,6 @@
 const posts = require('./schema/post-schema');
 
+
 class Place {
 
     static async getAllPosts() {
@@ -7,15 +8,17 @@ class Place {
     }
 
     static async getCurrentPost(objData) {
-        const findPost = await posts.findById({_id: objData.id}).catch(err => console.error(err));
-        const checkIp = await findPost.views.find(el => {
-            return el === objData.ip;
+        const findPost = await posts.findById({_id: objData.id})
+            .catch(() => {return 500});
+        if(findPost === 500) return 500;
+        const checkIp = await findPost.views.find(ip => {
+            return ip === objData.ip;
         });
         if (!checkIp) {
             await posts.update({_id: objData.id}, {$push: {views: objData.ip}});
-            return await posts.findById({_id: objData.id});
+            return await posts.findById({_id: objData.id}).catch(() => {return 500});
         } else {
-            return await posts.findById({_id: objData.id});
+            return await posts.findById({_id: objData.id}).catch(() => {return 500});
         }
     }
 
@@ -31,13 +34,13 @@ class Place {
         return newPost;
     }
 
-    static async addComment(commentObject) {
-        const newComment = {
-            author_name: commentObject.author_name,
-            text: commentObject.text
+    static async addComment(newComment) {
+        const objComment = {
+            author_name: newComment.author_name,
+            text: newComment.text
         };
-        await posts.update({_id: commentObject._id},{$push: {comments: newComment}});
-        return 200;
+        await posts.update({_id: newComment._id},{$push: {comments: objComment}});
+        return await posts.findById({_id: newComment._id}).catch(() => {return 500});
     };
 }
 

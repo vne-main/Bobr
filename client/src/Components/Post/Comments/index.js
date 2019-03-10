@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './style.css';
 
+import axios from 'axios';
+
 /* IMG */
 import spImg2 from '../../../Static/img/sponsor/sponsor_2.jpg'
 import arrowImg from "../../../Static/img/stats/arrow.png";
@@ -9,7 +11,7 @@ import arrowImg from "../../../Static/img/stats/arrow.png";
 import Counter from "../../StaticComponents/Counter";
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, changeCurrentPost, getPostList} from "../../../Store/actions";
+import {changeCurrentPost} from "../../../Store/actions";
 
 class Comments extends Component {
 
@@ -21,28 +23,29 @@ class Comments extends Component {
     }
 
     addComment = async () => {
-        if(this.state.text.trim() === "") return;
-        const newComment = {
-            _id: this.props.currentPost._id,
-            text: this.state.text,
-            author_name: "Admin",
-        };
-        const requestComment = await fetch('/post/comment', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(newComment),
-        });
-        if (requestComment.status === 200) {
+        const {text} = this.state;
+        if (text.trim() === "") return;
+        axios.post('/post/comment', {
+            _id: this.props.postId,
+            text: text,
+            author_name: "User",
+        }).then(res => {
+            console.info(res);
             this.setState({text: ""});
-            const hashWindow = window.location.hash.split('/');
-            const idPost = hashWindow[hashWindow.length - 1];
-            const requestPost = await fetch(`/post/${idPost}`);
-            const currentPost = await requestPost.json();
-            this.props.changeCurrentPost(currentPost);
-            const requestGetPosts = await fetch('/post');
-            const postList = await requestGetPosts.json();
-            this.props.getPostList(postList);
-        }
+            this.props.changeCurrentPost(res.data);
+        }).catch(err => {
+            console.error(err);
+        });
+
+
+        // if (requestComment.status === 200) {
+        //     const requestPost = await fetch(`/post/${idPost}`);
+        //     const currentPost = await requestPost.json();
+        //     this.props.changeCurrentPost(currentPost);
+        //     const requestGetPosts = await fetch('/post');
+        //     const postList = await requestGetPosts.json();
+        //     this.props.getPostList(postList);
+        // }
     };
 
     render() {
@@ -99,8 +102,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPost: bindActionCreators(changeCurrentPost, dispatch),
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-        getPostList: bindActionCreators(getPostList, dispatch),
     }
 };
 

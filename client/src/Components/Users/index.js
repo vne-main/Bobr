@@ -44,7 +44,6 @@ class Users extends Component {
 
     componentWillMount() {
         this.props.changeCurrentPage("users");
-        window.scrollTo(0, 0);
     }
 
     render() {

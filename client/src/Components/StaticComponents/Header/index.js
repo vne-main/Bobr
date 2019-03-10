@@ -36,7 +36,7 @@ class Header extends Component {
                     <div className="header_panel">
                         <SearchIcon/>
                         {/*<a href={"http://localhost:3013/auth/google"} className="sign_in_btn">Вход</a>*/}
-                        <button className="sign_in_btn">Выход</button>
+                        <button className="sign_in_btn">Вход</button>
                         <button className="blue_button sign_up_btn">Регистрация</button>
                     </div>
                     <div className="header_mobile_user">

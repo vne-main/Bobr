@@ -5,57 +5,59 @@ import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 import PostItem from "../StaticComponents/PostItem";
 import CommentsSkeleton from "./Comments/Skeleton";
 import Comments from './Comments';
+import NotFound from '../StaticComponents/NotFound';
 
 /* Module */
 import {bindActionCreators} from "redux";
 import {changeCurrentPost, changeCurrentPage,} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
+import axios from 'axios';
 
 class Post extends Component {
 
     state = {
-        success: true,
         skeleton: true,
+        statusPost: true,
     };
 
-    getPost = async (id) => {
-        const requestPost = await fetch(`/post/${id}`);
-        const currentPost = await requestPost.json();
-        console.info(currentPost);
-        this.props.changeCurrentPost(currentPost);
-        await this.setState({skeleton: false});
+    getPost(id) {
+        axios.get(`/post/${id}`)
+            .then(res => {
+                console.info(res);
+                this.props.changeCurrentPost(res.data);
+            })
+            .then(() => this.setState({skeleton: false}))
+            .catch(() => {
+                this.setState({statusPost: false});
+            });
     };
 
     componentWillMount() {
         this.props.changeCurrentPage("post");
         const hashWindow = window.location.hash.split('/');
         const idPost = hashWindow[hashWindow.length - 1];
-        if(idPost) {
-            this.getPost(idPost);
-        }
-        window.scrollTo(0, 0);
+        idPost ? this.getPost(idPost) : this.setState({statusPost: false});
     }
 
     render() {
-        const {success, skeleton} = this.state;
+        const {skeleton, statusPost} = this.state;
         const {currentPost} = this.props;
         return (
             <section>
-                {!success ?
-                    <h3 className="title_h3">Пост не найден</h3>
-                    :
-                    <div>
-                        {skeleton ?
-                            <div>
-                                <PostSkeleton/>
-                                <CommentsSkeleton/>
-                            </div> :
-                            <div>
-                                <PostItem post={currentPost}/>
-                                <Comments comments={currentPost.comments}/>
-                            </div>
-                        }
-                    </div>
+                {!statusPost && <NotFound/>}
+                {statusPost &&
+                <div>
+                    {skeleton ?
+                        <div>
+                            <PostSkeleton/>
+                            <CommentsSkeleton/>
+                        </div> :
+                        <div>
+                            <PostItem post={currentPost}/>
+                            <Comments comments={currentPost.comments} postId={currentPost._id}/>
+                        </div>
+                    }
+                </div>
                 }
             </section>
         )

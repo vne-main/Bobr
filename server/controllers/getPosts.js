@@ -1,18 +1,15 @@
 const postData = require('../models/postFunc');
+const auxillaryFunc = require('../models/auxiliaryFunc');
 
 class Fetch {
 
     static async getAllPosts(req, res) {
         const posts = await postData.getAllPosts();
-        res.send(posts.reverse());
+        res.send(posts);
     }
 
     static async getCurrentPost(req, res) {
-        const clientIp = (req.headers['x-forwarded-for'] || '').split(',').pop() ||
-            req.connection.remoteAddress ||
-            req.socket.remoteAddress ||
-            req.connection.socket.remoteAddress;
-        console.info("View IP = ", clientIp );
+        const clientIp = await auxillaryFunc.checkIp(req);
         const objData = {
             id: req.params.id,
             ip: clientIp

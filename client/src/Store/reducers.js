@@ -2,23 +2,13 @@ import {
     GET_POST_LIST,
     CHANGE_CURRENT_POST,
     CHANGE_CURRENT_PAGE,
+    PUSH_NEW_POST,
+    ADD_NEW_COMMENT,
 } from "./const";
 
 const initialState = {
     postList: [],
-    currentPost: {
-        "id": null,
-        "author_name": "",
-        "author_img": "",
-        "time": "",
-        "title": "",
-        "tags": [],
-        "text": "",
-        "likes": 0,
-        "favorites": 0,
-        "views": 0,
-        "comments": []
-    },
+    currentPost: {},
     currentPage: "",
 };
 
@@ -46,9 +36,16 @@ export const rootReducer = (state = initialState, action) => {
                 case 'post': document.title = `${bobr} Пост`; break;
                 default: document.title = `Bobr`;
             }
+            window.scrollTo(0, 0);
             return {
                 ...state,
                 currentPage: action.payload
+            };
+
+        case PUSH_NEW_POST:
+            return {
+                ...state,
+                postList: [].concat(action.payload, state.postList)
             };
 
         default:

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css';
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, getPostList} from "../../Store/actions";
+import {changeCurrentPage, pushNewPost} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
 /** MATERIAL **/
@@ -26,10 +26,7 @@ class Publish extends Component {
             if(char === " ")  return false;
             let tagsArray = this.state.tagsData;
             tagsArray.push(char.trim());
-            this.setState({
-                tagsData: tagsArray,
-                tags: ""
-            });
+            this.setState({tagsData: tagsArray, tags: ""});
         } else {
             this.setState({tags: char});
         }
@@ -44,12 +41,10 @@ class Publish extends Component {
         });
     };
 
-    successSend = async () => {
-        const requestGetPosts = await fetch('/post');
-        const postList = await requestGetPosts.json();
-        this.props.getPostList(postList);
-        this.statusSent("Новость опубликована");
+    successSend(newPost){
+        this.props.pushNewPost(newPost);
         this.setState({
+            status: "Новость опубликована",
             tagsData: ["Bobr"],
             title: "",
             tags: "",
@@ -58,7 +53,7 @@ class Publish extends Component {
     };
 
     publishPost = async () => {
-        this.statusSent("Пожалуйста, подождите...");
+        this.setState({status: "Пожалуйста, подождите..."});
         const jsonData = this.checkData();
         if (!jsonData) return false;
         const requestPublish = await fetch('/post', {
@@ -66,15 +61,14 @@ class Publish extends Component {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(jsonData),
         });
-        const statusPublish = await requestPublish.json();
-        console.log(statusPublish);
-        this.successSend();
+        const newPost = await requestPublish.json();
+        this.successSend(newPost);
     };
 
     checkData() {
         const {title, text, tagsData} = this.state;
         if (title === "" || tagsData.length === 0 || text === "") {
-            this.statusSent("Введите все данные");
+            this.setState({status: "Введите все данные"});
             return false;
         }
         return {
@@ -86,22 +80,15 @@ class Publish extends Component {
         };
     };
 
-    statusSent = (info) => {
-        this.setState({status: info});
-    };
-
     componentWillMount() {
         this.props.changeCurrentPage("publish");
-        window.scrollTo(0, 0);
     }
 
     render() {
         const {title, tags, text, status} = this.state;
         return (
             <section className="publish_page">
-                <h3 className="title_h3 title_pages">
-                    Опубликовать новость
-                </h3>
+                <h3 className="title_h3 title_pages">Опубликовать новость</h3>
                 <aside className="publish_label">
                     <label>Название новости</label>
                     <input
@@ -124,14 +111,7 @@ class Publish extends Component {
                 </aside>
                 <aside className="tags_array">
                     {this.state.tagsData.map((data, i) => {
-                        return (
-                            <Chip
-                                key={i}
-                                className="new_tag"
-                                label={data}
-                                onDelete={this.handleDelete(data)}
-                            />
-                        );
+                        return <Chip key={i} className="new_tag" label={data} onDelete={this.handleDelete(data)}/>
                     })}
                 </aside>
                 <aside className="publish_label">
@@ -159,7 +139,7 @@ class Publish extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-        getPostList: bindActionCreators(getPostList, dispatch),
+        pushNewPost: bindActionCreators(pushNewPost, dispatch),
     }
 };
 
