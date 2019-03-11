@@ -122,14 +122,14 @@ class Publish extends Component {
                         onChange={(e) => this.setState({text: e.target.value})}
                     />
                 </aside>
-                <div className="send_comment_panel">
+                <div className="send_publish_panel">
                     <button
                         className="blue_button publish_form"
                         onClick={() => this.publishPost()}
                     >
                         Опубликовать
                     </button>
-                    <p>{status}</p>
+                    <p className="status_p">{status}</p>
                 </div>
             </section>
         )

@@ -47,13 +47,10 @@
 .publish_form{
     font-size: 16px;
 }
-.send_comment_panel{
+.send_publish_panel{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.send_comment_panel p{
-    color: #548eaa;
 }
 .error_color{
     color: rgb(213, 60, 48)!important;

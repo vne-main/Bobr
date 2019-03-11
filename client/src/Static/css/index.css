@@ -1,8 +1,9 @@
 @import "reset.css";
 /* Start */
-body{
+body {
     min-width: 340px;
 }
+
 img,
 .time_sort span,
 .tab_panel span {
@@ -11,17 +12,30 @@ img,
     -khtml-user-select: none;
     -webkit-user-select: none;
 }
-textarea{
+
+textarea {
     font-family: 'Roboto', sans-serif;
     resize: none;
 }
-::-webkit-input-placeholder { color: #5e6973 }
-::-moz-placeholder          { color: #5e6973 }
-:-moz-placeholder           { color: #5e6973 }
-:-ms-input-placeholder      { color: #5e6973 }
+
+::-webkit-input-placeholder {
+    color: #5e6973
+}
+
+::-moz-placeholder {
+    color: #5e6973
+}
+
+:-moz-placeholder {
+    color: #5e6973
+}
+
+:-ms-input-placeholder {
+    color: #5e6973
+}
 
 /** Button **/
-.blue_button{
+.blue_button {
     background: #65a3be;
     border: 1px solid transparent;
     color: #ffffff;
@@ -30,17 +44,20 @@ textarea{
     padding: 6px 12px;
     cursor: pointer;
 }
-.blue_button:hover{
-    background: rgba(61,144,190,0.93);
+
+.blue_button:hover {
+    background: rgba(61, 144, 190, 0.93);
 }
+
 /* Container */
-.vh_block{
+.vh_block {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.container{
+
+.container {
     width: 100%;
     max-width: 1140px;
     display: flex;
@@ -48,22 +65,32 @@ textarea{
     margin: 0 auto;
     padding: 0 20px;
 }
-.main{
+
+.main {
     align-items: start;
     justify-content: space-between;
 }
-.main section:first-child{
+
+.main section:first-child {
     width: 100%;
 }
-.main_right{
+
+.main_right {
     margin-left: 30px;
     min-width: 280px;
     display: flex;
     flex-direction: column;
 }
+
+.status_p {
+    color: #548eaa;
+    text-align: right;
+    margin-left: 10px;
+}
+
 /* Main media */
 @media only screen and (max-width: 730px) {
-    .main_right{
+    .main_right {
         display: none;
     }
 }

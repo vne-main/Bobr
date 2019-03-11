@@ -27,7 +27,6 @@ export const changeCurrentPage = (page) => {
     }
 };
 
-/* new */
 export const pushNewPost = (newPost) => {
     return {
         type: PUSH_NEW_POST,

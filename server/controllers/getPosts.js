@@ -11,7 +11,7 @@ class Fetch {
     static async getCurrentPost(req, res) {
         const clientIp = await auxillaryFunc.checkIp(req);
         const objData = {
-            id: req.params.id,
+            _id: req.params._id,
             ip: clientIp
         };
         const post = await postData.getCurrentPost(objData);

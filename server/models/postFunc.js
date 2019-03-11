@@ -1,6 +1,5 @@
 const posts = require('./schema/post-schema');
 
-
 class Place {
 
     static async getAllPosts() {
@@ -8,17 +7,17 @@ class Place {
     }
 
     static async getCurrentPost(objData) {
-        const findPost = await posts.findById({_id: objData.id})
+        const findPost = await posts.findById({_id: objData._id})
             .catch(() => {return 500});
         if(findPost === 500) return 500;
         const checkIp = await findPost.views.find(ip => {
             return ip === objData.ip;
         });
         if (!checkIp) {
-            await posts.update({_id: objData.id}, {$push: {views: objData.ip}});
-            return await posts.findById({_id: objData.id}).catch(() => {return 500});
+            await posts.update({_id: objData._id}, {$push: {views: objData.ip}});
+            return await posts.findById({_id: objData._id}).catch(() => {return 500});
         } else {
-            return await posts.findById({_id: objData.id}).catch(() => {return 500});
+            return await posts.findById({_id: objData._id}).catch(() => {return 500});
         }
     }
 

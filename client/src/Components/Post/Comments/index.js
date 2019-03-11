@@ -11,7 +11,7 @@ import arrowImg from "../../../Static/img/stats/arrow.png";
 import Counter from "../../StaticComponents/Counter";
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import {changeCurrentPost} from "../../../Store/actions";
+import {addNewComment} from "../../../Store/actions";
 
 class Comments extends Component {
 
@@ -19,37 +19,35 @@ class Comments extends Component {
         super(props);
         this.state = {
             text: "",
+            status: "",
         }
     }
 
     addComment = async () => {
         const {text} = this.state;
-        if (text.trim() === "") return;
+        if (text.trim() === "") {
+            this.setState({status: "Напишите комментарий"});
+            return;
+        }
+        this.setState({status: "Пожалуйста, подождите..."});
         axios.post('/post/comment', {
             _id: this.props.postId,
             text: text,
             author_name: "User",
         }).then(res => {
-            console.info(res);
             this.setState({text: ""});
-            this.props.changeCurrentPost(res.data);
+            this.props.addNewComment(res.data);
+            this.setState({status: "Ваш комментарий опубликован"});
         }).catch(err => {
+            console.info("Error require in: /post/comment");
             console.error(err);
+            this.setState({status: "Ошибка сервера"});
         });
-
-
-        // if (requestComment.status === 200) {
-        //     const requestPost = await fetch(`/post/${idPost}`);
-        //     const currentPost = await requestPost.json();
-        //     this.props.changeCurrentPost(currentPost);
-        //     const requestGetPosts = await fetch('/post');
-        //     const postList = await requestGetPosts.json();
-        //     this.props.getPostList(postList);
-        // }
     };
 
     render() {
         const {comments} = this.props;
+        const {status, text} = this.state;
         return (
             <div className="comment_box">
                 {comments && comments.length !== 0 &&
@@ -80,13 +78,18 @@ class Comments extends Component {
                 <div className="send_comment">
                     <textarea
                         onChange={(e) => this.setState({text: e.target.value})}
-                        value={this.state.text}
+                        value={text}
+                        placeholder="Ваш комментарий"
                     />
-                    <button
-                        className="blue_button"
-                        onClick={() => this.addComment()}
-                    >Отправить
-                    </button>
+                    <div className="send_comment_panel">
+                        <button
+                            className="blue_button"
+                            onClick={() => this.addComment()}
+                        >Отправить
+                        </button>
+                        <p className="status_p">{status}</p>
+                    </div>
+
                 </div>
             </div>
         )
@@ -101,7 +104,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeCurrentPost: bindActionCreators(changeCurrentPost, dispatch),
+        addNewComment: bindActionCreators(addNewComment, dispatch),
     }
 };
 

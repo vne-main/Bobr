@@ -48,6 +48,18 @@ export const rootReducer = (state = initialState, action) => {
                 postList: [].concat(action.payload, state.postList)
             };
 
+        case ADD_NEW_COMMENT:
+            const indexPost = state.postList.findIndex(post => {
+                return post._id === action.payload._id;
+            });
+            let updatePostList = [...state.postList];
+            updatePostList[indexPost].comments = action.payload.comments;
+            return{
+                ...state,
+                currentPost: action.payload,
+                postList: updatePostList
+            };
+
         default:
             return state;
     }
