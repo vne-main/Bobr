@@ -9,7 +9,7 @@ class Place {
     static async getCurrentPost(objData) {
         const findPost = await posts.findById({_id: objData._id})
             .catch(() => {return 500});
-        if(findPost === 500) return 500;
+        if(findPost === 500 || !findPost) return 500;
         const checkIp = await findPost.views.find(ip => {
             return ip === objData.ip;
         });

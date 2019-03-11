@@ -67,7 +67,6 @@ class Home extends Component {
                         )
                     })}
                 </div>
-
                 {sortIndex === 0 && postList.length === 0 &&
                 <section>
                     <PostSkeleton/>
@@ -95,12 +94,9 @@ class Home extends Component {
                     })}
                 </section>
                 }
-
                 {sortIndex === 1 &&
                     <PostSkeleton/>
                 }
-
-
             </section>
         )
     }

@@ -18,6 +18,14 @@ textarea {
     resize: none;
 }
 
+input, .publish_label textarea {
+    color: #323232;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #d7dee0;
+    width: 100%;
+}
+
 ::-webkit-input-placeholder {
     color: #5e6973
 }
@@ -50,11 +58,15 @@ textarea {
 }
 
 /* Container */
-.vh_block {
+.vh_block, .vh_block_auth{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.vh_block_auth{
+    background: rgba(234,234,234,0.93);
 }
 
 .container {

@@ -11,6 +11,8 @@ import Home from './Components/Home';
 import Post from './Components/Post';
 import Publish from './Components/Publish';
 import Users from './Components/Users';
+import SignIn from './Components/Auth/signin';
+import SignUp from './Components/Auth/signup';
 
 /** Redux **/
 import {bindActionCreators} from "redux";
@@ -32,28 +34,37 @@ class App extends Component {
     };
 
     render() {
+        const {currentPage} = this.props;
         return (
             <HashRouter>
-                <div className="vh_block">
+                <div className={currentPage === "auth" ? "vh_block_auth" : "vh_block"}>
                     <div>
-                        <Header/>
+                        {currentPage !== "auth" && <Header/>}
                         <main className="container main">
                             <Switch>
                                 <Route exact path="/" component={Home}/>
                                 <Route path="/post" component={Post}/>
                                 <Route path="/publish" component={Publish}/>
                                 <Route path="/users" component={Users}/>
+                                <Route path="/signin" component={SignIn}/>
+                                <Route path="/signup" component={SignUp}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            <RightColumn/>
+                            {currentPage !== "auth" && <RightColumn/>}
                         </main>
                     </div>
-                    <Footer/>
+                    {currentPage !== "auth" && <Footer/>}
                 </div>
             </HashRouter>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currentPage: state.currentPage
+    }
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -61,4 +72,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect("", mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

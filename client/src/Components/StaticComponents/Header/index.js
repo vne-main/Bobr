@@ -35,9 +35,12 @@ class Header extends Component {
                     </div>
                     <div className="header_panel">
                         <SearchIcon/>
-                        {/*<a href={"http://localhost:3013/auth/google"} className="sign_in_btn">Вход</a>*/}
-                        <button className="sign_in_btn">Вход</button>
-                        <button className="blue_button sign_up_btn">Регистрация</button>
+                        <Link to="/signin">
+                            <button className="sign_in_btn">Вход</button>
+                        </Link>
+                        <Link to="/signup">
+                            <button className="blue_button sign_up_btn">Регистрация</button>
+                        </Link>
                     </div>
                     <div className="header_mobile_user">
                         <img src={UserImg} alt="user"/>

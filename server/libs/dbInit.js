@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
 mongoose.connect(keys.mongodb.dbConnect)
-    .then(() => console.log("Connect to db..."))
+    .then(() => console.log("Connect to db!"))
     .catch(err => console.error(err));
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;

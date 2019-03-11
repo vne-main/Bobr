@@ -1,4 +1,4 @@
-const postData = require('../models/postFunc');
+const postData = require('../models/post-func');
 const auxillaryFunc = require('../models/auxiliaryFunc');
 
 class Fetch {
@@ -28,7 +28,6 @@ class Fetch {
         res.send(comment);
     }
 
-    // Класс контроллер + набор методов.
 }
 
 module.exports = Fetch;
