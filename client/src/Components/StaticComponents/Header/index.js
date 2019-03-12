@@ -11,7 +11,7 @@ import UserImg from '../../../Static/img/header/user.svg';
 class Header extends Component {
 
     render() {
-        const {currentPage} = this.props;
+        const {currentPage, user} = this.props;
         return (
             <section className="header">
                 <div className="container">
@@ -54,6 +54,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         currentPage: state.currentPage,
+        user: state.user,
     }
 };
 

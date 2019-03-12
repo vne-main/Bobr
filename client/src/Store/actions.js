@@ -4,6 +4,7 @@ import {
     CHANGE_CURRENT_PAGE,
     PUSH_NEW_POST,
     ADD_NEW_COMMENT,
+    GET_USER,
 } from "./const";
 
 export const getPostList = (postList) => {
@@ -38,5 +39,12 @@ export const addNewComment = (newComment) => {
     return {
         type: ADD_NEW_COMMENT,
         payload: newComment
+    }
+};
+
+export const getUser = (user) => {
+    return {
+        type: GET_USER,
+        payload: user
     }
 };

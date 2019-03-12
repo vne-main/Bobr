@@ -9,11 +9,11 @@ import axios from 'axios';
 /* Redux */
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCurrentPage} from '../../Store/actions';
+import {changeCurrentPage, getUser} from '../../Store/actions';
 
 class SignIn extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             login: "",
@@ -23,10 +23,10 @@ class SignIn extends Component {
         };
     }
 
-    signin(){
-        const {login, password, status} = this.state;
+    signin() {
+        const {login, password} = this.state;
         this.setState({status: "Пожалуйста, подождите..."});
-        if(login.trim() === "" || password.trim() === ""){
+        if (login.trim() === "" || password.trim() === "") {
             this.setState({status: "Введите данные"});
             return false;
         } else {
@@ -34,14 +34,16 @@ class SignIn extends Component {
                 login: login,
                 password: password
             }).then(res => {
-                console.info(res.data[0]);
+                if (res.data.status === 502) {
+                    this.setState({status: "Неверный логин или пароль"});
+                    return false;
+                }
+                this.props.getUser(res.data);
                 this.setState({
                     status: "Выполняется вход",
                     redirect: true
                 });
             }).catch(err => {
-                console.info("Error");
-                this.setState({status: "Неверный логин или пароль"});
                 console.error(err);
             })
         }
@@ -88,6 +90,7 @@ class SignIn extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
+        getUser: bindActionCreators(getUser, dispatch),
     }
 };
 

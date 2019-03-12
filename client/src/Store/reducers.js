@@ -4,12 +4,14 @@ import {
     CHANGE_CURRENT_PAGE,
     PUSH_NEW_POST,
     ADD_NEW_COMMENT,
+    GET_USER,
 } from "./const";
 
 const initialState = {
     postList: [],
     currentPost: {},
     currentPage: "",
+    user: {},
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -58,6 +60,12 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 currentPost: action.payload,
                 postList: updatePostList
+            };
+
+        case GET_USER:
+            return {
+                ...state,
+                user: action.payload
             };
 
         default:

@@ -8,17 +8,16 @@ class Place {
     }
 
     static async signUp(userData) {
-        const checkUser = await users.find({email: userData.email});
-        if (checkUser.length === 0) {
-            const newUser = new users({
-                login: userData.login,
-                email: userData.email,
-                password: md5(userData.password),
-            });
-            return newUser.save().catch(err => console.error(err));
-        } else {
-            return 501;
-        }
+        const checkEmail = await users.find({email: userData.email});
+        const checkLogin = await users.find({email: userData.login});
+        if (checkEmail.length !== 0) return {status: 502, value: "email"};
+        if (checkLogin.length !== 0) return {status: 502, value: "login"};
+        const newUser = new users({
+            login: userData.login,
+            email: userData.email,
+            password: md5(userData.password),
+        });
+        return newUser.save().catch(err => console.error(err));
     }
 
     static async signIn(userData) {
@@ -27,9 +26,9 @@ class Place {
             $or:[{email: userData.login}, {login: userData.login}]
         });
         if (user.length !== 0) {
-            return user;
+            return user[0];
         } else {
-            return 404;
+            return {status: 502, value: "wrong"};
         }
     }
 
