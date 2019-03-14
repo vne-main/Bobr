@@ -47,7 +47,6 @@
     font-weight: bold;
     font-size: 14px;
     border: 2px solid transparent;
-
 }
 
 .time_sort span:hover {
@@ -73,3 +72,28 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 450px) {
+
+    .tab_panel {
+        justify-content: space-between;
+    }
+
+    .tab_panel span {
+        margin-right: 0 !important;
+    }
+
+    .time_sort{
+        width: 100%;
+    }
+
+    .time_sort span{
+        width: 25%;
+        text-align: center;
+    }
+
+    .select_stream{
+        max-width: none;
+    }
+}
+

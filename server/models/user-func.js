@@ -16,6 +16,7 @@ class Place {
             login: userData.login,
             email: userData.email,
             password: md5(userData.password),
+            token: md5(userData.login) + md5(userData.email)
         });
         return newUser.save().catch(err => console.error(err));
     }
@@ -23,12 +24,36 @@ class Place {
     static async signIn(userData) {
         let user = await users.find({
             password: md5(userData.password),
-            $or:[{email: userData.login}, {login: userData.login}]
+            $or: [{email: userData.login}, {login: userData.login}]
         });
         if (user.length !== 0) {
-            return user[0];
+            return {
+                _id: user[0]._id,
+                token: user[0].token,
+                login: user[0].login,
+                email: user[0].email,
+                status: user[0].status,
+                gender: user[0].gender,
+                photo: user[0].photo,
+                favorites: user[0].favorites,
+                likes: user[0].likes,
+                posts: user[0].posts,
+                subscribe: user[0].subscribe,
+                following: user[0].following,
+                dateRegistration: user[0].dateRegistration,
+                rating: user[0].rating
+            };
         } else {
             return {status: 502, value: "wrong"};
+        }
+    }
+
+    static async check(token) {
+        const checkUser = await users.find({token: token});
+        if (checkUser.length === 0) {
+            return "notUser";
+        } else {
+            return checkUser[0];
         }
     }
 

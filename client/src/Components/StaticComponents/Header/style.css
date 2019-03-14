@@ -75,6 +75,22 @@
     width: 25px;
 }
 
+/* AUTH USER*/
+.h_auth_user{
+    margin-left: 10px;
+}
+
+.h_user_photo{
+    width: 27px;
+    height: 27px;
+    margin-left: 10px;
+}
+
+.h_user_photo img{
+    border-radius: 3px;
+    width: 100%;
+}
+
 /* MEDIA */
 @media screen and (max-width: 730px) {
     .header_panel {
@@ -97,16 +113,3 @@
         display: none;
     }
 }
-
-@media screen and (max-width: 450px) {
-
-    .tab_panel {
-        justify-content: space-between;
-    }
-
-    .tab_panel span {
-        margin-right: 0 !important;
-    }
-
-}
-

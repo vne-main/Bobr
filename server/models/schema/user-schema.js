@@ -2,6 +2,7 @@ const mongoose = require('../../libs/dbInit');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    token: String,
     login: String,
     email: String,
     password: String,
@@ -14,7 +15,7 @@ const userSchema = new Schema({
     subscribe: {type: [String], default: []},
     following: {type: [String], default: []},
     dateRegistration: {type: Date, default: Date.now},
-    rating: {type: Number, default: 0}
+    rating: {type: Number, default: 0},
 });
 
 const User = mongoose.model('user', userSchema);

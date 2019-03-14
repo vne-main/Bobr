@@ -5,13 +5,16 @@ import './style.css';
 /* MATERIAL */
 import SearchIcon from '@material-ui/icons/Search';
 import Burger from './Burger';
-import connect from "react-redux/es/connect/connect";
 import UserImg from '../../../Static/img/header/user.svg';
+
+/* Redux */
+import connect from "react-redux/es/connect/connect";
 
 class Header extends Component {
 
     render() {
         const {currentPage, user} = this.props;
+        console.info(`User id = ${user._id}`);
         return (
             <section className="header">
                 <div className="container">
@@ -35,12 +38,24 @@ class Header extends Component {
                     </div>
                     <div className="header_panel">
                         <SearchIcon/>
-                        <Link to="/signin">
-                            <button className="sign_in_btn">Вход</button>
-                        </Link>
-                        <Link to="/signup">
-                            <button className="blue_button sign_up_btn">Регистрация</button>
-                        </Link>
+                        {!user._id ?
+                            <div>
+                                <Link to="/signin">
+                                    <button className="sign_in_btn">Вход</button>
+                                </Link>
+                                <Link to="/signup">
+                                    <button className="blue_button sign_up_btn">Регистрация</button>
+                                </Link>
+                            </div>
+                            :
+                            <div className="flex h_auth_user">
+                                <button className="sign_in_btn">Написать</button>
+                                <Link to="/profile" className="h_user_photo">
+                                    <img src={user.photo} alt="userIcon"/>
+                                </Link>
+                            </div>
+
+                        }
                     </div>
                     <div className="header_mobile_user">
                         <img src={UserImg} alt="user"/>

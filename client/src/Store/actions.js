@@ -5,6 +5,7 @@ import {
     PUSH_NEW_POST,
     ADD_NEW_COMMENT,
     GET_USER,
+    LOGOUT,
 } from "./const";
 
 export const getPostList = (postList) => {
@@ -47,4 +48,10 @@ export const getUser = (user) => {
         type: GET_USER,
         payload: user
     }
+};
+
+export const logout = () => {
+      return {
+          type: LOGOUT,
+      }
 };

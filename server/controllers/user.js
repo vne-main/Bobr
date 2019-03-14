@@ -17,6 +17,10 @@ class Fetch {
         res.send(user);
     }
 
+    static async check(req, res) {
+        const user = await userData.check(req.body.token);
+        res.send(user);
+    }
 }
 
 module.exports = Fetch;

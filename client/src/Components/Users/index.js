@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import './style.css';
 
+/* Module */
+import axios from 'axios';
+
+/* IMG */
 import SearchIcon from '@material-ui/icons/Search';
 import spImg1 from "../../Static/img/sponsor/sponsor_1.jpg";
-
 
 /** Redux **/
 import {bindActionCreators} from "redux";
@@ -42,11 +45,27 @@ const User = () => {
 
 class Users extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userList: [],
+        }
+    }
+
+    getUserList(){
+        axios.get('/user')
+            .then(res => {
+                this.setState({userList: res.data});
+            })
+    }
+
     componentWillMount() {
         this.props.changeCurrentPage("users");
+        this.getUserList();
     }
 
     render() {
+        console.info(this.state.userList);
         return (
             <section>
                 <h3 className="title_h3 title_pages">Пользователи</h3>
@@ -70,8 +89,6 @@ class Users extends Component {
                     <User/>
                     <User/>
                 </div>
-
-
             </section>
         )
     }

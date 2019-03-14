@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import {Route, HashRouter, Switch} from 'react-router-dom';
-// import queryString from "query-string";
 
-/*** Components ***/
+/* Module */
+import axios from 'axios';
+
+/* Components */
 import RightColumn from './Components/RightColumn';
 import NotFound from './Components/StaticComponents/NotFound';
 import Header from './Components/StaticComponents/Header';
@@ -13,10 +15,11 @@ import Publish from './Components/Publish';
 import Users from './Components/Users';
 import SignIn from './Components/Auth/signin';
 import SignUp from './Components/Auth/signup';
+import Profile from './Components/Profile/';
 
-/** Redux **/
+/* Redux */
 import {bindActionCreators} from "redux";
-import {getPostList} from "./Store/actions";
+import {getPostList, getUser} from "./Store/actions";
 import connect from "react-redux/es/connect/connect";
 
 class App extends Component {
@@ -29,8 +32,11 @@ class App extends Component {
 
     componentWillMount() {
         this.startRequest();
-        // const query = queryString.parse(window.location.search);
-        // if(query.token) localStorage.setItem('token', JSON.stringify(query.token));
+        const userToken = localStorage.getItem('vC3ilOckStoreMode23Port');
+        if (!userToken) return;
+        axios.post('/auth/check', {token: userToken})
+            .then(res => {this.props.getUser(res.data)})
+            .catch(err => console.error(err));
     };
 
     render() {
@@ -46,11 +52,12 @@ class App extends Component {
                                 <Route path="/post" component={Post}/>
                                 <Route path="/publish" component={Publish}/>
                                 <Route path="/users" component={Users}/>
+                                <Route path="/profile" component={Profile}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            {currentPage !== "auth" && <RightColumn/>}
+                            {<RightColumn/> && currentPage !== "auth" && currentPage !== "profile"}
                         </main>
                     </div>
                     {currentPage !== "auth" && <Footer/>}
@@ -69,6 +76,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getPostList: bindActionCreators(getPostList, dispatch),
+        getUser: bindActionCreators(getUser, dispatch),
     }
 };
 

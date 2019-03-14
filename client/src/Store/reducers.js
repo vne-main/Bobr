@@ -5,6 +5,7 @@ import {
     PUSH_NEW_POST,
     ADD_NEW_COMMENT,
     GET_USER,
+    LOGOUT,
 } from "./const";
 
 const initialState = {
@@ -36,6 +37,7 @@ export const rootReducer = (state = initialState, action) => {
                 case 'publish': document.title = `${bobr} Опубликовать`; break;
                 case 'users': document.title = `${bobr} Пользователи`; break;
                 case 'post': document.title = `${bobr} Пост`; break;
+                case 'profile': document.title = `${bobr} Профиль`; break;
                 default: document.title = `Bobr`;
             }
             window.scrollTo(0, 0);
@@ -63,9 +65,17 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case GET_USER:
+            localStorage.setItem('vC3ilOckStoreMode23Port', action.payload.token);
             return {
                 ...state,
                 user: action.payload
+            };
+
+        case LOGOUT:
+            localStorage.removeItem('vC3ilOckStoreMode23Port');
+            return {
+                ...state,
+                user: {}
             };
 
         default:
