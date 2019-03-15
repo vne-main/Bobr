@@ -16,8 +16,8 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: "1",
-            password: "1",
+            login: "0",
+            password: "0",
             status: "",
             redirect: false,
         };

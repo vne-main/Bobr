@@ -57,7 +57,7 @@ class App extends Component {
                                 <Route path="/signup" component={SignUp}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            {<RightColumn/> && currentPage !== "auth" && currentPage !== "profile"}
+                            {currentPage !== "auth" && currentPage !== "profile" && <RightColumn/>}
                         </main>
                     </div>
                     {currentPage !== "auth" && <Footer/>}

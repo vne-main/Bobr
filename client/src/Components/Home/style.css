@@ -58,18 +58,18 @@
     color: #77a8d0;
 }
 
-.mobile_post_list {
+.h_mobile_post {
     display: none;
 }
 
 /* MEDIA Mobile Version*/
 @media only screen and (max-width: 550px) {
-    .mobile_post_list {
-        display: block;
+    .h_mobile_post {
+        display: block !important;
     }
 
-    .post_list {
-        display: none;
+    .h_full_post {
+        display: none !important;
     }
 }
 
@@ -83,16 +83,17 @@
         margin-right: 0 !important;
     }
 
-    .time_sort{
+    .time_sort {
         width: 100%;
     }
 
-    .time_sort span{
+    .time_sort span {
+        padding: 14px 0;
         width: 25%;
         text-align: center;
     }
 
-    .select_stream{
+    .select_stream {
         max-width: none;
     }
 }

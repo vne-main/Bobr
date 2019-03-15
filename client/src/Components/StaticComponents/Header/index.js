@@ -14,7 +14,6 @@ class Header extends Component {
 
     render() {
         const {currentPage, user} = this.props;
-        console.info(`User id = ${user._id}`);
         return (
             <section className="header">
                 <div className="container">
@@ -54,7 +53,6 @@ class Header extends Component {
                                     <img src={user.photo} alt="userIcon"/>
                                 </Link>
                             </div>
-
                         }
                     </div>
                     <div className="header_mobile_user">

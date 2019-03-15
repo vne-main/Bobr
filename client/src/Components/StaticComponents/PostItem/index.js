@@ -2,13 +2,7 @@ import React, {Component} from 'react';
 import './style.css';
 
 /** Components **/
-import Counter from '../Counter';
-
-/** Img **/
-import arrowImg from '../../../Static/img/stats/arrow.png';
-import eyeImg from '../../../Static/img/stats/eye.png';
-import favoriteImg from '../../../Static/img/stats/favorite.png';
-import commentsImg from '../../../Static/img/stats/comments.png';
+import PostPanel from './postPanel';
 
 /** Module **/
 import {Link} from 'react-router-dom'
@@ -48,25 +42,7 @@ class PostItem extends Component {
                     Читать дальше →
                 </Link>
                 }
-                <div className="news_stats">
-                    <div className="news_vote">
-                        <img src={arrowImg} alt="arrowUp"/>
-                        <Counter value={post.likes}/>
-                        <img src={arrowImg} alt="arrowDown" className="stats_arrow_down"/>
-                    </div>
-                    <div className="news_favorite">
-                        <img src={favoriteImg} alt="favorite"/>
-                        <i>{post.favorites}</i>
-                    </div>
-                    <div className="news_views">
-                        <img src={eyeImg} alt="eye"/>
-                        <i>{post.views.length}</i>
-                    </div>
-                    <div className="news_comments">
-                        <img src={commentsImg} alt="comments"/>
-                        <i>{post.comments.length}</i>
-                    </div>
-                </div>
+                <PostPanel version="full" post={post}/>
             </section>
         )
     }
