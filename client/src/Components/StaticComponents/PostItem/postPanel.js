@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/* Module */
+import {Link} from 'react-router-dom'
+
 /* Img */
 import arrowImg from "../../../Static/img/stats/arrow.png";
 import Counter from "../Counter";
@@ -21,14 +24,14 @@ class PostPanel extends Component {
                     <img src={favoriteImg} alt="favorite"/>
                     <i>{post.favorites}</i>
                 </div>
-                <div className="news_views">
+                <Link to={`/post/${post._id}`}  className="news_views">
                     <img src={eyeImg} alt="eye"/>
                     <i>{post.views.length}</i>
-                </div>
-                <div className="news_comments">
+                </Link>
+                <Link to={`/post/${post._id}`} className="news_comments">
                     <img src={commentsImg} alt="comments"/>
                     <i>{post.comments.length}</i>
-                </div>
+                </Link>
             </div>
         )
     }

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const keys = require('../config/keys');
+const keys = require('../config');
 
 mongoose.connect(keys.mongodb.dbConnect)
     .then(() => console.log("Connect to db!"))
