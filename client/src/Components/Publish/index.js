@@ -80,7 +80,7 @@ class Publish extends Component {
         };
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage("publish");
     }
 

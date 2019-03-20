@@ -67,7 +67,7 @@ class SignUp extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage('auth');
         document.title = "Bobr: Регистрация";
     }

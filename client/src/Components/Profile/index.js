@@ -23,7 +23,7 @@ class Profile extends Component {
         this.setState({redirect: true})
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage('profile');
     }
 

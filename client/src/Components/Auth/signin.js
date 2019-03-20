@@ -50,7 +50,7 @@ class SignIn extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage('auth');
         document.title = "Bobr: Вход";
     }

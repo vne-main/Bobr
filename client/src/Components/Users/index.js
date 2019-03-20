@@ -55,7 +55,7 @@ class Users extends Component {
             })
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage("users");
         this.getUserList();
     }

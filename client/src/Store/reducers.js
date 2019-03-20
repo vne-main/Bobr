@@ -21,7 +21,6 @@ export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_POST_LIST:
-            console.info(action.payload);
             return {
                 ...state,
                 postList: action.payload

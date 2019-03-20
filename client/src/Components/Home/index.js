@@ -40,7 +40,7 @@ class Home extends Component {
         this.setState({timeIndex: index});
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage('home');
     }
 

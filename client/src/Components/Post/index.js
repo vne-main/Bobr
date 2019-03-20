@@ -22,17 +22,12 @@ class Post extends Component {
 
     getPost(id) {
         axios.get(`/post/${id}`)
-            .then(res => {
-                console.info(res);
-                this.props.changeCurrentPost(res.data);
-            })
+            .then(res => this.props.changeCurrentPost(res.data))
             .then(() => this.setState({skeleton: false}))
-            .catch(() => {
-                this.setState({statusPost: false});
-            });
+            .catch(() => this.setState({statusPost: false}));
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage("post");
         const hashWindow = window.location.hash.split('/');
         const idPost = hashWindow[hashWindow.length - 1];

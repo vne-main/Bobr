@@ -31,7 +31,7 @@ class App extends Component {
         this.props.getPostList(postList);
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.startRequest();
         const userToken = localStorage.getItem('vC3ilOckStoreMode23Port');
         if (!userToken) return;

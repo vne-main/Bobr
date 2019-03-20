@@ -15,6 +15,6 @@ app.use(BodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
 postRouter(app);
 userRouter(app);
-app.listen(3013, function () {
-    console.log("listen port: 3013")
+app.listen(3000, function () {
+    console.log("listen port: 3000")
 });

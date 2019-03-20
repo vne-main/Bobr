@@ -26,7 +26,7 @@ class Search extends Component {
         this.props.searchPost(searchString.trim());
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.changeCurrentPage("search");
     }
 
