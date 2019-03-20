@@ -6,6 +6,7 @@ import {
     ADD_NEW_COMMENT,
     GET_USER,
     LOGOUT,
+    SEARCH_POST,
 } from "./const";
 
 export const getPostList = (postList) => {
@@ -54,4 +55,11 @@ export const logout = () => {
       return {
           type: LOGOUT,
       }
+};
+
+export const searchPost = (string) => {
+    return {
+        type: SEARCH_POST,
+        payload: string
+    }
 };

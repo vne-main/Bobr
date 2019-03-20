@@ -6,6 +6,11 @@
     align-items: center;
     padding: 15px 0;
     margin-bottom: 20px;
+    position: fixed;
+    background: #ffffff;
+    top: 0;
+    left: 0;
+    z-index: 99999;
 }
 
 .header .container {
@@ -83,7 +88,6 @@
 .h_user_photo{
     width: 27px;
     height: 27px;
-    margin-left: 10px;
 }
 
 .h_user_photo img{

@@ -34,11 +34,7 @@ const User = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="status_user">
-                <span className="user_carma">2202</span>
-                <span className="user_rating">12132</span>
-            </div>
+            <span className="user_rating">12132</span>
         </aside>
     )
 };
@@ -65,11 +61,10 @@ class Users extends Component {
     }
 
     render() {
-        console.info(this.state.userList);
         return (
             <section>
                 <h3 className="title_h3 title_pages">Пользователи</h3>
-                <div className="search_user">
+                <div className="search_panel">
                     <input type="text" placeholder="Найти пользователя"/>
                     <SearchIcon/>
                 </div>
@@ -79,10 +74,7 @@ class Users extends Component {
                         <div>
                             <span>Имя</span>
                         </div>
-                        <div className="status_user">
-                            <span>Карма</span>
                             <span>Рейтинг</span>
-                        </div>
                     </aside>
                     <User/>
                     <User/>

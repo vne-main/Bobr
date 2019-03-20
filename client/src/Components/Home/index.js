@@ -21,8 +21,16 @@ class Home extends Component {
             sortArray: ['Лучшее', 'Разное', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
+            initialPageSize: 3,
+            currentPage: 1,
         };
     }
+
+    changePages = (openPage) => {
+        if (openPage === this.state.currentPage) return;
+        this.setState({currentPage: openPage});
+        window.scrollTo(0, 0);
+    };
 
     changeTab(index) {
         this.setState({sortIndex: index});
@@ -38,7 +46,15 @@ class Home extends Component {
 
     render() {
         const {postList} = this.props;
-        const {sortIndex, timeSort, timeIndex, sortArray} = this.state;
+        const {sortIndex, timeSort, timeIndex, sortArray, currentPage, initialPageSize} = this.state;
+        const paginationArr = postList.slice(
+            (currentPage - 1) * initialPageSize,
+            (currentPage - 1) * initialPageSize + initialPageSize
+        );
+        let btnArray = [];
+        for(let i = 0; i < (postList.length / initialPageSize); i++){
+            btnArray.push(i+1);
+        }
         return (
             <section>
                 <SelectStream/>
@@ -80,7 +96,7 @@ class Home extends Component {
                 }
                 {sortIndex === 0 &&
                 <section>
-                    {postList.map((el, i) => {
+                    {paginationArr.map((el, i) => {
                         return (
                             <div key={i}>
                                 <section className="h_full_post">
@@ -92,6 +108,19 @@ class Home extends Component {
                             </div>
                         )
                     })}
+                    <ol className="pagination_panel">
+                        {btnArray.map((el, i) => {
+                            return (
+                                <li
+                                    key={i}
+                                    onClick={() => this.changePages(el)}
+                                    className={el === currentPage ? "pagination_active" : ""}
+                                >
+                                    {el}
+                                </li>
+                            )
+                        })}
+                    </ol>
                 </section>
                 }
                 {sortIndex === 1 &&

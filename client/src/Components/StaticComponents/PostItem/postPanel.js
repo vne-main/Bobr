@@ -24,10 +24,10 @@ class PostPanel extends Component {
                     <img src={favoriteImg} alt="favorite"/>
                     <i>{post.favorites}</i>
                 </div>
-                <Link to={`/post/${post._id}`}  className="news_views">
+                <div className="news_views">
                     <img src={eyeImg} alt="eye"/>
                     <i>{post.views.length}</i>
-                </Link>
+                </div>
                 <Link to={`/post/${post._id}`} className="news_comments">
                     <img src={commentsImg} alt="comments"/>
                     <i>{post.comments.length}</i>

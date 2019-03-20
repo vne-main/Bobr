@@ -16,6 +16,7 @@ import Users from './Components/Users';
 import SignIn from './Components/Auth/signin';
 import SignUp from './Components/Auth/signup';
 import Profile from './Components/Profile/';
+import Search from './Components/Search/';
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -53,6 +54,7 @@ class App extends Component {
                                 <Route path="/publish" component={Publish}/>
                                 <Route path="/users" component={Users}/>
                                 <Route path="/profile" component={Profile}/>
+                                <Route path="/search" component={Search}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
                                 <Route component={NotFound}/>

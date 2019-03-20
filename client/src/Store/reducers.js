@@ -6,6 +6,7 @@ import {
     ADD_NEW_COMMENT,
     GET_USER,
     LOGOUT,
+    SEARCH_POST,
 } from "./const";
 
 const initialState = {
@@ -13,12 +14,14 @@ const initialState = {
     currentPost: {},
     currentPage: "",
     user: {},
+    searchList: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_POST_LIST:
+            console.info(action.payload);
             return {
                 ...state,
                 postList: action.payload
@@ -38,6 +41,7 @@ export const rootReducer = (state = initialState, action) => {
                 case 'users': document.title = `${bobr} Пользователи`; break;
                 case 'post': document.title = `${bobr} Пост`; break;
                 case 'profile': document.title = `${bobr} Профиль`; break;
+                case 'search': document.title = `${bobr} Поиск`; break;
                 default: document.title = `Bobr`;
             }
             window.scrollTo(0, 0);
@@ -76,6 +80,20 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: {}
+            };
+
+        case SEARCH_POST:
+            const searchStr = action.payload.toLowerCase();
+            const searchArr = [...state.postList].filter((el) => {
+                if(el.title.toLowerCase().includes(searchStr)){
+                    return el.title.toLowerCase().includes(searchStr);
+                } else {
+                    return el.text.toLowerCase().includes(searchStr);
+                }
+            });
+            return {
+                ...state,
+                searchList: searchArr
             };
 
         default:

@@ -36,7 +36,9 @@ class Header extends Component {
                         </nav>
                     </div>
                     <div className="header_panel">
-                        <SearchIcon/>
+                        <Link to="/search">
+                            <SearchIcon/>
+                        </Link>
                         {!user._id ?
                             <div>
                                 <Link to="/signin">
@@ -55,9 +57,9 @@ class Header extends Component {
                             </div>
                         }
                     </div>
-                    <div className="header_mobile_user">
+                    <Link to="/profile" className="header_mobile_user">
                         <img src={UserImg} alt="user"/>
-                    </div>
+                    </Link>
                 </div>
             </section>
         )

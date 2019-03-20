@@ -1,13 +1,13 @@
-.search_user {
+.search_panel {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: 1px solid #d7dee0;
-    padding: 0 10px;
+    padding: 0 10px 0 5px;
 }
 
-.search_user input {
+.search_panel input {
     width: 100%;
     height: 30px;
     margin: 5px 10px 5px 10px;

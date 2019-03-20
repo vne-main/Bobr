@@ -63,6 +63,8 @@ input, .publish_label textarea {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-top: 84px;
+
 }
 
 .vh_block_auth{
