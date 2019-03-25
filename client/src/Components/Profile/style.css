@@ -1,0 +1,16 @@
+.profile_top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.profile_user_photo{
+    width: 100%;
+    max-width: 50px;
+}
+
+.profile_login{
+    color: #548eaa;
+}

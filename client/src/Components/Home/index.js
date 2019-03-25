@@ -21,7 +21,7 @@ class Home extends Component {
             sortArray: ['Лучшее', 'Разное', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
-            initialPageSize: 3,
+            initialPageSize: 5,
             currentPage: 1,
         };
     }

@@ -29,6 +29,7 @@ class Place {
             text: postObject.text,
             tags: postObject.tags,
         });
+        console.info(newPost);
         newPost.save(err => console.log(err));
         return newPost;
     }

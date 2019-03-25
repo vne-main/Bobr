@@ -32,9 +32,21 @@ class Profile extends Component {
         const {redirect} = this.state;
         if (redirect || !user._id) return <Redirect to='/'/>;
         return (
-            <div>
+            <section>
+                <div className="profile_top">
+                    <img src={user.photo} alt="user_photo" className="profile_user_photo"/>
+                    <button className="blue_button">Настроить профиль</button>
+                </div>
+
+                <div>
+                    <h3 className="profile_login">@{user.login}</h3>
+                    <p>Пользователь</p>
+                </div>
+
+
+
                 <button className="blue_button" onClick={() => this.authOut()}>Выход</button>
-            </div>
+            </section>
         )
     }
 }
