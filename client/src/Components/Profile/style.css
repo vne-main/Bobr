@@ -1,16 +1,32 @@
-.profile_top{
+.profile_top, .profile_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-.profile_user_photo{
+.profile_content{
+    margin-top: 15px;
+}
+
+.profile_user_photo {
     width: 100%;
     max-width: 50px;
 }
 
-.profile_login{
+.profile_login {
     color: #548eaa;
+}
+
+.profile_posts{
+    height: 60px;
+    width: 70%;
+}
+
+.profile_information{
+    height: 60px;
+    margin: 0 0 20px 30px;
+    width: 30%;
+    border-bottom: 1px solid #d5dddf;
 }

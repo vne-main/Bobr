@@ -15,6 +15,8 @@ class Profile extends Component {
         super(props);
         this.state = {
             redirect: false,
+            sortIndex: 0,
+            sortArray: ['Ваши посты', 'Избранное'],
         }
     }
 
@@ -23,13 +25,18 @@ class Profile extends Component {
         this.setState({redirect: true})
     }
 
+    changeTab(index) {
+        this.setState({sortIndex: index});
+    }
+
     componentDidMount() {
         this.props.changeCurrentPage('profile');
     }
 
     render() {
         const {user} = this.props;
-        const {redirect} = this.state;
+        console.info(user);
+        const {redirect, sortArray, sortIndex} = this.state;
         if (redirect || !user._id) return <Redirect to='/'/>;
         return (
             <section>
@@ -37,14 +44,26 @@ class Profile extends Component {
                     <img src={user.photo} alt="user_photo" className="profile_user_photo"/>
                     <button className="blue_button">Настроить профиль</button>
                 </div>
-
                 <div>
                     <h3 className="profile_login">@{user.login}</h3>
                     <p>Пользователь</p>
                 </div>
-
-
-
+                <div className="profile_content">
+                    <aside className="profile_posts tab_panel">
+                        {sortArray.map((el, i) => {
+                            return (
+                                <span
+                                    key={i}
+                                    onClick={() => this.changeTab(i)}
+                                    className={sortIndex === i ? "tab_panel_active" : ""}>
+                                {el}
+                            </span>
+                            )
+                        })}
+                    </aside>
+                    <aside className="profile_information">
+                    </aside>
+                </div>
                 <button className="blue_button" onClick={() => this.authOut()}>Выход</button>
             </section>
         )
