@@ -1,9 +1,19 @@
 .profile_top, .profile_content {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
     margin-bottom: 25px;
+}
+
+.profile_btn_panel{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile_btn_panel button:first-child{
+    margin-bottom: 5px;
 }
 
 .profile_content{
@@ -20,13 +30,25 @@
 }
 
 .profile_posts{
-    height: 60px;
     width: 70%;
 }
 
 .profile_information{
-    height: 60px;
-    margin: 0 0 20px 30px;
-    width: 30%;
-    border-bottom: 1px solid #d5dddf;
+    width: 330px;
+    margin-left: 20px;
+}
+
+.profile_user_info li{
+    margin-top: 10px;
+    display: flex;
+    color: #464646;
+    font-size: 14px;
+}
+
+.profile_user_info span:first-child{
+    font-weight: bold;
+}
+
+.profile_user_info span{
+    width: 50%;
 }

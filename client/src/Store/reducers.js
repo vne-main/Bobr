@@ -58,6 +58,7 @@ export const rootReducer = (state = initialState, action) => {
                 case 'post': document.title = `${bobr} Пост`; break;
                 case 'profile': document.title = `${bobr} Профиль`; break;
                 case 'search': document.title = `${bobr} Поиск`; break;
+                case 'channels': document.title = `${bobr} Каналы`; break;
                 default: document.title = `Bobr`;
             }
             window.scrollTo(0, 0);

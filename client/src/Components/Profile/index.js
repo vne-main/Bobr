@@ -42,7 +42,10 @@ class Profile extends Component {
             <section>
                 <div className="profile_top">
                     <img src={user.photo} alt="user_photo" className="profile_user_photo"/>
-                    <button className="blue_button">Настроить профиль</button>
+                    <div className="profile_btn_panel">
+                        <button className="blue_button">Настроить профиль</button>
+                        <button className="blue_button" onClick={() => this.authOut()}>Выход</button>
+                    </div>
                 </div>
                 <div>
                     <h3 className="profile_login">@{user.login}</h3>
@@ -61,10 +64,36 @@ class Profile extends Component {
                             )
                         })}
                     </aside>
-                    <aside className="profile_information">
+                    <aside className="right_column_box profile_information">
+                        <h3>Информация</h3>
+                        <ol className="profile_user_info">
+                            <li>
+                                <span>Зарегистрирован</span>
+                                <span>{user.dateRegistration.split('T')[0]}</span>
+                            </li>
+                            <li>
+                                <span>Почта</span>
+                                <span>{user.email}</span>
+                            </li>
+                            <li>
+                                <span>Пол</span>
+                                <span>{user.gender}</span>
+                            </li>
+                            <li>
+                                <span>Рейтинг</span>
+                                <span>{user.rating}</span>
+                            </li>
+                            <li>
+                                <span>Читателей</span>
+                                <span>{user.subscribe.length}</span>
+                            </li>
+                            <li>
+                                <span>Подписок</span>
+                                <span>{user.following.length}</span>
+                            </li>
+                        </ol>
                     </aside>
                 </div>
-                <button className="blue_button" onClick={() => this.authOut()}>Выход</button>
             </section>
         )
     }

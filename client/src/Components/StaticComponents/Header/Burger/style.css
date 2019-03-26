@@ -1,5 +1,6 @@
 .mobile_burger{
     display: none;
+    cursor: pointer;
 }
 
 .menu-item a {

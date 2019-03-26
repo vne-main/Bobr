@@ -5,26 +5,19 @@ import HamburgerMenu from 'react-hamburger-menu'
 import {Link} from "react-router-dom";
 
 class MenuContent extends Component {
-    state = {
-        linkArray: [
-            {link: "/", name: "Публикации"},
-            {link: "/publish", name: "Опубликовать"},
-            {link: "/users", name: "Пользователи"}
-        ]
-    };
 
     render() {
-        const {linkArray} = this.state;
+        const {navigation} = this.props;
         return (
             <div className="menu-item">
-                {linkArray.map((el, i) => {
+                {navigation.map((el, i) => {
                     return (
                         <Link
                             key={i}
                             to={el.link}
                             onClick={this.props.closeCallback}
                         >
-                            {el.name}
+                            {el.title}
                         </Link>
                     )
                 })}
@@ -48,12 +41,16 @@ export default class Burger extends Component {
     }
 
     render() {
+        const {navigation} = this.props;
         return (
             <div className="mobile_burger">
                 <CheeseburgerMenu
                     isOpen={this.state.menuOpen}
                     closeCallback={this.closeMenu.bind(this)}>
-                    <MenuContent closeCallback={this.closeMenu.bind(this)}/>
+                    <MenuContent
+                        closeCallback={this.closeMenu.bind(this)}
+                        navigation={navigation}
+                    />
                 </CheeseburgerMenu>
                 <HamburgerMenu
                     isOpen={this.state.menuOpen}

@@ -12,27 +12,39 @@ import connect from "react-redux/es/connect/connect";
 
 class Header extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            navigation: [
+                {link: "/", title: "Публикации", page: "home"},
+                {link: "/publish", title: "Опубликовать", page: "publish"},
+                {link: "/users", title: "Пользователи", page: "users"},
+                {link: "/channels", title: "Каналы", page: "channels"},
+            ]
+        }
+    }
+
     render() {
+        const {navigation} = this.state;
         const {currentPage, user} = this.props;
         return (
             <section className="header">
                 <div className="container">
-                    <Burger/>
+                    <Burger navigation={navigation}/>
                     <div className="header_right">
                         <Link to="/" className="header_logo">bobr</Link>
                         <nav className="header_navigation">
-                            <Link to="/"
-                                  className={currentPage === "home" ? "active_page" : ""}>
-                                  Публикации
-                            </Link>
-                            <Link to="/publish"
-                                  className={currentPage === "publish" ? "active_page" : ""}>
-                                Опубликовать
-                            </Link>
-                            <Link to="/users"
-                                  className={currentPage === "users" ? "active_page" : ""}>
-                                Пользователи
-                            </Link>
+                            {navigation.map((el, i) => {
+                                return (
+                                    <Link
+                                        to={el.link}
+                                        className={currentPage === el.page ? "active_page" : ""}
+                                        key={i}
+                                    >
+                                        {el.title}
+                                    </Link>
+                                )
+                            })}
                         </nav>
                     </div>
                     <div className="header_panel">

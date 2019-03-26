@@ -13,6 +13,7 @@ import Home from './Components/Home';
 import Post from './Components/Post';
 import Publish from './Components/Publish';
 import Users from './Components/Users';
+import Channels from './Components/Channels';
 import SignIn from './Components/Auth/signin';
 import SignUp from './Components/Auth/signup';
 import Profile from './Components/Profile/';
@@ -42,6 +43,7 @@ class App extends Component {
 
     render() {
         const {currentPage} = this.props;
+        const notCurrent = ['auth','profile','channels'];
         return (
             <HashRouter>
                 <div className={currentPage === "auth" ? "vh_block_auth" : "vh_block"}>
@@ -57,9 +59,10 @@ class App extends Component {
                                 <Route path="/search" component={Search}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
+                                <Route path="/channels" component={Channels}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            {currentPage !== "auth" && currentPage !== "profile" && <RightColumn/>}
+                            {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
                         </main>
                     </div>
                     {currentPage !== "auth" && <Footer/>}
