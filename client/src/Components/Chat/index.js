@@ -16,7 +16,7 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ws: new WebSocket('ws://localhost:3001'),
+            ws: new WebSocket('ws://localhost:3002'),
             message: "",
             list: [],
         }
