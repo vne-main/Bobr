@@ -18,13 +18,13 @@ postRouter(app);
 userRouter(app);
 chatRouter(app);
 
-app.listen(3000, function () {
-    console.log("listen port: 3000")
+app.listen(3001, function () {
+    console.log("listen port: 3001")
 });
 
 
 const WebSocket = require('ws'),
-    wss = new WebSocket.Server({ port: 3001});
+    wss = new WebSocket.Server({ port: 3002});
 
 wss.on('connection', ws => {
     ws.on('message', message => {
