@@ -2,6 +2,7 @@ const logger = require('morgan'),
       BodyParser = require('body-parser'),
       postRouter = require('./routes/post-routes'),
       userRouter = require('./routes/user-routes'),
+      chatRouter = require('./routes/chat-routes'),
       express = require('express'),
       cors = require('cors'),
       app = express();
@@ -15,13 +16,16 @@ app.use(BodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
 postRouter(app);
 userRouter(app);
+chatRouter(app);
 
 app.listen(3000, function () {
     console.log("listen port: 3000")
 });
 
+
 const WebSocket = require('ws'),
-    wss = new WebSocket.Server({ port: 3001});
+    wss = new WebSocket.Server({ port: 3001}),
+    chatData = require('./models/chat-func');
 
 wss.on('connection', ws => {
     ws.on('message', message => {
@@ -33,9 +37,11 @@ wss.on('connection', ws => {
             wss.clients.forEach(client => {
                 if (client.readyState === WebSocket.OPEN){
                     client.send(data);
+                    (async (req) => {
+                        await chatData.addMessage(req);
+                    })({text: data});
                 }
             });
         }
     });
-    ws.send('Something');
 });

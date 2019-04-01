@@ -7,7 +7,7 @@ const postSchema = new Schema({
     author_img: String,
     time: {type: Date, default: Date.now},
     title: String,
-    tags: {type: [String], default: 'Bobr'},
+    tags: [String],
     text: String,
     likes: {type: Number, default: 0},
     favorites: {type: Number, default: 0},
@@ -22,5 +22,5 @@ const postSchema = new Schema({
     }]
 });
 
-const Post = mongoose.model('post', postSchema);
+const Post = mongoose.model('posts', postSchema);
 module.exports = Post;

@@ -3,6 +3,7 @@ import './style.css';
 import {bindActionCreators} from "redux";
 import {changeCurrentPage, pushNewPost} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
+import axios from 'axios';
 
 /** MATERIAL **/
 import Chip from '@material-ui/core/Chip';
@@ -53,16 +54,23 @@ class Publish extends Component {
     };
 
     publishPost = async () => {
+        const {title, text, tagsData} = this.state;
         this.setState({status: "Пожалуйста, подождите..."});
         const jsonData = this.checkData();
         if (!jsonData) return false;
-        const requestPublish = await fetch('/post', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(jsonData),
+        axios.post('/post', {
+            author_name: "Admin",
+            author_img: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
+            text: text,
+            tags: tagsData,
+            title: title
+        }).then(res => {
+            this.successSend(res.data);
+        }).catch(err => {
+            console.info("Error require in: /post/comment");
+            console.error(err);
+            this.setState({status: "Ошибка сервера"});
         });
-        const newPost = await requestPublish.json();
-        this.successSend(newPost);
     };
 
     checkData() {
@@ -71,13 +79,7 @@ class Publish extends Component {
             this.setState({status: "Введите все данные"});
             return false;
         }
-        return {
-            author_name: "Admin",
-            author_img: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
-            text: text,
-            tags: tagsData,
-            title: title
-        };
+        return true;
     };
 
     componentDidMount() {

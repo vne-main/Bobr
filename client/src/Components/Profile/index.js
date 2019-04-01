@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './style.css';
-import {bindActionCreators} from "redux";
-import {changeCurrentPage, logout} from "../../Store/actions";
 
 /* Module */
 import {Redirect} from "react-router";
 
 /* Redux */
 import connect from "react-redux/es/connect/connect";
+import {bindActionCreators} from "redux";
+import {changeCurrentPage, logout} from "../../Store/actions";
 
 class Profile extends Component {
 
@@ -35,7 +35,6 @@ class Profile extends Component {
 
     render() {
         const {user} = this.props;
-        console.info(user);
         const {redirect, sortArray, sortIndex} = this.state;
         if (redirect || !user._id) return <Redirect to='/'/>;
         return (

@@ -13,24 +13,7 @@ const initialState = {
     postList: [],
     currentPost: {},
     currentPage: "",
-    user: {
-        dateRegistration: "2019-03-13T03:02:13.766Z",
-        email: "1",
-        favorites: [],
-        following: [],
-        gender: "другой",
-        likes: [],
-        login: "1",
-        password: "c4ca4238a0b923820dcc509a6f75849b",
-        photo: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
-        posts: [],
-        rating: 0,
-        status: "",
-        subscribe: [],
-        token: "c4ca4238a0b923820dcc509a6f75849bc4ca4238a0b923820dcc509a6f75849b",
-        __v: 0,
-        _id: "5c8872b5a0adc911c4675f3a",
-    },
+    user: {},
     searchList: [],
 };
 
@@ -58,7 +41,7 @@ export const rootReducer = (state = initialState, action) => {
                 case 'post': document.title = `${bobr} Пост`; break;
                 case 'profile': document.title = `${bobr} Профиль`; break;
                 case 'search': document.title = `${bobr} Поиск`; break;
-                case 'channels': document.title = `${bobr} Каналы`; break;
+                case 'chat': document.title = `${bobr} Чат`; break;
                 default: document.title = `Bobr`;
             }
             window.scrollTo(0, 0);

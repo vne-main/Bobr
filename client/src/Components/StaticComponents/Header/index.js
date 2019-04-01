@@ -19,7 +19,7 @@ class Header extends Component {
                 {link: "/", title: "Публикации", page: "home"},
                 {link: "/publish", title: "Опубликовать", page: "publish"},
                 {link: "/users", title: "Пользователи", page: "users"},
-                {link: "/channels", title: "Каналы", page: "channels"},
+                {link: "/chat", title: "Чат", page: "chat"},
             ]
         }
     }

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Route, HashRouter, Switch} from 'react-router-dom';
 
 /* Module */
 import axios from 'axios';
+import {Route, HashRouter, Switch} from 'react-router-dom';
 
 /* Components */
 import RightColumn from './Components/RightColumn';
@@ -13,7 +13,7 @@ import Home from './Components/Home';
 import Post from './Components/Post';
 import Publish from './Components/Publish';
 import Users from './Components/Users';
-import Channels from './Components/Channels';
+import Chat from './Components/Chat';
 import SignIn from './Components/Auth/signin';
 import SignUp from './Components/Auth/signup';
 import Profile from './Components/Profile/';
@@ -26,14 +26,11 @@ import connect from "react-redux/es/connect/connect";
 
 class App extends Component {
 
-    startRequest = async () => {
-        const requestGetPosts = await fetch('/post');
-        const postList = await requestGetPosts.json();
-        this.props.getPostList(postList);
-    };
-
     componentDidMount() {
-        this.startRequest();
+        axios.get('/post')
+            .then(res => this.props.getPostList(res.data))
+            .catch(err => console.error(err));
+
         const userToken = localStorage.getItem('vC3ilOckStoreMode23Port');
         if (!userToken) return;
         axios.post('/auth/check', {token: userToken})
@@ -59,7 +56,7 @@ class App extends Component {
                                 <Route path="/search" component={Search}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
-                                <Route path="/channels" component={Channels}/>
+                                <Route path="/chat" component={Chat}/>
                                 <Route component={NotFound}/>
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
