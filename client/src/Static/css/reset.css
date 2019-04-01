@@ -45,7 +45,9 @@ a{
         box-sizing: border-box;
 	outline: none!important
 }
-img{
+img,
+.time_sort span,
+.tab_panel span{
     -ms-user-select: none;
     -moz-user-select: none;
     -khtml-user-select: none;

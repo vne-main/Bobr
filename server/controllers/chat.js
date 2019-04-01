@@ -7,6 +7,11 @@ class Fetch {
         res.send(messages);
     }
 
+    static async addMessage(req, res) {
+        const messages = await chatData.addMessage(req.body);
+        res.send(messages);
+    }
+
 }
 
 module.exports = Fetch;

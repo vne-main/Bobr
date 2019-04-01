@@ -26,10 +26,8 @@ class Chat extends Component {
         const {ws} = this.state;
 
         const write = (message) => {
-            let newList = [...this.state.list];
-            newList.push({text: message});
             this.setState({
-                list: newList,
+                list: [{text: message}].concat(this.state.list),
                 message: "",
             });
         };
@@ -48,16 +46,19 @@ class Chat extends Component {
         };
     }
 
-    add() {
+    sendMessage(){
         const {ws, message} = this.state;
         ws.send(JSON.stringify(message));
+        axios.post('/message', {text: message})
+            .then(res => console.info(res))
+            .catch(err => console.error(err));
     }
 
     componentDidMount() {
         this.webSocket();
         this.props.changeCurrentPage("chat");
-        axios.get('/messages')
-            .then(res => this.setState({list: res.data}))
+        axios.get('/message')
+            .then(res => this.setState({list: res.data.reverse()}))
             .catch(err => console.error(err));
     }
 
@@ -66,19 +67,19 @@ class Chat extends Component {
         return (
             <section>
                 <h3 className="title_h3 title_pages">Чат</h3>
+                <textarea
+                    className="chat_send"
+                    value={message}
+                    onChange={(e) => this.setState({message: e.target.value})}
+                    onKeyPress={(e) => e.charCode === 13 && this.sendMessage()}
+                />
+
                 <ol className="chat_container">
                     {list.map((el, i) => {
                         return (<li key={i}>{el.text}</li>)
                     })}
                 </ol>
-                <div className="chat_send">
-                    <textarea
-                        value={message}
-                        onChange={(e) => this.setState({message: e.target.value})}
-                        onKeyPress={(e) => e.charCode === 13 && this.add()}
-                    />
-                    <button onClick={() => this.add()}>Send</button>
-                </div>
+
             </section>
         )
     }

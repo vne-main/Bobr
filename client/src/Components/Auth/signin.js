@@ -16,8 +16,8 @@ class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: "1",
-            password: "1",
+            login: "",
+            password: "",
             status: "",
             redirect: false,
         };
@@ -34,7 +34,6 @@ class SignIn extends Component {
                 login: login,
                 password: password
             }).then(res => {
-                console.info("Data = ", res.data);
                 if (res.data.status === 502) {
                     this.setState({status: "Неверный логин или пароль"});
                     return false;
@@ -44,9 +43,7 @@ class SignIn extends Component {
                     status: "Выполняется вход",
                     redirect: true
                 });
-            }).catch(err => {
-                console.error(err);
-            })
+            }).catch(err => console.error(err));
         }
     }
 

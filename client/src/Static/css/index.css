@@ -4,17 +4,7 @@ body {
     min-width: 320px;
 }
 
-img,
-.time_sort span,
-.tab_panel span {
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-}
-
 textarea {
-    font-family: 'Roboto', sans-serif;
     resize: none;
 }
 
@@ -24,6 +14,7 @@ input, .publish_label textarea {
     padding: 10px 12px;
     border: 1px solid #d7dee0;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 ::-webkit-input-placeholder {
