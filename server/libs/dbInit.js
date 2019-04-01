@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const keys = require('../config');
 
-mongoose.connect(keys.mongodb.dbConnect)
+mongoose.connect(keys.mongodb.dbConnect, {useNewUrlParser: true})
     .then(() => console.log("Connect to db!"))
     .catch(err => console.error(err));
 mongoose.Promise = global.Promise;
