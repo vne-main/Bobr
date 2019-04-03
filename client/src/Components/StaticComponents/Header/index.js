@@ -16,7 +16,7 @@ class Header extends Component {
         super(props);
         this.state = {
             navigation: [
-                {link: "/", title: "Публикации", page: "home"},
+                {link: "/", title: "Главная", page: "home"},
                 {link: "/publish", title: "Опубликовать", page: "publish"},
                 {link: "/users", title: "Пользователи", page: "users"},
                 {link: "/chat", title: "Чат", page: "chat"},

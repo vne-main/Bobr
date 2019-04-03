@@ -22,17 +22,19 @@ footer {
     flex-direction: column;
     margin-right: 20px;
 }
+
+.footer_column a, .footer_column ol li{
+    font-size: 13px;
+    margin-top: 10px;
+    color: #548eaa;
+}
 .footer_column h3 {
     font-size: 15px;
     color: #464646;
     padding-bottom: 15px;
     border-bottom: 1px solid #d5dddf;
 }
-.footer_column ol li {
-    font-size: 13px;
-    margin-top: 10px;
-    color: #548eaa;
-}
+
 /* bottom footer */
 .footer_bottom{
     background: #edeeef;
@@ -54,7 +56,7 @@ footer {
         width: 100%;
         margin-bottom: 20px;
     }
-    .footer_column ol, .footer_column h3{
+    .footer_column{
         text-align: center;
     }
     .footer_bottom .container{

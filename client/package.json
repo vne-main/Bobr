@@ -1,6 +1,9 @@
 {
   "name": "bobr_client",
   "version": "0.1.0",
+  "author": {
+    "name": "Nikolay"
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",

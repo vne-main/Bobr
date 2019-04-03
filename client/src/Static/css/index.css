@@ -6,6 +6,7 @@ body {
 
 textarea {
     resize: none;
+    font-size: 16px;
 }
 
 input, .publish_label textarea {
