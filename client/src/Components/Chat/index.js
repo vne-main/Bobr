@@ -4,9 +4,9 @@ import './style.css';
 /* Module */
 import axios from 'axios';
 
-/* IMG */
+/* Img */
 
-/** Redux **/
+/* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/actions";
 import {connect} from "react-redux";
@@ -24,7 +24,6 @@ class Chat extends Component {
 
     webSocket() {
         const {ws} = this.state;
-
         const write = (message) => {
             this.setState({
                 list: [{text: message}].concat(this.state.list),
@@ -32,22 +31,14 @@ class Chat extends Component {
             });
         };
 
-        ws.onopen = function () {
-            console.info("Connect");
-        };
-
-        ws.onmessage = function (e) {
-            const message = e.data;
-            write(message);
-        };
-
-        ws.onerror = function (err) {
-            console.error(err);
-        };
+        ws.onmessage = (e) => write(e.data);
+        ws.onopen = () => console.info("Connect");
+        ws.onerror = (err) => console.error(err);
     }
 
     sendMessage(){
         const {ws, message} = this.state;
+        if(message.trim() === "") return;
         ws.send(JSON.stringify(message));
         axios.post('/message', {text: message})
             .then(res => console.info(res))
@@ -67,13 +58,18 @@ class Chat extends Component {
         return (
             <section>
                 <h3 className="title_h3 title_pages">Чат</h3>
-                <textarea
-                    className="chat_send"
-                    value={message}
-                    onChange={(e) => this.setState({message: e.target.value})}
-                    onKeyPress={(e) => e.charCode === 13 && this.sendMessage()}
-                />
-
+                <div className="chat_send">
+                    <textarea
+                        value={message}
+                        onChange={(e) => this.setState({message: e.target.value})}
+                        onKeyPress={(e) => e.charCode === 13 && this.sendMessage()}
+                        placeholder="Введите сообщение..."
+                    />
+                    <button
+                        className="blue_button"
+                        onClick={() => this.sendMessage()}
+                    >Отправить</button>
+                </div>
                 <ol className="chat_container">
                     {list.map((el, i) => {
                         return (<li key={i}>{el.text}</li>)

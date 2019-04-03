@@ -63,12 +63,11 @@
     flex-direction: column;
 }
 
-.t_user_name span {
+.t_user_name {
     font-weight: bold;
-    margin-right: 5px;
 }
 
-.t_user_name i, .t_user_last_post span{
+.t_user_last_post span{
     color: #548eaa;
     cursor: pointer;
 }

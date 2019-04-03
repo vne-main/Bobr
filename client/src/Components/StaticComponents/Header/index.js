@@ -48,7 +48,7 @@ class Header extends Component {
                         </nav>
                     </div>
                     <div className="header_panel">
-                        <Link to="/search">
+                        <Link to="/search" className="search_icon">
                             <SearchIcon/>
                         </Link>
                         {!user._id ?
@@ -62,16 +62,24 @@ class Header extends Component {
                             </div>
                             :
                             <div className="flex h_auth_user">
-                                <button className="sign_in_btn">Написать</button>
+                                <Link to="/chat">
+                                    <button className="sign_in_btn">Написать</button>
+                                </Link>
                                 <Link to="/profile" className="h_user_photo">
                                     <img src={user.photo} alt="userIcon"/>
                                 </Link>
                             </div>
                         }
                     </div>
-                    <Link to="/profile" className="header_mobile_user">
-                        <img src={UserImg} alt="user"/>
-                    </Link>
+                        {!user._id ?
+                            <Link to="/signin" className="header_mobile_user">
+                                <img src={UserImg} alt="user" className="h_mobile_user_photo"/>
+                            </Link>
+                            :
+                            <Link to="/profile" className="header_mobile_user">
+                                <img src={user.photo} alt="user" className="h_mobile_user_photo"/>
+                            </Link>
+                        }
                 </div>
             </section>
         )

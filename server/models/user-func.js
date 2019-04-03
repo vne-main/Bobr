@@ -4,7 +4,18 @@ const md5 = require('md5');
 class Place {
 
     static async getAllUsers() {
-        return users.find().catch(err => console.log(err));
+        let usersArray = [];
+        const defaultUsersArray = await users.find().catch(err => console.log(err));
+        defaultUsersArray.forEach(el => {
+            usersArray.push({
+                login: el.login,
+                photo: el.photo,
+                status: el.status,
+                rating: el.rating,
+                posts: el.posts,
+            });
+        });
+        return usersArray;
     }
 
     static async signUp(userData) {
