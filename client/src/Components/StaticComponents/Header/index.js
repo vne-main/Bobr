@@ -71,15 +71,15 @@ class Header extends Component {
                             </div>
                         }
                     </div>
-                        {!user._id ?
-                            <Link to="/signin" className="header_mobile_user">
-                                <img src={UserImg} alt="user" className="h_mobile_user_photo"/>
-                            </Link>
-                            :
-                            <Link to="/profile" className="header_mobile_user">
-                                <img src={user.photo} alt="user" className="h_mobile_user_photo"/>
-                            </Link>
-                        }
+                    {!user._id ?
+                        <Link to="/signin" className="header_mobile_user">
+                            <img src={UserImg} alt="user" className="h_mobile_user_photo"/>
+                        </Link>
+                        :
+                        <Link to="/profile" className="header_mobile_user">
+                            <img src={user.photo} alt="user" className="h_mobile_user_photo"/>
+                        </Link>
+                    }
                 </div>
             </section>
         )

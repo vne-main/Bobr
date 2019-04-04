@@ -20,7 +20,7 @@ class Place {
 
     static async signUp(userData) {
         const checkEmail = await users.find({email: userData.email});
-        const checkLogin = await users.find({email: userData.login});
+        const checkLogin = await users.find({login: userData.login});
         if (checkEmail.length !== 0) return {status: 502, value: "email"};
         if (checkLogin.length !== 0) return {status: 502, value: "login"};
         const newUser = new users({

@@ -3,7 +3,7 @@ import './style.css';
 
 /* Module */
 import {Link} from 'react-router-dom';
-import {Redirect} from 'react-router'
+import {Redirect} from "react-router";
 import axios from 'axios';
 
 /* Redux */
@@ -23,27 +23,38 @@ class SignIn extends Component {
         };
     }
 
-    signin() {
+    signIn() {
         const {login, password} = this.state;
-        this.setState({status: "Пожалуйста, подождите..."});
-        if (login.trim() === "" || password.trim() === "") {
-            this.setState({status: "Введите данные"});
-            return false;
-        } else {
-            axios.post('/auth/signin', {
-                login: login,
-                password: password
-            }).then(res => {
-                if (res.data.status === 502) {
-                    this.setState({status: "Неверный логин или пароль"});
-                    return false;
-                }
+        axios.post('/auth/signin', {
+            login: login,
+            password: password
+        }).then(res => {
+            if (res.data.status === 502) {
+                this.setState({status: "Неверный никнейм или пароль"});
+            } else {
                 this.props.getUser(res.data);
                 this.setState({
-                    status: "Выполняется вход",
+                    status: "Выполняется вход...",
                     redirect: true
                 });
-            }).catch(err => console.error(err));
+            }
+        }).catch(err => {
+            console.error(err);
+            this.setState({status: "Ошибка сервера"});
+        });
+    }
+
+    checkData() {
+        let {login, password} = this.state;
+        this.setState({status: "Пожалуйста, подождите..."});
+        login = login.trim();
+        password = password.trim();
+        if (login === "") {
+            this.setState({status: "Введите логин / e-mail"});
+        } else if (password === "") {
+            this.setState({status: "Введите пароль"});
+        } else {
+            this.signIn();
         }
     }
 
@@ -61,10 +72,12 @@ class SignIn extends Component {
                     <Link to="/" className="auth_back">На главную</Link>
                     <h4 className="auth_title">Вход</h4>
                     <aside className="auth_box">
-                        <label>Логин / E-mail</label>
+                        <label>Никнейм / E-mail</label>
                         <input type="text"
                                value={login}
                                onChange={(e) => this.setState({login: e.target.value})}
+                               placeholder="..."
+                               onKeyPress={(e) => e.charCode === 13 && this.checkData()}
                         />
                     </aside>
                     <aside className="auth_box">
@@ -72,9 +85,11 @@ class SignIn extends Component {
                         <input type="password"
                                value={password}
                                onChange={(e) => this.setState({password: e.target.value})}
+                               placeholder="..."
+                               onKeyPress={(e) => e.charCode === 13 && this.checkData()}
                         />
                     </aside>
-                    <button className="blue_button auth_btn" onClick={() => this.signin()}>Войти</button>
+                    <button className="blue_button auth_btn" onClick={() => this.checkData()}>Войти</button>
                     <p className="auth_status">{status}</p>
                 </aside>
                 <aside className="auth_bottom">

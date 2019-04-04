@@ -30,7 +30,6 @@ class Chat extends Component {
                 message: "",
             });
         };
-
         ws.onmessage = (e) => write(e.data);
         ws.onopen = () => console.info("Connect");
         ws.onerror = (err) => console.error(err);
@@ -41,7 +40,6 @@ class Chat extends Component {
         if(message.trim() === "") return;
         ws.send(JSON.stringify(message));
         axios.post('/message', {text: message})
-            .then(res => console.info(res))
             .catch(err => console.error(err));
     }
 
@@ -72,7 +70,14 @@ class Chat extends Component {
                 </div>
                 <ol className="chat_container">
                     {list.map((el, i) => {
-                        return (<li key={i}>{el.text}</li>)
+                        const formatDate = new Date(el.time).toLocaleString().split(",")[1];
+                        return (
+                            <li key={i}>
+                                <span>{el.text}</span>
+                                {/*<span>{el.userName}:{el.text}</span>*/}
+                                {/*<span>{formatDate}</span>*/}
+                            </li>
+                        )
                     })}
                 </ol>
 
