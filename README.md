@@ -14,8 +14,8 @@
 - Html5
 - Css3
 - React.js (Redux, Router)
-- WebSocket
 - Node.js (Express)
+- WebSocket
 - MongoDB (Mongoose)
 - REST API
 
