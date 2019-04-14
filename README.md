@@ -14,8 +14,8 @@
 - Html5
 - Css3
 - React.js (Redux, Router)
-- WebSocket
 - Node.js (Express)
+- WebSocket
 - MongoDB (Mongoose)
 - REST API
 
@@ -24,8 +24,8 @@
 - Добавление новостей
 - Комментирование новостей
 - Поиск новостей
-- Регистрация
 - Вход
+- Регистрация
 - Чат
 - Личный кабенет
-
+- Сисок пользователей
