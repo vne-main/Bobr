@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import Sponsors from "./Sponsors";
 import Streams from "./Streams";
 import Banner from "./Banner";
+import MyCalendar from "./Calendar";
 import Statistics from "./Statistics";
 
 class RightColumn extends Component {
@@ -16,7 +17,7 @@ class RightColumn extends Component {
         const {currentPage} = this.props;
         return (
             <section className="main_right">
-                <Banner/>
+                <MyCalendar/>
                 {currentPage !== "users" && <Sponsors/>}
                 {currentPage !== "users" && <Streams/>}
                 {currentPage === "users" && <Statistics/>}
