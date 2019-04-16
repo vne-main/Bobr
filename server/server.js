@@ -5,15 +5,12 @@ const logger = require('morgan'),
       chatRouter = require('./routes/chat-routes'),
       express = require('express'),
       cors = require('cors'),
-      subdomain = require('subdomain'),
       app = express();
-
 
 app.use(cors({
     origin: "http://localhost",
     credentials: true
 }));
-app.use(subdomain({base: 'www.vasenkin.ru', removeWWW: true}));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
