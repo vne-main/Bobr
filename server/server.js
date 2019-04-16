@@ -13,7 +13,7 @@ app.use(cors({
     origin: "http://localhost",
     credentials: true
 }));
-app.use(subdomain({base: 'vasenkin.ru', removeWWW: true}));
+app.use(subdomain({base: 'www.vasenkin.ru', removeWWW: true}));
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 app.use(logger('dev'));
