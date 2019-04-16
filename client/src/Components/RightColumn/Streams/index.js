@@ -6,7 +6,7 @@ export default class Streams extends Component {
     state = {
         streams: [
             'Разработка',
-            'Дизайн',
+            'Работа',
             'Разное',
             'Маркетинг',
             'Управление',
@@ -20,9 +20,7 @@ export default class Streams extends Component {
                 <h3>Потоки</h3>
                 <ol className="right_streams_list">
                     {streams.map((el, i) => {
-                        return (
-                            <li key={i}>{el}</li>
-                        )
+                        return <li key={i}>{el}</li>
                     })}
                 </ol>
             </div>

@@ -18,7 +18,7 @@ class Home extends Component {
         super(props);
         this.state = {
             sortIndex: 0,
-            sortArray: ['Лучшее', 'Разное', 'Все подряд'],
+            sortArray: ['Важное', 'Разное', 'Все подряд'],
             timeIndex: 0,
             timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
             initialPageSize: 5,
