@@ -27,7 +27,13 @@
     "nodemon": "^1.18.9",
     "os": "^0.1.1",
     "passport": "^0.4.0",
+<<<<<<< HEAD
     "passport-google-oauth20": "^1.0.0"
+=======
+    "passport-google-oauth20": "^1.0.0",
+    "subdomain": "^1.2.0",
+    "ws": "^6.2.0"
+>>>>>>> be6258c669d2cdf9409063f44a7ce6abf56951b6
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
