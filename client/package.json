@@ -4,13 +4,6 @@
   "author": {
     "name": "Nikolay"
   },
-  "now": {
-    "alias": [
-      "www.vasenkin.ru",
-      "vasenkin.ru"
-    ],
-    "public": true
-  },
   "public": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
