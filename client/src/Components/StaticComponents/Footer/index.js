@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 export default class Footer extends Component {
@@ -10,19 +11,15 @@ export default class Footer extends Component {
                         <div className="footer_half">
                             <div className="footer_column">
                                 <h3>Аккаунт</h3>
-                                <ol>
-                                    <li>Войти</li>
-                                    <li>Регистрация</li>
-                                </ol>
+                                <Link to="signin">Войти</Link>
+                                <Link to="signup">Регистрация</Link>
                             </div>
                             <div className="footer_column">
                                 <h3>Разделы</h3>
-                                <ol>
-                                    <li>Публикации</li>
-                                    <li>Хабры</li>
-                                    <li>Компании</li>
-                                    <li>Пользователи</li>
-                                </ol>
+                                <Link to="/">Главная</Link>
+                                <Link to="/publish">Опубликовать</Link>
+                                <Link to="/users">Пользователи</Link>
+                                <Link to="/chat">Чат</Link>
                             </div>
                         </div>
                         <div className="footer_half">
@@ -47,7 +44,7 @@ export default class Footer extends Component {
                 </section>
                 <section className="footer_bottom">
                     <div className="container">
-                        <p>© 2019 by Kolyan</p>
+                        <p>© 2019 by Nikolay</p>
                         <span>Настройки языка</span>
                         <span>О сайте</span>
                         <span>Служба поддержки</span>

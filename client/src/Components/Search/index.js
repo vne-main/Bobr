@@ -43,7 +43,7 @@ class Search extends Component {
                     />
                     <SearchIcon/>
                 </div>
-                <div>
+                <div className="search_list">
                     {searchList.map((el, i) => {
                         return (
                             <div key={i}>

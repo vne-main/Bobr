@@ -3,6 +3,7 @@ import './style.css';
 import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
 import {Link} from "react-router-dom";
+import SearchIcon from '@material-ui/icons/Search';
 
 class MenuContent extends Component {
 
@@ -10,6 +11,16 @@ class MenuContent extends Component {
         const {navigation} = this.props;
         return (
             <div className="menu-item">
+                <h3 className="header_logo mobile_burger_title">bobr</h3>
+                <Link
+                    to="/search"
+                    onClick={this.props.closeCallback}
+                >
+                    <div className="burger_search">
+                        Поиск
+                        <SearchIcon/>
+                    </div>
+                </Link>
                 {navigation.map((el, i) => {
                     return (
                         <Link

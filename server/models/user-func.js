@@ -4,12 +4,23 @@ const md5 = require('md5');
 class Place {
 
     static async getAllUsers() {
-        return users.find().catch(err => console.log(err));
+        let usersArray = [];
+        const defaultUsersArray = await users.find().catch(err => console.log(err));
+        defaultUsersArray.forEach(el => {
+            usersArray.push({
+                login: el.login,
+                photo: el.photo,
+                status: el.status,
+                rating: el.rating,
+                posts: el.posts,
+            });
+        });
+        return usersArray;
     }
 
     static async signUp(userData) {
         const checkEmail = await users.find({email: userData.email});
-        const checkLogin = await users.find({email: userData.login});
+        const checkLogin = await users.find({login: userData.login});
         if (checkEmail.length !== 0) return {status: 502, value: "email"};
         if (checkLogin.length !== 0) return {status: 502, value: "login"};
         const newUser = new users({

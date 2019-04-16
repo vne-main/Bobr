@@ -9,9 +9,9 @@ import spImg3 from "../../../Static/img/sponsor/sponsor_3.png";
 export default class Sponsors extends Component {
     state = {
         sponsors: [
-            {title: "Мой компьютер", text: "Компьютер, на котором я пишу этот код", img: spImg1},
-            {title: "Хорошее настроение", text: "Хорошее настроение - ключ к успеху", img: spImg2},
-            {title: "Поставленные цели", text: "Достинув цели, не нужно останавливаться", img: spImg3},
+            {title: "УрГЭУ", text: "Уральский государственный экономический университет", img: spImg1},
+            {title: "Компьютеры", text: "Устройство для написания хорошего кода", img: spImg2},
+            {title: "Поставленные цели", text: "Реализация задуманных целей", img: spImg3},
         ],
     };
 

@@ -6,38 +6,11 @@ import axios from 'axios';
 
 /* IMG */
 import SearchIcon from '@material-ui/icons/Search';
-import spImg1 from "../../Static/img/sponsor/sponsor_1.jpg";
 
 /** Redux **/
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/actions";
 import {connect} from "react-redux";
-
-const User = () => {
-    return (
-        <aside className="row_table_user">
-            <div className="t_user">
-                <div className="t_user_icon">
-                    <img src={spImg1} alt="user_icon"/>
-                </div>
-                <div className="t_user_info">
-                    <div className="t_user_name">
-                        <span>Имя пользователя</span>
-                        <i>@login</i>
-                    </div>
-                    <span className="t_user_status">
-                                    User Status
-                                </span>
-                    <div className="t_user_last_post">
-                        <span>Какой-то новый пост</span>
-                        <i>Дата поста</i>
-                    </div>
-                </div>
-            </div>
-            <span className="user_rating">12132</span>
-        </aside>
-    )
-};
 
 class Users extends Component {
 
@@ -61,6 +34,7 @@ class Users extends Component {
     }
 
     render() {
+        const {userList} = this.state;
         return (
             <section>
                 <h3 className="title_h3 title_pages">Пользователи</h3>
@@ -76,12 +50,35 @@ class Users extends Component {
                         </div>
                             <span>Рейтинг</span>
                     </aside>
-                    <User/>
-                    <User/>
-                    <User/>
-                    <User/>
+                    {userList.map((el, i) => {
+                        return <User el={el} key={i}/>
+                    })}
                 </div>
             </section>
+        )
+    }
+}
+
+class User extends Component {
+    render(){
+        const {el} = this.props;
+        return (
+            <aside className="row_table_user">
+                <div className="t_user">
+                    <div className="t_user_icon">
+                        <img src={el.photo} alt="user_icon"/>
+                    </div>
+                    <div className="t_user_info">
+                        <span className="t_user_name">{el.login}</span>
+                        <span className="t_user_status">{el.status}</span>
+                        <div className="t_user_last_post">
+                            <span>Какой-то новый пост</span>
+                            <i>Дата поста</i>
+                        </div>
+                    </div>
+                </div>
+                <span className="user_rating">{el.rating}</span>
+            </aside>
         )
     }
 }

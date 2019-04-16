@@ -47,6 +47,15 @@
     align-items: center;
 }
 
+.h_mobile_user_photo{
+    border-radius: 3px;
+}
+
+.search_icon{
+    width: 24px;
+    height: 24px;
+}
+
 .header_panel button {
     font-size: 13px;
     border-radius: 3px;
