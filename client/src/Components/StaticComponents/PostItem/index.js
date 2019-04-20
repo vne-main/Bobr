@@ -50,7 +50,7 @@ class PostItem extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.currentPage,
+        currentPage: state.main.currentPage,
     }
 };
 

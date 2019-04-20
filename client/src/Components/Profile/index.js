@@ -7,7 +7,8 @@ import {Redirect} from "react-router";
 /* Redux */
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, logout} from "../../Store/actions";
+import {logout} from "../../Store/Actions/actionUser";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
 
 class Profile extends Component {
 
@@ -100,8 +101,8 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.currentPage,
-        user: state.user,
+        currentPage: state.main.currentPage,
+        user: state.user.user,
     }
 };
 

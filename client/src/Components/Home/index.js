@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import './style.css';
 
-/** Components **/
+/* Components */
 import SelectStream from "./SelectStream";
-
-/** Redux **/
-import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/actions";
-import {connect} from "react-redux";
 import PostItem from "../StaticComponents/PostItem";
 import PostItemMobile from "../StaticComponents/PostItem/mobile";
 import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
+
+/* Redux */
+import {bindActionCreators} from "redux";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {connect} from "react-redux";
 
 class Home extends Component {
 
@@ -133,7 +133,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        postList: state.postList
+        postList: state.post.postList
     }
 };
 

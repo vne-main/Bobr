@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 /* Components */
 import Sponsors from "./Sponsors";
 import Streams from "./Streams";
-import Banner from "./Banner";
+// import Banner from "./Banner";
 import MyCalendar from "./Calendar";
 import Statistics from "./Statistics";
 

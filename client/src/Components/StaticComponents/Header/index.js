@@ -88,8 +88,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.currentPage,
-        user: state.user,
+        currentPage: state.main.currentPage,
+        user: state.user.user,
     }
 };
 

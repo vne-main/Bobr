@@ -7,7 +7,7 @@ import axios from 'axios';
 /* Redux */
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCurrentPage} from '../../Store/actions';
+import {changeCurrentPage} from '../../Store/Actions/actionMain';
 
 class SignUp extends Component {
 

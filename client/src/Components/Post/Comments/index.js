@@ -11,7 +11,7 @@ import arrowImg from "../../../Static/img/stats/arrow.png";
 import Counter from "../../StaticComponents/Counter";
 import connect from "react-redux/es/connect/connect";
 import {bindActionCreators} from "redux";
-import {addNewComment} from "../../../Store/actions";
+import {addNewComment} from "../../../Store/Actions/actionPost";
 
 class Comments extends Component {
 
@@ -98,7 +98,7 @@ class Comments extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPost: state.currentPost,
+        currentPost: state.post.currentPost,
     }
 };
 

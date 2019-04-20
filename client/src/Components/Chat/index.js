@@ -8,7 +8,7 @@ import axios from 'axios';
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/actions";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {connect} from "react-redux";
 
 class Chat extends Component {

@@ -1,23 +1,18 @@
 import {
     GET_POST_LIST,
     CHANGE_CURRENT_POST,
-    CHANGE_CURRENT_PAGE,
     PUSH_NEW_POST,
     ADD_NEW_COMMENT,
-    GET_USER,
-    LOGOUT,
     SEARCH_POST,
-} from "./const";
+} from "../Const";
 
-const initialState = {
+const postsState = {
     postList: [],
-    currentPost: {},
-    currentPage: "",
-    user: {},
     searchList: [],
+    currentPost: {},
 };
 
-export const rootReducer = (state = initialState, action) => {
+export default (state = postsState, action) => {
     switch (action.type) {
 
         case GET_POST_LIST:
@@ -30,24 +25,6 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPost: action.payload
-            };
-
-        case CHANGE_CURRENT_PAGE:
-            const bobr = 'Bobr:';
-            switch (action.payload) {
-                case 'home': document.title = `${bobr} Главная`; break;
-                case 'publish': document.title = `${bobr} Опубликовать`; break;
-                case 'users': document.title = `${bobr} Пользователи`; break;
-                case 'post': document.title = `${bobr} Пост`; break;
-                case 'profile': document.title = `${bobr} Профиль`; break;
-                case 'search': document.title = `${bobr} Поиск`; break;
-                case 'chat': document.title = `${bobr} Чат`; break;
-                default: document.title = `Bobr`;
-            }
-            window.scrollTo(0, 0);
-            return {
-                ...state,
-                currentPage: action.payload
             };
 
         case PUSH_NEW_POST:
@@ -66,20 +43,6 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 currentPost: action.payload,
                 postList: updatePostList
-            };
-
-        case GET_USER:
-            localStorage.setItem('vC3ilOckStoreMode23Port', action.payload.token);
-            return {
-                ...state,
-                user: action.payload
-            };
-
-        case LOGOUT:
-            localStorage.removeItem('vC3ilOckStoreMode23Port');
-            return {
-                ...state,
-                user: {}
             };
 
         case SEARCH_POST:

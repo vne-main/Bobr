@@ -8,7 +8,8 @@ import PostItemMobile from "../StaticComponents/PostItem/mobile";
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, searchPost} from "../../Store/actions";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {searchPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 
 class Search extends Component {
@@ -64,7 +65,7 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        searchList: state.searchList
+        searchList: state.post.searchList
     }
 };
 

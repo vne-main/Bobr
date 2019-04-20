@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './style.css';
 import {bindActionCreators} from "redux";
-import {changeCurrentPage, pushNewPost} from "../../Store/actions";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {pushNewPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 import axios from 'axios';
 

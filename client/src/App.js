@@ -21,8 +21,9 @@ import Search from './Components/Search/';
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {getPostList, getUser} from "./Store/actions";
-import connect from "react-redux/es/connect/connect";
+import {getPostList} from "./Store/Actions/actionPost";
+import {getUser} from "./Store/Actions/actionUser";
+import {connect} from "react-redux";
 
 class App extends Component {
 
@@ -71,7 +72,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.currentPage
+        currentPage: state.main.currentPage,
     }
 };
 

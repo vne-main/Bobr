@@ -9,7 +9,8 @@ import NotFound from '../StaticComponents/NotFound';
 
 /* Module */
 import {bindActionCreators} from "redux";
-import {changeCurrentPost, changeCurrentPage,} from "../../Store/actions";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {changeCurrentPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 import axios from 'axios';
 
@@ -61,7 +62,7 @@ class Post extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentPost: state.currentPost,
+        currentPost: state.post.currentPost,
     }
 };
 

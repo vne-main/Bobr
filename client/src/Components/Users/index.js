@@ -9,7 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 /** Redux **/
 import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/actions";
+import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {connect} from "react-redux";
 
 class Users extends Component {
