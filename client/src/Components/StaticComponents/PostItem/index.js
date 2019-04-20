@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
 
-/** Components **/
+/* Components */
 import PostPanel from './postPanel';
 
-/** Module **/
+/* Module */
 import {Link} from 'react-router-dom'
 import connect from "react-redux/es/connect/connect";
 

@@ -21,6 +21,7 @@ import Search from './Components/Search/';
 
 /* Redux */
 import {bindActionCreators} from "redux";
+import {changeWindowWidth} from "./Store/Actions/actionMain";
 import {getPostList} from "./Store/Actions/actionPost";
 import {getUser} from "./Store/Actions/actionUser";
 import {connect} from "react-redux";
@@ -28,6 +29,8 @@ import {connect} from "react-redux";
 class App extends Component {
 
     componentDidMount() {
+        window.addEventListener("resize", this.props.changeWindowWidth);
+
         axios.get('/post')
             .then(res => this.props.getPostList(res.data))
             .catch(err => console.error(err));
@@ -37,6 +40,7 @@ class App extends Component {
         axios.post('/auth/check', {token: userToken})
             .then(res => {this.props.getUser(res.data)})
             .catch(err => console.error(err));
+
     };
 
     render() {
@@ -78,6 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        changeWindowWidth: bindActionCreators(changeWindowWidth, dispatch),
         getPostList: bindActionCreators(getPostList, dispatch),
         getUser: bindActionCreators(getUser, dispatch),
     }

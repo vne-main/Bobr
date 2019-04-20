@@ -1,9 +1,11 @@
 import {
     CHANGE_CURRENT_PAGE,
+    CHANGE_WINDOW_WIDTH,
 } from "../Const";
 
 const userState = {
     currentPage: "",
+    windowWidth: window.innerWidth,
 };
 
 export default (state = userState, action) => {
@@ -26,6 +28,12 @@ export default (state = userState, action) => {
             return {
                 ...state,
                 currentPage: action.payload
+            };
+
+        case CHANGE_WINDOW_WIDTH:
+            return {
+                ...state,
+                windowWidth: window.innerWidth,
             };
 
         default:
