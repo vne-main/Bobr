@@ -1,0 +1,18 @@
+.statistics_block {
+    margin-bottom: 20px;
+}
+
+.statistics_doughnut {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.statistics_graph_h4 {
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

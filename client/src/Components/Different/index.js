@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './style.css';
 
+/* Module */
+import {Link} from 'react-router-dom';
+
 /* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
@@ -10,9 +13,9 @@ class Different extends Component {
 
     state = {
         differentTop: [
+            {href: "/statistics", title: "Статистика"},
             {href: "", title: "Помощь"},
             {href: "", title: "Реклама"},
-            {href: "", title: "Правила"},
         ],
         differentBottom: [
             {href: "", title: "Документация"},
@@ -31,15 +34,13 @@ class Different extends Component {
             <section>
                 <h3 className="title_h3 title_pages">Разное</h3>
                 <div className="different_container">
-
                     <div className="different_row">
                         {differentTop.map((el, i) => {
                             return (
-                                <a href={el.href} className="different_block" key={i}>{el.title}</a>
+                                <Link to={el.href} className="different_block" key={i}>{el.title}</Link>
                             )
                         })}
                     </div>
-
                     <div className="different_row">
                         {differentBottom.map((el, i) => {
                             return (
@@ -47,7 +48,6 @@ class Different extends Component {
                             )
                         })}
                     </div>
-
                 </div>
             </section>
         );

@@ -21,16 +21,24 @@
     font-size: 18px;
     cursor: pointer;
     transition: 0.5s;
+    position: relative;
 }
 
 .different_block:nth-child(2) {
     margin: 0 20px;
 }
 
+.different_block:before{
+    content: 'В разработке';
+    height: 100%;
+    top: 20px;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+
 .different_block:hover {
     background: rgba(215,222,224,0.5);
     color: #323232;
-    font-size: 22px;
 }
 
 .different_block__center {
