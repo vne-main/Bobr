@@ -4,5 +4,7 @@ import user from './reducerUser';
 import post from './reducerPost';
 
 export default combineReducers({
-    main, user, post,
+    main,
+    user,
+    post,
 });

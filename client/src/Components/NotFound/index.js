@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css';
 
-import NotFoundImg from '../../../Static/img/404.png';
+import NotFoundImg from '../../Static/img/404.png';
 
 export default class NotFound extends Component {
     render() {

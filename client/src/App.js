@@ -1,12 +1,15 @@
 import React, {Component} from "react";
 
+/* Requests */
+import {getPosts} from './Requsets/api';
+
 /* Module */
 import axios from 'axios';
-import {Route, HashRouter, Switch} from 'react-router-dom';
+import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
 /* Components */
 import RightColumn from './Components/RightColumn';
-import NotFound from './Components/StaticComponents/NotFound';
+import NotFound from './Components/NotFound';
 import Header from './Components/StaticComponents/Header';
 import Footer from './Components/StaticComponents/Footer';
 import Home from './Components/Home';
@@ -30,24 +33,23 @@ class App extends Component {
 
     componentDidMount() {
         window.addEventListener("resize", this.props.changeWindowWidth);
-
-        axios.get('/post')
-            .then(res => this.props.getPostList(res.data))
-            .catch(err => console.error(err));
+        getPosts();
 
         const userToken = localStorage.getItem('vC3ilOckStoreMode23Port');
         if (!userToken) return;
         axios.post('/auth/check', {token: userToken})
-            .then(res => {this.props.getUser(res.data)})
+            .then(res => {
+                this.props.getUser(res.data)
+            })
             .catch(err => console.error(err));
 
     };
 
     render() {
         const {currentPage} = this.props;
-        const notCurrent = ['auth','profile','channels'];
+        const notCurrent = ['auth', 'profile', 'channels'];
         return (
-            <HashRouter>
+            <BrowserRouter>
                 <div className={currentPage === "auth" ? "vh_block_auth" : "vh_block"}>
                     <div>
                         {currentPage !== "auth" && <Header/>}
@@ -59,9 +61,9 @@ class App extends Component {
                                 <Route path="/users" component={Users}/>
                                 <Route path="/profile" component={Profile}/>
                                 <Route path="/search" component={Search}/>
+                                <Route path="/chat" component={Chat}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
-                                <Route path="/chat" component={Chat}/>
                                 <Route component={NotFound}/>
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
@@ -69,7 +71,7 @@ class App extends Component {
                     </div>
                     {currentPage !== "auth" && <Footer/>}
                 </div>
-            </HashRouter>
+            </BrowserRouter>
         );
     }
 }

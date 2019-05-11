@@ -5,7 +5,7 @@ import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 import PostItem from "../StaticComponents/PostItem";
 import CommentsSkeleton from "./Comments/Skeleton";
 import Comments from './Comments';
-import NotFound from '../StaticComponents/NotFound';
+import NotFound from '../NotFound';
 
 /* Module */
 import {bindActionCreators} from "redux";
@@ -23,15 +23,21 @@ class Post extends Component {
 
     getPost(id) {
         axios.get(`/post/${id}`)
-            .then(res => this.props.changeCurrentPost(res.data))
+            .then(res => {
+                console.info(res);
+                this.props.changeCurrentPost(res.data)
+            })
             .then(() => this.setState({skeleton: false}))
-            .catch(() => this.setState({statusPost: false}));
+            .catch((err) => {
+                console.error(err);
+                this.setState({statusPost: false})
+            });
     };
 
     componentDidMount() {
         this.props.changeCurrentPage("post");
-        const hashWindow = window.location.hash.split('/');
-        const idPost = hashWindow[hashWindow.length - 1];
+        let urlArray = document.location.href.split('/');
+        let idPost = urlArray[urlArray.length - 1];
         idPost ? this.getPost(idPost) : this.setState({statusPost: false});
     }
 
