@@ -25,6 +25,7 @@ export default (state = userState, action) => {
                 case 'profile': document.title = `${bobr} Профиль`; break;
                 case 'search': document.title = `${bobr} Поиск`; break;
                 case 'chat': document.title = `${bobr} Чат`; break;
+                case 'different': document.title = `${bobr} Разное`; break;
                 default: document.title = `Bobr`;
             }
             window.scrollTo(0, 0);

@@ -23,7 +23,7 @@ class Publish extends Component {
             tags: "",
             text: "",
             status: "",
-            tagsData: ['Bobr'],
+            tagsData: [],
         };
     }
 

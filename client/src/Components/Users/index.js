@@ -6,6 +6,7 @@ import {getUsersList} from '../../Requsets/apiUser';
 
 /* Components */
 import {User} from './User';
+import Skeleton from './Skeleton';
 
 /* IMG */
 import SearchIcon from '@material-ui/icons/Search';
@@ -19,7 +20,8 @@ class Users extends Component {
 
     componentDidMount() {
         this.props.changeCurrentPage("users");
-        getUsersList();
+        const {usersList} = this.props;
+        if(usersList.length === 0) getUsersList();
     }
 
     render() {
@@ -31,7 +33,6 @@ class Users extends Component {
                     <input type="text" placeholder="Найти пользователя"/>
                     <SearchIcon/>
                 </div>
-
                 <div className="table_user">
                     <aside className="title_table_user">
                         <div>
@@ -39,7 +40,18 @@ class Users extends Component {
                         </div>
                         <span>Рейтинг</span>
                     </aside>
-                    {usersList.map((el, i) => <User el={el} key={i}/>)}
+                    {usersList.length === 0 ?
+                        <>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                        </> :
+                        <>
+                            {usersList.map((el, i) => <User el={el} key={i}/>)}
+                        </>
+                    }
                 </div>
             </section>
         )

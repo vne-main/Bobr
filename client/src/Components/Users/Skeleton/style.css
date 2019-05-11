@@ -1,0 +1,16 @@
+.sk_users_img {
+    width: 48px;
+    height: 48px;
+    margin-right: 12px;
+}
+
+.sk_users_text {
+    height: 13px;
+    width: 200px;
+    margin-bottom: 3px;
+}
+
+.sk_users_rating{
+    height: 13px;
+    width: 40px;
+}

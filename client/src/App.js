@@ -22,6 +22,7 @@ import SignIn from './Components/Auth/signin';
 import SignUp from './Components/Auth/signup';
 import Profile from './Components/Profile/';
 import Search from './Components/Search/';
+import Different from './Components/Different/';
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -57,6 +58,7 @@ class App extends Component {
                                 <Route path="/chat" component={Chat}/>
                                 <Route path="/signin" component={SignIn}/>
                                 <Route path="/signup" component={SignUp}/>
+                                <Route path="/different" component={Different}/>
                                 <Route component={NotFound}/>
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
