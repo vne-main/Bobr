@@ -23,26 +23,17 @@ class Post extends Component {
         statusPost: true,
     };
 
-    getIdPost() {
-        let urlArray = document.location.href.split('/');
-        return urlArray[urlArray.length - 1];
-    }
-
     componentDidMount() {
         this.props.changeCurrentPage("post");
-        let idPost = this.getIdPost();
-        !idPost ?
-            this.setState({statusPost: false})
-            :
-            getPost(idPost)
-                .then(res => {
-                    this.props.changeCurrentPost(res.data);
-                    this.setState({skeleton: false});
-                })
-                .catch((err) => {
-                    console.error(err);
-                    this.setState({statusPost: false})
-                });
+        getPost()
+            .then(res => {
+                this.props.changeCurrentPost(res.data);
+                this.setState({skeleton: false});
+            })
+            .catch((err) => {
+                console.error(err);
+                this.setState({statusPost: false})
+            });
     }
 
     render() {

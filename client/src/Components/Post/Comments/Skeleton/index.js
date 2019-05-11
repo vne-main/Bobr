@@ -7,6 +7,7 @@ const Comment = () => {
         <aside className="sk_comments_comment">
             <div className="sk_comments_top">
                 <div className="sk_comments_user">
+                    <Skeleton/>
                     <span className="skeleton sk_post_user_icon"/>
                     <span className="skeleton sk_post_author"/>
                     <span className="skeleton sk_post_time"/>

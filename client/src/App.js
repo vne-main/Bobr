@@ -5,7 +5,6 @@ import {getPosts} from './Requsets/apiPost';
 import {checkAuth} from './Requsets/apiUser';
 
 /* Module */
-import axios from 'axios';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
 /* Components */

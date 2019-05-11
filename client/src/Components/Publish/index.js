@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
 import './style.css';
+
+/* Module */
+import Chip from '@material-ui/core/Chip';
+
+/* Request */
+import {publishPost} from "../../Requsets/apiPost";
+import {error500} from "../../Requsets/function";
+
+/* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {pushNewPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
-import axios from 'axios';
-
-/** MATERIAL **/
-import Chip from '@material-ui/core/Chip';
 
 class Publish extends Component {
 
@@ -54,24 +59,15 @@ class Publish extends Component {
         });
     };
 
-    publishPost = async () => {
-        const {title, text, tagsData} = this.state;
+    sentPost(){
         this.setState({status: "Пожалуйста, подождите..."});
-        const jsonData = this.checkData();
-        if (!jsonData) return false;
-        axios.post('/post', {
-            author_name: "Admin",
-            author_img: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
-            text: text,
-            tags: tagsData,
-            title: title
-        }).then(res => {
-            this.successSend(res.data);
-        }).catch(err => {
-            console.info("Error require in: /post/comment");
-            console.error(err);
-            this.setState({status: "Ошибка сервера"});
-        });
+        if (!this.checkData()) return false;
+        const {title, text, tagsData} = this.state;
+        publishPost(title, text, tagsData)
+            .then(res => {
+                this.successSend(res.data);
+            })
+            .catch(err => error500(err));
     };
 
     checkData() {
@@ -128,7 +124,7 @@ class Publish extends Component {
                 <div className="send_publish_panel">
                     <button
                         className="blue_button publish_form"
-                        onClick={() => this.publishPost()}
+                        onClick={() => this.sentPost()}
                     >
                         Опубликовать
                     </button>

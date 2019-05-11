@@ -14,6 +14,7 @@ export const catchError = (message) => {
 
 };
 
-export const error500 = () => {
+export const error500 = (err) => {
+    console.error(err);
     store.dispatch(actionCatchError("На сервере проводятся технические работы"));
 };

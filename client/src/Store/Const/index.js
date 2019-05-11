@@ -11,5 +11,6 @@ export const ADD_NEW_COMMENT = "ADD_NEW_COMMENT";
 export const SEARCH_POST = "SEARCH_POST";
 
 /* USER */
+export const GET_USERS_LIST = "GET_USERS_LIST";
 export const GET_USER = "GET_USER";
 export const LOGOUT = "LOGOUT";
