@@ -29,9 +29,11 @@
 .news_time {
     color: #5e6973;
 }
-.content_title{
+
+.content_title {
     margin-bottom: 10px;
 }
+
 .title_news {
     font-size: 28px;
     color: #333333;
@@ -141,9 +143,9 @@
 }
 
 /* Mobile */
-.m_post_news_item{
+.m_post_news_item {
     border-bottom: 2px solid #e5e9eb;
-    margin: 20px 0!important;
+    margin: 20px 0 !important;
     padding-bottom: 10px;
 }
 
@@ -154,5 +156,5 @@
 
 .m_post_news_stats {
     margin-top: 10px;
-    border: 0!important;
+    border: 0 !important;
 }

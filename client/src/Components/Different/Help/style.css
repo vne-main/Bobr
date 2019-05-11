@@ -1,0 +1,15 @@
+.help_faq {
+    color: #222;
+    margin-bottom: 40px;
+}
+
+.help_textarea{
+    min-height: 100px;
+}
+
+.send_ask {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 30px 0;
+}

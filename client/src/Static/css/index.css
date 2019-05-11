@@ -10,11 +10,12 @@ textarea, input {
     font-family: 'Roboto', sans-serif;
 }
 
-input, .publish_label textarea {
+input, textarea {
     color: #323232;
     padding: 10px 12px;
     border: 1px solid #d7dee0;
     width: 100%;
+    resize: none;
 }
 
 ::-webkit-input-placeholder {
