@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/* Request */
+import {getPost} from '../../Requsets/apiPost';
+
 /* Components */
 import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 import PostItem from "../StaticComponents/PostItem";
@@ -12,7 +15,6 @@ import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {changeCurrentPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
-import axios from 'axios';
 
 class Post extends Component {
 
@@ -21,24 +23,26 @@ class Post extends Component {
         statusPost: true,
     };
 
-    getPost(id) {
-        axios.get(`/post/${id}`)
-            .then(res => {
-                console.info(res);
-                this.props.changeCurrentPost(res.data)
-            })
-            .then(() => this.setState({skeleton: false}))
-            .catch((err) => {
-                console.error(err);
-                this.setState({statusPost: false})
-            });
-    };
+    getIdPost() {
+        let urlArray = document.location.href.split('/');
+        return urlArray[urlArray.length - 1];
+    }
 
     componentDidMount() {
         this.props.changeCurrentPage("post");
-        let urlArray = document.location.href.split('/');
-        let idPost = urlArray[urlArray.length - 1];
-        idPost ? this.getPost(idPost) : this.setState({statusPost: false});
+        let idPost = this.getIdPost();
+        !idPost ?
+            this.setState({statusPost: false})
+            :
+            getPost(idPost)
+                .then(res => {
+                    this.props.changeCurrentPost(res.data);
+                    this.setState({skeleton: false});
+                })
+                .catch((err) => {
+                    console.error(err);
+                    this.setState({statusPost: false})
+                });
     }
 
     render() {
@@ -46,20 +50,22 @@ class Post extends Component {
         const {currentPost} = this.props;
         return (
             <section>
-                {!statusPost && <NotFound/>}
-                {statusPost &&
-                <div>
-                    {skeleton ?
-                        <div>
-                            <PostSkeleton/>
-                            <CommentsSkeleton/>
-                        </div> :
-                        <div>
-                            <PostItem post={currentPost}/>
-                            <Comments comments={currentPost.comments} postId={currentPost._id}/>
-                        </div>
-                    }
-                </div>
+                {statusPost ?
+                    <div>
+                        {skeleton ?
+                            <div>
+                                <PostSkeleton/>
+                                <CommentsSkeleton/>
+                            </div>
+                            :
+                            <div>
+                                <PostItem post={currentPost}/>
+                                <Comments comments={currentPost.comments} postId={currentPost._id}/>
+                            </div>
+                        }
+                    </div>
+                    :
+                    <NotFound/>
                 }
             </section>
         )

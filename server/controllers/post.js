@@ -8,13 +8,13 @@ class Fetch {
         res.send(posts);
     }
 
-    static async getCurrentPost(req, res) {
+    static async getPost(req, res) {
         const clientIp = await auxillaryFunc.checkIp(req);
         const objData = {
             _id: req.params._id,
             ip: clientIp
         };
-        const post = await postData.getCurrentPost(objData);
+        const post = await postData.getPost(objData);
         res.send(post);
     }
 

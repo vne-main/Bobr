@@ -1,11 +1,14 @@
 import {
     CHANGE_CURRENT_PAGE,
     CHANGE_WINDOW_WIDTH,
+    CATCH_ERROR,
 } from "../Const";
 
 const userState = {
     currentPage: "",
     windowWidth: window.innerWidth,
+    showError: false,
+    textError: "",
 };
 
 export default (state = userState, action) => {
@@ -34,6 +37,13 @@ export default (state = userState, action) => {
             return {
                 ...state,
                 windowWidth: window.innerWidth,
+            };
+
+        case CATCH_ERROR:
+            return {
+                ...state,
+                showError: !state.showError,
+                textError: action.payload,
             };
 
         default:

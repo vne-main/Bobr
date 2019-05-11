@@ -6,7 +6,7 @@ class Place {
         return posts.find().catch(err => console.log(err));
     }
 
-    static async getCurrentPost(objData) {
+    static async getPost(objData) {
         const findPost = await posts.findById({_id: objData._id})
             .catch(() => {return 500});
         if(findPost === 500 || !findPost) return 500;

@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 
 /* Requests */
-import {getPosts} from './Requsets/api';
+import {getPosts} from './Requsets/apiPost';
+import {checkAuth} from './Requsets/apiUser';
 
 /* Module */
 import axios from 'axios';
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
 /* Components */
+import CatchError from './Components/StaticComponents/CatchError';
 import RightColumn from './Components/RightColumn';
 import NotFound from './Components/NotFound';
 import Header from './Components/StaticComponents/Header';
@@ -34,15 +36,7 @@ class App extends Component {
     componentDidMount() {
         window.addEventListener("resize", this.props.changeWindowWidth);
         getPosts();
-
-        const userToken = localStorage.getItem('vC3ilOckStoreMode23Port');
-        if (!userToken) return;
-        axios.post('/auth/check', {token: userToken})
-            .then(res => {
-                this.props.getUser(res.data)
-            })
-            .catch(err => console.error(err));
-
+        checkAuth();
     };
 
     render() {
@@ -68,6 +62,7 @@ class App extends Component {
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
                         </main>
+                        <CatchError/>
                     </div>
                     {currentPage !== "auth" && <Footer/>}
                 </div>
