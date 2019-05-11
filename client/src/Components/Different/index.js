@@ -14,8 +14,8 @@ class Different extends Component {
     state = {
         differentTop: [
             {href: "/statistics", title: "Статистика"},
-            {href: "", title: "Помощь"},
-            {href: "", title: "Реклама"},
+            {href: "/help", title: "Помощь"},
+            {href: "/advertising", title: "Реклама"},
         ],
         differentBottom: [
             {href: "", title: "Документация"},
@@ -29,7 +29,7 @@ class Different extends Component {
     }
 
     render() {
-        const {differentTop, differentBottom} = this.state;
+        const {differentTop} = this.state;
         return (
             <section>
                 <h3 className="title_h3 title_pages">Разное</h3>
@@ -38,13 +38,6 @@ class Different extends Component {
                         {differentTop.map((el, i) => {
                             return (
                                 <Link to={el.href} className="different_block" key={i}>{el.title}</Link>
-                            )
-                        })}
-                    </div>
-                    <div className="different_row">
-                        {differentBottom.map((el, i) => {
-                            return (
-                                <a href={el.href} className="different_block" key={i}>{el.title}</a>
                             )
                         })}
                     </div>

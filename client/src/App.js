@@ -24,6 +24,8 @@ import Profile from './Components/Profile/';
 import Search from './Components/Search/';
 import Different from './Components/Different/';
 import Statistics from './Components/Different/Statistics';
+import Help from './Components/Different/Help';
+import Advertising from './Components/Different/Advertising';
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -61,6 +63,8 @@ class App extends Component {
                                 <Route path="/signup" component={SignUp}/>
                                 <Route path="/different" component={Different}/>
                                 <Route path="/statistics" component={Statistics}/>
+                                <Route path="/help" component={Help}/>
+                                <Route path="/advertising" component={Advertising}/>
                                 <Route component={NotFound}/>
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
