@@ -1,17 +1,16 @@
 .different_container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -10px 30px -10px;
 }
 
-.different_row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.different_box {
+    width: 33%;
+    padding: 10px;
 }
 
 .different_block {
-    width: 100%;
     border: 2px solid #d7dee0;
     height: 200px;
     display: flex;
@@ -24,24 +23,23 @@
     position: relative;
 }
 
-.different_block:nth-child(2) {
-    margin: 0 20px;
-}
-
-.different_block:before{
-    content: 'В разработке';
-    height: 100%;
-    top: 20px;
-    position: absolute;
-    transform: rotate(-45deg);
-}
-
 .different_block:hover {
     background: rgba(215,222,224,0.5);
     color: #323232;
 }
 
-.different_block__center {
-    margin: 0 3%;
+@media only screen and (max-width: 1100px) {
+    .different_box {
+        width: 50%;
+    }
 }
 
+@media only screen and (max-width: 420px) {
+    .different_box {
+        width: 100%;
+    }
+
+    .different_block {
+        height: 100px;
+    }
+}

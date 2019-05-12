@@ -12,15 +12,13 @@ import connect from "react-redux/es/connect/connect";
 class Different extends Component {
 
     state = {
-        differentTop: [
+        differentPage: [
             {href: "/statistics", title: "Статистика"},
             {href: "/help", title: "Помощь"},
             {href: "/advertising", title: "Реклама"},
-        ],
-        differentBottom: [
-            {href: "", title: "Документация"},
-            {href: "", title: "О сайте"},
-            {href: "", title: "Работа"},
+            {href: "/work", title: "Работа"},
+            {href: "/documentation", title: "Документация"},
+            {href: "/about", title: "О сайте"},
         ],
     };
 
@@ -29,18 +27,20 @@ class Different extends Component {
     }
 
     render() {
-        const {differentTop} = this.state;
+        const {differentPage} = this.state;
         return (
             <section>
                 <h3 className="title_h3 title_pages">Разное</h3>
                 <div className="different_container">
-                    <div className="different_row">
-                        {differentTop.map((el, i) => {
-                            return (
-                                <Link to={el.href} className="different_block" key={i}>{el.title}</Link>
-                            )
-                        })}
-                    </div>
+                    {differentPage.map((el, i) => {
+                        return (
+                            <Link to={el.href} className="different_box">
+                                <div className="different_block" key={i}>
+                                    {el.title}
+                                </div>
+                            </Link>
+                        )
+                    })}
                 </div>
             </section>
         );

@@ -26,6 +26,9 @@ import Different from './Components/Different/';
 import Statistics from './Components/Different/Statistics';
 import Help from './Components/Different/Help';
 import Advertising from './Components/Different/Advertising';
+import Work from './Components/Different/Work';
+import Documentation from './Components/Different/Documentation';
+import About from './Components/Different/About';
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -37,6 +40,7 @@ import {connect} from "react-redux";
 class App extends Component {
 
     componentDidMount() {
+        document.getElementById("preloader").remove();
         window.addEventListener("resize", this.props.changeWindowWidth);
         getPosts();
         checkAuth();
@@ -65,6 +69,9 @@ class App extends Component {
                                 <Route path="/statistics" component={Statistics}/>
                                 <Route path="/help" component={Help}/>
                                 <Route path="/advertising" component={Advertising}/>
+                                <Route path="/work" component={Work}/>
+                                <Route path="/documentation" component={Documentation}/>
+                                <Route path="/about" component={About}/>
                                 <Route component={NotFound}/>
                             </Switch>
                             {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}

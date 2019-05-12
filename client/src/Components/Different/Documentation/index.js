@@ -6,7 +6,7 @@ import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../../Store/Actions/actionMain";
 import connect from "react-redux/es/connect/connect";
 
-class Statistics extends Component {
+class Documentation extends Component {
 
     componentDidMount() {
         this.props.changeCurrentPage("different");
@@ -15,7 +15,7 @@ class Statistics extends Component {
     render() {
         return (
             <section>
-                <h3 className="title_h3 title_pages">Разное</h3>
+                <h3 className="title_h3 title_pages">Документация</h3>
             </section>
         );
     }
@@ -27,4 +27,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect("", mapDispatchToProps)(Statistics);
+export default connect("", mapDispatchToProps)(Documentation);

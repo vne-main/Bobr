@@ -4,7 +4,7 @@ import './style.css';
 /* IMG */
 import spImg1 from "../../../Static/img/sponsor/sponsor_1.jpg";
 import spImg2 from "../../../Static/img/sponsor/sponsor_2.jpg";
-import spImg3 from "../../../Static/img/sponsor/sponsor_3.png";
+import spImg3 from "../../../Static/img/sponsor/sponsor_3.jpg";
 
 export default class Sponsors extends Component {
     state = {
