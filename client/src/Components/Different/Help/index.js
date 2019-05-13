@@ -42,7 +42,7 @@ class Help extends Component {
                     <button className="blue_button">
                         Отправить вопрос
                     </button>
-                    <p className="status_p">Ошибка</p>
+                    <p className="status_p">В разработке</p>
                 </div>
                 <h3 className="title_h3 title_pages">Частые вопросы</h3>
                 <div className="help_faq">
