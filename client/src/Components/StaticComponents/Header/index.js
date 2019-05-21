@@ -12,17 +12,14 @@ import connect from "react-redux/es/connect/connect";
 
 class Header extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            navigation: [
-                {link: "/publish", title: "Опубликовать", page: "publish"},
-                {link: "/users", title: "Пользователи", page: "users"},
-                {link: "/chat", title: "Чат", page: "chat"},
-                {link: "/different", title: "Разное", page: "different"},
-            ]
-        }
-    }
+    state = {
+        navigation: [
+            {link: "/publish", title: "Опубликовать", page: "publish"},
+            {link: "/users", title: "Пользователи", page: "users"},
+            {link: "/chat", title: "Чат", page: "chat"},
+            {link: "/different", title: "Разное", page: "different"},
+        ]
+    };
 
     render() {
         const {navigation} = this.state;

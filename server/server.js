@@ -22,7 +22,6 @@ app.listen(3001, function () {
     console.log("listen port: 3001")
 });
 
-
 const WebSocket = require('ws'),
     wss = new WebSocket.Server({ port: 3002});
 

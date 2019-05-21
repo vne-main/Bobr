@@ -34,8 +34,8 @@ class Different extends Component {
                 <div className="different_container">
                     {differentPage.map((el, i) => {
                         return (
-                            <Link to={el.href} className="different_box">
-                                <div className="different_block" key={i}>
+                            <Link to={el.href} className="different_box" key={i}>
+                                <div className="different_block">
                                     {el.title}
                                 </div>
                             </Link>

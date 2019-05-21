@@ -1,25 +1,25 @@
-import {
-    CHANGE_CURRENT_PAGE,
-    CHANGE_WINDOW_WIDTH,
-    CATCH_ERROR,
-} from "../Const";
+import {MAIN} from "../Const";
 
-export const actionCatchError = (message) => {
+const actionCatchError = (message) => {
     return {
-        type: CATCH_ERROR,
+        type: MAIN.CATCH_ERROR,
         payload: message
     }
 };
 
-export const changeCurrentPage = (page) => {
+const changeCurrentPage = (page) => {
     return {
-        type: CHANGE_CURRENT_PAGE,
+        type: MAIN.CHANGE_CURRENT_PAGE,
         payload: page
     }
 };
 
-export const changeWindowWidth = () => {
-    return {
-        type: CHANGE_WINDOW_WIDTH,
-    }
+const changeWindowWidth = () => {
+    return {type: MAIN.CHANGE_WINDOW_WIDTH}
+};
+
+export {
+    actionCatchError,
+    changeCurrentPage,
+    changeWindowWidth
 };

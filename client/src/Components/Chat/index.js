@@ -44,11 +44,11 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-        this.webSocket();
-        this.props.changeCurrentPage("chat");
-        axios.get('/message')
-            .then(res => this.setState({list: res.data.reverse()}))
-            .catch(err => console.error(err));
+        // this.webSocket();
+        // this.props.changeCurrentPage("chat");
+        // axios.get('/message')
+        //     .then(res => this.setState({list: res.data.reverse()}))
+        //     .catch(err => console.error(err));
     }
 
     render() {

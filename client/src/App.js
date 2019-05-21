@@ -2,7 +2,6 @@ import React, {Component} from "react";
 
 /* Requests */
 import {getPosts} from './Requsets/apiPost';
-import {checkAuth} from './Requsets/apiUser';
 
 /* Module */
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
@@ -43,7 +42,6 @@ class App extends Component {
         document.getElementById("preloader").remove();
         window.addEventListener("resize", this.props.changeWindowWidth);
         getPosts();
-        checkAuth();
     };
 
     render() {

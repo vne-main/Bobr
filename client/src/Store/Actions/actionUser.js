@@ -1,25 +1,25 @@
-import {
-    GET_USER,
-    LOGOUT,
-    GET_USERS_LIST,
-} from "../Const";
+import {USER} from "../Const";
 
-export const changeUsersList = (usersList) => {
+const changeUsersList = (usersList) => {
     return {
-        type: GET_USERS_LIST,
+        type: USER.GET_USERS_LIST,
         payload: usersList,
     }
 };
 
-export const getUser = (user) => {
+const getUser = (user) => {
     return {
-        type: GET_USER,
+        type: USER.GET_USER,
         payload: user
     }
 };
 
-export const logout = () => {
-    return {
-        type: LOGOUT,
-    }
+const logout = () => {
+    return {type: USER.LOGOUT}
 };
+
+export {
+    changeUsersList,
+    getUser,
+    logout,
+}

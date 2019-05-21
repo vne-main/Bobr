@@ -20,6 +20,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-subdomain": "^1.0.5",
+    "http-proxy-middleware": "^0.19.1",
     "ip": "^1.1.5",
     "md5": "^2.2.1",
     "mongoose": "^5.4.11",

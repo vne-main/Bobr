@@ -4,12 +4,21 @@ import './Static/css/index.css';
 import App from './App';
 
 /* Redux */
+import { createStore, applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import reducers from './Store/Reducers/index';
+import reducer from './Store/Reducers/index';
 
-export const store = createStore(reducers);
+/* Saga */
+import createSagaMiddleware from 'redux-saga';
+import mySaga from './Store/Sagas';
+const sagaMiddleware = createSagaMiddleware();
+export const store = createStore(
+    reducer,
+    applyMiddleware(sagaMiddleware)
+);
+sagaMiddleware.run(mySaga);
 
+/* Render */
 ReactDOM.render(
     <Provider store={store}>
         <App/>

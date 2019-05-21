@@ -1,42 +1,44 @@
-import {
-    GET_POST_LIST,
-    CHANGE_CURRENT_POST,
-    PUSH_NEW_POST,
-    ADD_NEW_COMMENT,
-    SEARCH_POST,
-} from "../Const";
+import {POST} from "../Const";
 
-export const getPostList = (postList) => {
+const getPostList = (postList) => {
     return {
-        type: GET_POST_LIST,
+        type: POST.GET_POST_LIST,
         payload: postList.reverse()
     }
 };
 
-export const changeCurrentPost = (post) => {
+const changeCurrentPost = (post) => {
     return {
-        type: CHANGE_CURRENT_POST,
+        type: POST.CHANGE_CURRENT_POST,
         payload: post
     }
 };
 
-export const pushNewPost = (newPost) => {
+const pushNewPost = (newPost) => {
     return {
-        type: PUSH_NEW_POST,
+        type: POST.PUSH_NEW_POST,
         payload: newPost
     }
 };
 
-export const addNewComment = (newComment) => {
+const addNewComment = (newComment) => {
     return {
-        type: ADD_NEW_COMMENT,
+        type: POST.ADD_NEW_COMMENT,
         payload: newComment
     }
 };
 
-export const searchPost = (string) => {
+const searchPost = (string) => {
     return {
-        type: SEARCH_POST,
+        type: POST.SEARCH_POST,
         payload: string
     }
+};
+
+export {
+    getPostList,
+    changeCurrentPost,
+    pushNewPost,
+    addNewComment,
+    searchPost,
 };
