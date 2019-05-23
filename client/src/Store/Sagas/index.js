@@ -1,18 +1,14 @@
-import {call, put, takeLatest} from 'redux-saga/effects'
-// import {ApiFetchUser} from './api'
+import {takeLatest} from 'redux-saga/effects'
+import {POST} from '../Const';
 
-function* fetchUser(action) {
-    try {
-        yield put({type: "LOADING", payload: action.payload});
-        const user = yield call("", action.payload);
-        yield put({type: "USER_FETCH_SUCCEEDED", img: user.data.message});
-    } catch (e) {
-        yield put({type: "USER_FETCH_FAILED", message: e.message});
-    }
-}
+import {
+    getPostList,
+    getCurrentPost,
+} from './sagaPost';
 
 function* mySaga() {
-    yield takeLatest("USER_FETCH_REQUESTED", fetchUser);
+    yield takeLatest(POST.GET_POST_LIST, getPostList);
+    yield takeLatest(POST.GET_CURRENT_POST, getCurrentPost);
 }
 
 export default mySaga;

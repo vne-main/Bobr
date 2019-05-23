@@ -1,8 +1,5 @@
 import React, {Component} from "react";
 
-/* Requests */
-import {getPosts} from './Requsets/apiPost';
-
 /* Module */
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
@@ -32,7 +29,6 @@ import About from './Components/Different/About';
 /* Redux */
 import {bindActionCreators} from "redux";
 import {changeWindowWidth} from "./Store/Actions/actionMain";
-import {getPostList} from "./Store/Actions/actionPost";
 import {getUser} from "./Store/Actions/actionUser";
 import {connect} from "react-redux";
 
@@ -41,7 +37,6 @@ class App extends Component {
     componentDidMount() {
         document.getElementById("preloader").remove();
         window.addEventListener("resize", this.props.changeWindowWidth);
-        getPosts();
     };
 
     render() {
@@ -92,7 +87,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeWindowWidth: bindActionCreators(changeWindowWidth, dispatch),
-        getPostList: bindActionCreators(getPostList, dispatch),
         getUser: bindActionCreators(getUser, dispatch),
     }
 };

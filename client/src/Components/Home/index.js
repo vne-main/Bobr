@@ -10,21 +10,20 @@ import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 /* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {getPostList} from "../../Store/Actions/actionPost";
 import {connect} from "react-redux";
+
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            sortIndex: 0,
-            sortArray: ['Важное', 'Разное', 'Все подряд'],
-            timeIndex: 0,
-            timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
-            initialPageSize: 5,
-            currentPage: 1,
-        };
-    }
+    state = {
+        sortIndex: 0,
+        sortArray: ['Важное', 'Разное', 'Все подряд'],
+        timeIndex: 0,
+        timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
+        initialPageSize: 5,
+        currentPage: 1,
+    };
 
     changePages = (openPage) => {
         if (openPage === this.state.currentPage) return;
@@ -32,29 +31,21 @@ class Home extends Component {
         window.scrollTo(0, 0);
     };
 
-    changeTab(index) {
-        this.setState({sortIndex: index});
-    }
-
-    changeTimeLine(index) {
-        this.setState({timeIndex: index});
-    }
-
     componentDidMount() {
-        this.props.changeCurrentPage('home');
+        const {postList, changeCurrentPage, getPostList} = this.props;
+        changeCurrentPage('home');
+        if (!postList.length) getPostList();
     }
 
     render() {
-        const {postList} = this.props;
+        const {postList, loading} = this.props;
         const {sortIndex, timeSort, timeIndex, sortArray, currentPage, initialPageSize} = this.state;
         const paginationArr = postList.slice(
             (currentPage - 1) * initialPageSize,
             (currentPage - 1) * initialPageSize + initialPageSize
         );
         let btnArray = [];
-        for(let i = 0; i < (postList.length / initialPageSize); i++){
-            btnArray.push(i+1);
-        }
+        for (let i = 0; i < (postList.length / initialPageSize); i++) btnArray.push(i + 1);
         return (
             <section>
                 <SelectStream/>
@@ -63,7 +54,7 @@ class Home extends Component {
                         return (
                             <span
                                 key={i}
-                                onClick={() => this.changeTab(i)}
+                                onClick={() => this.setState({sortIndex: i})}
                                 className={sortIndex === i ? "tab_panel_active" : ""}>
                                 {el}
                             </span>
@@ -75,7 +66,7 @@ class Home extends Component {
                         return (
                             <span
                                 key={i}
-                                onClick={() => this.changeTimeLine(i)}
+                                onClick={() => this.setState({timeIndex: i})}
                                 className={timeIndex === i ? 'active_time_btn' : ""}
                             >
                                 {el}
@@ -83,7 +74,7 @@ class Home extends Component {
                         )
                     })}
                 </div>
-                {sortIndex === 0 && postList.length === 0 &&
+                {loading &&
                 <section>
                     <PostSkeleton/>
                     <PostSkeleton/>
@@ -94,7 +85,7 @@ class Home extends Component {
                     <PostSkeleton/>
                 </section>
                 }
-                {sortIndex === 0 &&
+                {!loading && sortIndex === 0 &&
                 <section>
                     {paginationArr.map((el, i) => {
                         return (
@@ -123,9 +114,7 @@ class Home extends Component {
                     </ol>
                 </section>
                 }
-                {sortIndex === 1 &&
-                <PostSkeleton/>
-                }
+                {sortIndex === 1 && <PostSkeleton/>}
             </section>
         )
     }
@@ -133,13 +122,15 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        postList: state.post.postList
+        postList: state.post.postList,
+        loading: state.post.loading,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
+        getPostList: bindActionCreators(getPostList, dispatch),
     }
 };
 

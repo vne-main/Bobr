@@ -1,17 +1,11 @@
 import {POST} from "../Const";
 
-const getPostList = (postList) => {
-    return {
-        type: POST.GET_POST_LIST,
-        payload: postList.reverse()
-    }
+const getPostList = () => {
+    return {type: POST.GET_POST_LIST}
 };
 
-const changeCurrentPost = (post) => {
-    return {
-        type: POST.CHANGE_CURRENT_POST,
-        payload: post
-    }
+const getCurrentPost = () => {
+    return {type: POST.GET_CURRENT_POST}
 };
 
 const pushNewPost = (newPost) => {
@@ -37,7 +31,7 @@ const searchPost = (string) => {
 
 export {
     getPostList,
-    changeCurrentPost,
+    getCurrentPost,
     pushNewPost,
     addNewComment,
     searchPost,

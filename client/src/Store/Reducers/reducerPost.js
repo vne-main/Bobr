@@ -1,24 +1,34 @@
 import { POST } from "../Const";
 
 const postsState = {
+    loading: false,
     postList: [],
     searchList: [],
-    currentPost: {},
+    currentPost: null,
 };
 
 export default (state = postsState, action) => {
+
     switch (action.type) {
 
-        case POST.GET_POST_LIST:
+        case POST.LOADING:
             return {
                 ...state,
-                postList: action.payload
+                loading: true,
+            };
+
+        case POST.CHANGE_POST_LIST:
+            return {
+                ...state,
+                postList: action.posts,
+                loading: false,
             };
 
         case POST.CHANGE_CURRENT_POST:
             return {
                 ...state,
-                currentPost: action.payload
+                currentPost: action.post,
+                loading: false,
             };
 
         case POST.PUSH_NEW_POST:
@@ -56,4 +66,5 @@ export default (state = postsState, action) => {
         default:
             return state;
     }
+
 };
