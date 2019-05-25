@@ -13,34 +13,50 @@ import NotFound from '../NotFound';
 /* Module */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
-import {getCurrentPost} from "../../Store/Actions/actionPost";
+import {changeCurrentPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 
 class Post extends Component {
 
+    state = {
+        skeleton: true,
+        statusPost: true,
+    };
+
     componentDidMount() {
-        const {changeCurrentPage, getCurrentPost} = this.props;
-        changeCurrentPage("post");
-        getCurrentPost();
+        this.props.changeCurrentPage("post");
+        getPost()
+            .then(res => {
+                this.props.changeCurrentPost(res.data);
+                this.setState({skeleton: false});
+            })
+            .catch((err) => {
+                console.error(err);
+                this.setState({statusPost: false})
+            });
     }
 
     render() {
-        const {currentPost, loading} = this.props;
+        const {skeleton, statusPost} = this.state;
+        const {currentPost} = this.props;
         return (
             <section>
-                {loading &&
-                    <>
-                        <PostSkeleton/>
-                        <CommentsSkeleton/>
-                    </>
-                }
-                {!loading && currentPost &&
-                    <>
-                        <PostItem post={this.props.currentPost}/>
-                        <Comments comments={currentPost.comments} postId={currentPost._id}/>
-                    </>
-                }
-                {/*<NotFound/>*/}
+                {statusPost ?
+                    <div>
+                        {skeleton ?
+                            <div>
+                                <PostSkeleton/>
+                                <CommentsSkeleton/>
+                            </div>
+                            :
+                            <div>
+                                <PostItem post={currentPost}/>
+                                <Comments comments={currentPost.comments} postId={currentPost._id}/>
+                            </div>
+                        }
+                    </div>
+                    :
+                    <NotFound/>}
             </section>
         )
     }
@@ -55,7 +71,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getCurrentPost: bindActionCreators(getCurrentPost, dispatch),
+        changeCurrentPost: bindActionCreators(changeCurrentPost, dispatch),
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
     }
 };

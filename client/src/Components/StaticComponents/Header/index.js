@@ -16,8 +16,8 @@ class Header extends Component {
         navigation: [
             {link: "/publish", title: "Опубликовать", page: "publish"},
             {link: "/users", title: "Пользователи", page: "users"},
-            {link: "/chat", title: "Чат", page: "chat"},
-            {link: "/different", title: "Разное", page: "different"},
+            // {link: "/chat", title: "Чат", page: "chat"},
+            {link: "/different", title: "В разработке", page: "different"},
         ]
     };
 

@@ -1,11 +1,15 @@
 import {POST} from "../Const";
+import {SAGA} from "../Const";
 
 const getPostList = () => {
-    return {type: POST.GET_POST_LIST}
+    return {type: SAGA.GET_POST_LIST}
 };
 
-const getCurrentPost = () => {
-    return {type: POST.GET_CURRENT_POST}
+const changeCurrentPost = (post) => {
+    return {
+        type: POST.CHANGE_CURRENT_POST,
+        payload: post,
+    }
 };
 
 const pushNewPost = (newPost) => {
@@ -31,7 +35,7 @@ const searchPost = (string) => {
 
 export {
     getPostList,
-    getCurrentPost,
+    changeCurrentPost,
     pushNewPost,
     addNewComment,
     searchPost,

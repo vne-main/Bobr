@@ -27,8 +27,7 @@ export default (state = postsState, action) => {
         case POST.CHANGE_CURRENT_POST:
             return {
                 ...state,
-                currentPost: action.post,
-                loading: false,
+                currentPost: action.payload,
             };
 
         case POST.PUSH_NEW_POST:

@@ -1,14 +1,9 @@
 import {takeLatest} from 'redux-saga/effects'
-import {POST} from '../Const';
-
-import {
-    getPostList,
-    getCurrentPost,
-} from './sagaPost';
+import {SAGA} from '../Const';
+import {getPostList} from './sagaPost';
 
 function* mySaga() {
-    yield takeLatest(POST.GET_POST_LIST, getPostList);
-    yield takeLatest(POST.GET_CURRENT_POST, getCurrentPost);
+    yield takeLatest(SAGA.GET_POST_LIST, getPostList);
 }
 
 export default mySaga;
