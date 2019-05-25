@@ -14,12 +14,9 @@ import connect from "react-redux/es/connect/connect";
 
 class Search extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchString: "",
-        }
-    }
+    state = {
+        searchString: "",
+    };
 
     search() {
         const {searchString} = this.state;

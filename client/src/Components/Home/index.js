@@ -3,6 +3,7 @@ import './style.css';
 
 /* Components */
 import SelectStream from "./SelectStream";
+import TimePanel from "./TimePanel";
 import PostItem from "../StaticComponents/PostItem";
 import PostItemMobile from "../StaticComponents/PostItem/mobile";
 import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
@@ -19,8 +20,6 @@ class Home extends Component {
     state = {
         sortIndex: 0,
         sortArray: ['Важное', 'Разное', 'Все подряд'],
-        timeIndex: 0,
-        timeSort: ['Сутки', 'Неделя', 'Месяц', 'Год'],
         initialPageSize: 5,
         currentPage: 1,
     };
@@ -39,7 +38,7 @@ class Home extends Component {
 
     render() {
         const {postList, loading} = this.props;
-        const {sortIndex, timeSort, timeIndex, sortArray, currentPage, initialPageSize} = this.state;
+        const {sortIndex, sortArray, currentPage, initialPageSize} = this.state;
         const paginationArr = postList.slice(
             (currentPage - 1) * initialPageSize,
             (currentPage - 1) * initialPageSize + initialPageSize
@@ -49,6 +48,7 @@ class Home extends Component {
         return (
             <section>
                 <SelectStream/>
+
                 <div className="tab_panel">
                     {sortArray.map((el, i) => {
                         return (
@@ -61,19 +61,9 @@ class Home extends Component {
                         )
                     })}
                 </div>
-                <div className="time_sort">
-                    {timeSort.map((el, i) => {
-                        return (
-                            <span
-                                key={i}
-                                onClick={() => this.setState({timeIndex: i})}
-                                className={timeIndex === i ? 'active_time_btn' : ""}
-                            >
-                                {el}
-                            </span>
-                        )
-                    })}
-                </div>
+
+                <TimePanel/>
+
                 {loading &&
                 <section>
                     <PostSkeleton/>
@@ -115,6 +105,12 @@ class Home extends Component {
                 </section>
                 }
                 {sortIndex === 1 && <PostSkeleton/>}
+                {sortIndex === 2 &&
+                    <>
+                        <PostSkeleton/>
+                        <PostSkeleton/>
+                    </>
+                }
             </section>
         )
     }

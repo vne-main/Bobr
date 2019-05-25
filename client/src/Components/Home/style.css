@@ -30,7 +30,7 @@
 }
 
 /* Time line*/
-.time_sort {
+.home__time_panel {
     display: flex;
     border: 1px solid #d5dddf;
     align-content: flex-start;
@@ -40,7 +40,7 @@
     margin-bottom: 20px;
 }
 
-.time_sort span {
+.home__time_panel span {
     padding: 14px 15px;
     color: #6c797f;
     cursor: pointer;
@@ -50,7 +50,7 @@
     border: 2px solid transparent;
 }
 
-.time_sort span:hover {
+.home__time_panel span:hover {
     color: #77a8d0;
 }
 
@@ -121,11 +121,11 @@
         margin-right: 0 !important;
     }
 
-    .time_sort {
+    .home__time_panel {
         width: 100%;
     }
 
-    .time_sort span {
+    .home__time_panel span {
         padding: 14px 0;
         width: 25%;
         text-align: center;

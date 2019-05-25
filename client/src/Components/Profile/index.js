@@ -12,14 +12,11 @@ import {changeCurrentPage} from "../../Store/Actions/actionMain";
 
 class Profile extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            redirect: false,
-            sortIndex: 0,
-            sortArray: ['Ваши посты', 'Избранное'],
-        }
-    }
+    state = {
+        redirect: false,
+        sortIndex: 0,
+        sortArray: ['Ваши посты', 'Избранное'],
+    };
 
     authOut() {
         this.props.logout();

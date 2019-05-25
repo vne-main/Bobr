@@ -14,15 +14,12 @@ import {getUser} from '../../Store/Actions/actionUser';
 
 class SignIn extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            login: "",
-            password: "",
-            status: "",
-            redirect: false,
-        };
-    }
+    state = {
+        login: "",
+        password: "",
+        status: "",
+        redirect: false,
+    };
 
     signIn() {
         const {login, password} = this.state;

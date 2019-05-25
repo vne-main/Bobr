@@ -16,16 +16,13 @@ import connect from "react-redux/es/connect/connect";
 
 class Publish extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: "",
-            tags: "",
-            text: "",
-            status: "",
-            tagsData: [],
-        };
-    }
+    state = {
+        title: "",
+        tags: "",
+        text: "",
+        status: "",
+        tagsData: ["Bobr"],
+    };
 
     writeTag(char) {
         let searchIndex = char.indexOf(' ');

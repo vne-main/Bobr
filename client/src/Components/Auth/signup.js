@@ -11,18 +11,15 @@ import {changeCurrentPage} from '../../Store/Actions/actionMain';
 
 class SignUp extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            login: "",
-            password: "",
-            rep_password: "",
-            status: "",
-        };
-    }
+    state = {
+        email: "",
+        login: "",
+        password: "",
+        rep_password: "",
+        status: "",
+    };
 
-    signUp(){
+    signUp() {
         let {email, login, password} = this.state;
         axios.post('/auth/signup', {
             email: email,
@@ -66,9 +63,9 @@ class SignUp extends Component {
             this.setState({status: "Введите корректный E-mail"});
         } else if (login.length <= 4) {
             this.setState({status: "Никнейм больше 4 символов"});
-        } else if(password.length <= 8){
+        } else if (password.length <= 8) {
             this.setState({status: "Пароль должен быть больше 8 символов"});
-        } else if(password !== rep_password){
+        } else if (password !== rep_password) {
             this.setState({status: "Пароли не совпадают"});
         } else {
             this.signUp();
@@ -124,7 +121,8 @@ class SignUp extends Component {
                                onKeyPress={(e) => e.charCode === 13 && this.checkData()}
                         />
                     </aside>
-                    <button className="blue_button auth_btn" onClick={() => this.checkData()}>Зарегистрироваться</button>
+                    <button className="blue_button auth_btn" onClick={() => this.checkData()}>Зарегистрироваться
+                    </button>
                     <p className="auth_status">{status}</p>
                 </aside>
                 <aside className="auth_bottom">

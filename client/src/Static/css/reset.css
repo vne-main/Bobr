@@ -47,7 +47,7 @@ a{
 }
 
 img,
-.time_sort span,
+.home__time_panel span,
 .tab_panel span{
     -ms-user-select: none;
     -moz-user-select: none;
