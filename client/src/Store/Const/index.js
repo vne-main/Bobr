@@ -15,6 +15,7 @@ const POST = {
 
 const USER = {
     GET_USERS_LIST: "GET_USERS_LIST",
+    SEARCH_USER: "SEARCH_USER",
     GET_USER: "GET_USER",
     LOGOUT: "LOGOUT",
 };

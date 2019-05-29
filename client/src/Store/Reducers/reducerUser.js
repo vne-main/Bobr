@@ -2,6 +2,7 @@ import {USER} from "../Const";
 
 const userState = {
     usersList: [],
+    searchUserList: [],
     user: {},
 };
 
@@ -12,6 +13,17 @@ export default (state = userState, action) => {
             return {
                 ...state,
                 usersList: action.payload,
+                searchUserList: action.payload,
+            };
+
+        case USER.SEARCH_USER:
+            const searchStr = action.payload.toLowerCase();
+            const searchArr = [...state.usersList].filter((el) => {
+                return el.login.toLowerCase().includes(searchStr);
+            });
+            return {
+                ...state,
+                searchUserList: searchArr
             };
 
         case USER.GET_USER:

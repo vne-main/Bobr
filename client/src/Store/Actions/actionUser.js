@@ -7,6 +7,13 @@ const changeUsersList = (usersList) => {
     }
 };
 
+const searchUser = (string) => {
+    return {
+        type: USER.SEARCH_USER,
+        payload: string,
+    }
+};
+
 const getUser = (user) => {
     return {
         type: USER.GET_USER,
@@ -20,6 +27,7 @@ const logout = () => {
 
 export {
     changeUsersList,
+    searchUser,
     getUser,
     logout,
 }
