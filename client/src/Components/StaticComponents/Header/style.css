@@ -103,7 +103,7 @@
 }
 
 /* MEDIA */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
     .header__icon_panel {
         display: none;
     }

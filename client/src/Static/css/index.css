@@ -98,7 +98,7 @@ input, textarea {
 }
 
 /* Main media */
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     .main_right {
         display: none;
     }

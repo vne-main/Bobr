@@ -1,5 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component, useState} from 'react'
 import './style.css';
+
+/* Module */
 import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
 import {Link} from "react-router-dom";
@@ -37,44 +39,31 @@ class MenuContent extends Component {
     }
 }
 
-export default class Burger extends Component {
-
-    state = {
-        menuOpen: false,
-    };
-
-    openMenu() {
-        this.setState({menuOpen: true})
-    }
-
-    closeMenu() {
-        this.setState({menuOpen: false})
-    }
-
-    render() {
-        const {navigation} = this.props;
-        return (
-            <div className="mobile_burger">
-                <CheeseburgerMenu
-                    isOpen={this.state.menuOpen}
-                    closeCallback={this.closeMenu.bind(this)}>
-                    <MenuContent
-                        closeCallback={this.closeMenu.bind(this)}
-                        navigation={navigation}
-                    />
-                </CheeseburgerMenu>
-                <HamburgerMenu
-                    isOpen={this.state.menuOpen}
-                    menuClicked={this.openMenu.bind(this)}
-                    width={25}
-                    height={15}
-                    strokeWidth={3}
-                    rotate={0}
-                    color='black'
-                    borderRadius={0}
-                    animationDuration={0.2}
+const Burger = ({navigation}) => {
+    const [menuOpen, changeOpen] = useState(false);
+    return (
+        <div className="mobile_burger">
+            <CheeseburgerMenu
+                isOpen={menuOpen}
+                closeCallback={() => changeOpen(false)}>
+                <MenuContent
+                    closeCallback={() => changeOpen(false)}
+                    navigation={navigation}
                 />
-            </div>
-        )
-    }
-}
+            </CheeseburgerMenu>
+            <HamburgerMenu
+                isOpen={menuOpen}
+                menuClicked={() => changeOpen(true)}
+                width={25}
+                height={15}
+                strokeWidth={3}
+                rotate={0}
+                color='black'
+                borderRadius={0}
+                animationDuration={0.2}
+            />
+        </div>
+    )
+};
+
+export default Burger;
