@@ -35,13 +35,13 @@ class Graph extends Component {
     render() {
         const {chartOptions} = this.state;
         const data = {
-            labels: ["1", "1", "1", "1", "1",],
+            labels: ["1", "2", "3", "4", "5","6", "7", "8", "9", "10",],
             datasets: [
                 {
-                    borderColor: "#3091F1",
-                    backgroundColor: "rgba(48, 145, 241, 0.1)",
-                    label: ["1", "1", "1", "1", "1",],
-                    data: ["1", "1", "1", "1", "1",],
+                    borderColor: "#333333",
+                    backgroundColor: "rgba(136, 136, 136, 0.3)",
+                    label: ["Test",],
+                    data: ["1", "7", "2", "13", "14","20", "2","1", "1", "1",],
                 }
             ]
         };

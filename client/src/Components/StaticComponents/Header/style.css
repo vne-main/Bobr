@@ -42,7 +42,7 @@
     color: #000 !important;
 }
 
-.header_panel, .header_mobile_user {
+.header__icon_panel, .header_mobile_user {
     display: flex;
     align-items: center;
 }
@@ -51,12 +51,14 @@
     border-radius: 3px;
 }
 
-.search_icon{
+.header__search_icon{
     width: 24px;
     height: 24px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-.header_panel button {
+.header__icon_panel button {
     font-size: 13px;
     border-radius: 3px;
     padding: 6px 12px;
@@ -102,7 +104,7 @@
 
 /* MEDIA */
 @media screen and (max-width: 750px) {
-    .header_panel {
+    .header__icon_panel {
         display: none;
     }
 

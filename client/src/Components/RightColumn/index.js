@@ -7,9 +7,8 @@ import {connect} from 'react-redux';
 /* Components */
 import Sponsors from "./Sponsors";
 import Streams from "./Streams";
-// import Banner from "./Banner";
 import MyCalendar from "./Calendar";
-import Statistics from "./Statistics";
+import StatisticsBox from "./StatisticsBox";
 
 class RightColumn extends Component {
 
@@ -20,15 +19,16 @@ class RightColumn extends Component {
                 <MyCalendar/>
                 {currentPage !== "users" && <Sponsors/>}
                 {currentPage !== "users" && <Streams/>}
-                {currentPage === "users" && <Statistics/>}
+                {currentPage === "users" && <StatisticsBox/>}
             </section>
         )
     }
+
 }
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.currentPage,
+        currentPage: state.main.currentPage,
     }
 };
 

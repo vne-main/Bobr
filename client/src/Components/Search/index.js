@@ -9,7 +9,7 @@ import PostItemMobile from "../StaticComponents/PostItem/mobile";
 /* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
-import {searchPost} from "../../Store/Actions/actionPost";
+import {searchPost, getPostList} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 
 class Search extends Component {
@@ -25,19 +25,21 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        this.props.changeCurrentPage("search");
+        const {postList, changeCurrentPage, getPostList, searchPost} = this.props;
+        searchPost("");
+        changeCurrentPage('search');
+        if (!postList.length) getPostList();
     }
 
     render() {
-        const {searchList} = this.props;
+        const {searchList, searchPost} = this.props;
         return (
             <section>
                 <h3 className="title_h3 title_pages">Поиск постов</h3>
                 <div className="search_panel">
                     <input type="text"
                            placeholder="Поиск постов"
-                           onChange={(e) => this.setState({searchString: e.target.value})}
-                           onKeyPress={(e) => e.charCode === 13 && this.search()}
+                           onChange={(e) => searchPost(e.target.value)}
                     />
                     <SearchIcon/>
                 </div>
@@ -62,7 +64,8 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        searchList: state.post.searchList
+        searchList: state.post.searchList,
+        postList: state.post.postList,
     }
 };
 
@@ -70,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
         searchPost: bindActionCreators(searchPost, dispatch),
+        getPostList: bindActionCreators(getPostList, dispatch),
     }
 };
 

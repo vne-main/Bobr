@@ -1,4 +1,7 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
+import './style.css';
+
+/* Module */
 import Select from 'react-select';
 
 const SelectStream = () => {
@@ -18,6 +21,15 @@ const SelectStream = () => {
             onChange={(e) => handleChange(e)}
             options={flow}
             className="select_stream"
+            theme={(theme) => ({
+                ...theme,
+                colors: {
+                    ...theme.colors,
+                    primary25: 'rgba(136, 136, 136, 0.2)',
+                    primary: 'rgba(136, 136, 136, 1)',
+                    primary50: "rgba(136, 136, 136, 0.2)",
+                },
+            })}
         />
     )
 };

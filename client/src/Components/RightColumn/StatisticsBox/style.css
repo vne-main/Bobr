@@ -5,10 +5,12 @@
     color: #515d66;
     align-items: center;
 }
+
 .right_statistics_list i {
     font-weight: bold;
     font-size: 14px;
 }
+
 .right_statistics_list span {
     color: #4d80aa;
 }

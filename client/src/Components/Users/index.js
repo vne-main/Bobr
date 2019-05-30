@@ -11,7 +11,7 @@ import Skeleton from './Skeleton';
 /* IMG */
 import SearchIcon from '@material-ui/icons/Search';
 
-/** Redux **/
+/* Redux */
 import {bindActionCreators} from "redux";
 import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {searchUser} from "../../Store/Actions/actionUser";
@@ -20,9 +20,10 @@ import {connect} from "react-redux";
 class Users extends Component {
 
     componentDidMount() {
-        this.props.changeCurrentPage("users");
-        const {usersList} = this.props;
-        if(usersList.length === 0) getUsersList();
+        const {usersList, searchUser, changeCurrentPage} = this.props;
+        changeCurrentPage("users");
+        searchUser("");
+        if (usersList.length === 0) getUsersList();
     }
 
     render() {

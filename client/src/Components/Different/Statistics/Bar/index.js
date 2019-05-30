@@ -39,7 +39,7 @@ class Bar extends Component {
             datasets: [
                 {
                     borderColor: "#3091F1",
-                    backgroundColor: "rgba(48, 145, 241, 0.1)",
+                    backgroundColor: "rgba(136, 136, 136, 0.3)",
                     label: ["1", "1", "1", "1", "1",],
                     data: ["1", "1", "1", "1", "1",],
                 }

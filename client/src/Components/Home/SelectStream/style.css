@@ -1,0 +1,19 @@
+.select__control{
+    cursor: pointer!important;
+    border: 1px solid #CFE4D7!important;
+}
+
+.select__indicator-separator{
+    display: none!important;
+}
+
+.select__menu{
+    margin: 0!important;
+    padding: 0!important;
+    border-radius: 0 0 5px 5px!important;
+    cursor: pointer;
+}
+
+.div__input{
+    align-items: unset!important;
+}
