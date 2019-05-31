@@ -1,0 +1,22 @@
+.modal__container {
+    position: relative;
+}
+
+.modal__close {
+    cursor: pointer;
+    position: absolute;
+    width: 15px;
+    top: 20px;
+    right: 20px;
+}
+
+.modal__padding {
+    padding: 0 20px 20px 20px;
+}
+
+.modal__header {
+    padding: 20px 20px 15px 20px;
+    border-bottom: 1px solid #d5dddf;
+    margin-bottom: 15px;
+}
+

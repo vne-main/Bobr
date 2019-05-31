@@ -1,0 +1,18 @@
+.modal__bug--panel textarea {
+    height: 150px;
+}
+
+.modal__bug--label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal__bug--label span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal__bug--send {
+    display: flex;
+    margin-left: auto;
+}

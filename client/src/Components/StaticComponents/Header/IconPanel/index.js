@@ -23,15 +23,15 @@ const IconPanel = (user) => {
                 <SearchIcon/>
             </Link>
 
-            <div className="header__search_icon"
-                 onClick={() => changeSettings(!openSettings)}
-            >
-                <SettingsIcon/>
-                <ModalSettings open={openSettings}/>
-            </div>
+            {/*<div className="header__search_icon"*/}
+                 {/*onClick={() => changeSettings(true)}*/}
+            {/*>*/}
+                {/*<SettingsIcon/>*/}
+                {/*<ModalSettings open={openSettings}/>*/}
+            {/*</div>*/}
 
             <div className="header__search_icon"
-                 onClick={() => changeBugReport(!openBugReport)}
+                 onClick={() => changeBugReport(true)}
             >
                 <svg viewBox="-40 1 511 511.99975" xmlns="http://www.w3.org/2000/svg">
                     <path
