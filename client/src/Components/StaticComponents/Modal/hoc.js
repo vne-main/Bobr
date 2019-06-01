@@ -2,24 +2,25 @@ import React, {Component} from 'react';
 import './style.css';
 import Dialog from '@material-ui/core/Dialog';
 
+/* Redux */
+import {store} from "../../../index";
+import {closeModal} from "../../../Store/Actions/actionModal";
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
 import CloseIcon from '../../../Static/img/modal/close.svg';
+
 
 const Modal = (Component) => {
 
     return class extends React.Component {
 
-        state = {open: false};
-
-        componentWillReceiveProps(nextProps) {
-            this.setState({open: nextProps.open});
-        }
-
         render() {
-            console.info(this.props);
             return (
                 <Dialog
-                    open={this.state.open}
-                    onClose={() => this.setState({open: false})}
+                    open={false}
+                    onClose={() => console.info('e')}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                     maxWidth="xs"
@@ -30,7 +31,7 @@ const Modal = (Component) => {
                             src={CloseIcon}
                             alt="closeModal"
                             className="modal__close"
-                            onClick={() => this.setState({open: false})}
+                            onClick={() => console.info('e')}
                         />
                         <Component {...this.props}/>
                     </div>
@@ -38,7 +39,7 @@ const Modal = (Component) => {
             );
         }
     }
-
 };
 
 export default Modal;
+

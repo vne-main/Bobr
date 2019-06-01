@@ -112,6 +112,10 @@
         display: none;
     }
 
+    .header_navigation {
+        display: none;
+    }
+
     .header_mobile_user {
         display: flex;
     }
@@ -120,11 +124,5 @@
         margin-right: 0;
     }
 
-    .mobile_burger {
-        display: block !important;
-    }
 
-    .header_navigation {
-        display: none;
-    }
 }

@@ -25,29 +25,37 @@ class Header extends Component {
 
     render() {
         const {navigation} = this.state;
-        const {currentPage, user} = this.props;
+        const {currentPage, user, windowWidth} = this.props;
         return (
             <section className="header">
                 <div className="container">
-                    <Burger navigation={navigation}/>
-                    <div className="header_right">
-                        <Link to="/" className="header_logo">bobr</Link>
-                        <nav className="header_navigation">
-                            {navigation.map((el, i) => {
-                                return (
-                                    <Link
-                                        to={el.link}
-                                        className={currentPage === el.page ? "active_page" : ""}
-                                        key={i}
-                                    >
-                                        {el.title}
-                                    </Link>
-                                )
-                            })}
-                        </nav>
-                    </div>
+                    {windowWidth <= 800 ?
+                        <>
+                            <Burger navigation={navigation}/>
+                            <Link to="/" className="header_logo">bobr</Link>
+                        </>
+                        :
+                        <>
+                            <div className="header_right">
+                                <Link to="/" className="header_logo">bobr</Link>
+                                <nav className="header_navigation">
+                                    {navigation.map((el, i) => {
+                                        return (
+                                            <Link
+                                                to={el.link}
+                                                className={currentPage === el.page ? "active_page" : ""}
+                                                key={i}
+                                            >
+                                                {el.title}
+                                            </Link>
+                                        )
+                                    })}
+                                </nav>
+                            </div>
+                            <IconPanel user={user}/>
+                        </>
+                    }
 
-                    <IconPanel user={user}/>
 
                     {!user._id ?
                         <Link to="/signin" className="header_mobile_user">
@@ -68,6 +76,7 @@ const mapStateToProps = (state) => {
     return {
         currentPage: state.main.currentPage,
         user: state.user.user,
+        windowWidth: state.main.windowWidth,
     }
 };
 

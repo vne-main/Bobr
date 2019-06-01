@@ -21,5 +21,5 @@ const changeWindowWidth = () => {
 export {
     actionCatchError,
     changeCurrentPage,
-    changeWindowWidth
+    changeWindowWidth,
 };
