@@ -20,7 +20,7 @@ class Home extends Component {
     state = {
         sortIndex: 0,
         sortArray: ['Важное', 'Разное', 'Все подряд'],
-        initialPageSize: 5,
+        initialPageSize: 4,
         currentPage: 1,
     };
 
@@ -90,7 +90,7 @@ class Home extends Component {
                         )
                     })}
                     <ol className="pagination_panel">
-                        {btnArray.map((el, i) => {
+                        {btnArray.length !== 1 && btnArray.map((el, i) => {
                             return (
                                 <li
                                     key={i}
