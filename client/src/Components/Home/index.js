@@ -48,7 +48,6 @@ class Home extends Component {
         return (
             <section>
                 <SelectStream/>
-
                 <div className="tab_panel">
                     {sortArray.map((el, i) => {
                         return (

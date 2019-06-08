@@ -4,7 +4,7 @@ import Modal from '../hoc';
 const ModalSettings = () => {
     return (
         <div>
-            Настройки
+            <h3 className="modal__header modal__padding">Настройки</h3>
         </div>
     )
 };

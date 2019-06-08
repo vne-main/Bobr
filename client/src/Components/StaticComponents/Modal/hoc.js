@@ -11,16 +11,16 @@ import {bindActionCreators} from 'redux';
 
 import CloseIcon from '../../../Static/img/modal/close.svg';
 
-
 const Modal = (Component) => {
 
     return class extends React.Component {
 
         render() {
+            const {openModal, fnClose} = {...this.props};
             return (
                 <Dialog
-                    open={false}
-                    onClose={() => console.info('e')}
+                    open={openModal}
+                    onClose={fnClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                     maxWidth="xs"
@@ -31,7 +31,7 @@ const Modal = (Component) => {
                             src={CloseIcon}
                             alt="closeModal"
                             className="modal__close"
-                            onClick={() => console.info('e')}
+                            onClick={fnClose}
                         />
                         <Component {...this.props}/>
                     </div>
