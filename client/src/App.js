@@ -40,7 +40,7 @@ class App extends Component {
     };
 
     render() {
-        const {currentPage} = this.props;
+        const {currentPage, windowWidth} = this.props;
         const notCurrent = ['auth', 'profile', 'channels'];
         return (
             <BrowserRouter>
@@ -67,7 +67,7 @@ class App extends Component {
                                 <Route path="/about" component={About}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            {notCurrent.indexOf(currentPage) === -1 && <RightColumn/>}
+                            {notCurrent.indexOf(currentPage) === -1 && windowWidth > 800 && <RightColumn/>}
                         </main>
                         <CatchError/>
                     </div>
@@ -81,6 +81,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
     return {
         currentPage: state.main.currentPage,
+        windowWidth: state.main.windowWidth,
     }
 };
 
