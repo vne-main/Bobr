@@ -24,9 +24,4 @@ const SAGA = {
     GET_POST_LIST: "GET_POST_LIST",
 };
 
-const MODAL = {
-    OPEN_MODAL: "OPEN_MODAL",
-    CLOSE_MODAL: "CLOSE_MODAL",
-};
-
-export {MAIN, POST, USER, SAGA, MODAL};
+export {MAIN, POST, USER, SAGA};
