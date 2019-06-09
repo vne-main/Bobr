@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './style.css';
 
 /* Module */
@@ -10,21 +10,16 @@ import Streams from "./Streams";
 import MyCalendar from "./Calendar";
 import StatisticsBox from "./StatisticsBox";
 
-class RightColumn extends Component {
-
-    render() {
-        const {currentPage} = this.props;
-        return (
-            <section className="main_right">
-                <MyCalendar/>
-                {currentPage !== "users" && <Sponsors/>}
-                {currentPage !== "users" && <Streams/>}
-                {currentPage === "users" && <StatisticsBox/>}
-            </section>
-        )
-    }
-
-}
+const RightColumn = ({currentPage}) => {
+    return (
+        <section className="main_right">
+            <MyCalendar/>
+            {currentPage === "users" && <StatisticsBox/>}
+            <Sponsors/>
+            {currentPage !== "users" && <Streams/>}
+        </section>
+    )
+};
 
 const mapStateToProps = (state) => {
     return {

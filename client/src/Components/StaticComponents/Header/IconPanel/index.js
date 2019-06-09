@@ -14,7 +14,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 class IconPanel extends Component {
 
     state = {
-        modalBug: false,
+        modalBug: true,
         modalSettings: false,
     };
 

@@ -16,3 +16,9 @@
     display: flex;
     margin-left: auto;
 }
+
+.modal__send_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
