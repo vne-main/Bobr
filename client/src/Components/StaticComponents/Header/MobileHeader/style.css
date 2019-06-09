@@ -1,3 +1,16 @@
+.mobile_header {
+    z-index: 9999!important;
+}
+
+.menu-item {
+    width: 300px;
+}
+
+.mobile_burger {
+    width: 25px;
+    cursor: pointer;
+}
+
 .mobile_burger_title{
     text-align: center;
     margin: 10px 0 5px 0;

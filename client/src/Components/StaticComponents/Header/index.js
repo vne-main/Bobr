@@ -6,8 +6,8 @@ import './style.css';
 import IconPanel from './IconPanel';
 
 /* MATERIAL */
-import Burger from './Burger';
-import UserImg from '../../../Static/img/header/user.svg';
+import MobileHeader from './MobileHeader';
+import MobilePanel from './MobilePanel';
 
 /* Redux */
 import connect from "react-redux/es/connect/connect";
@@ -31,8 +31,9 @@ class Header extends Component {
                 <div className="container">
                     {windowWidth <= 800 ?
                         <>
-                            <Burger navigation={navigation}/>
+                            <MobileHeader navigation={navigation}/>
                             <Link to="/" className="header_logo">bobr</Link>
+                            <MobilePanel navigation={navigation}/>
                         </>
                         :
                         <>
@@ -54,17 +55,6 @@ class Header extends Component {
                             </div>
                             <IconPanel user={user}/>
                         </>
-                    }
-
-
-                    {!user._id ?
-                        <Link to="/signin" className="header_mobile_user">
-                            <img src={UserImg} alt="user" className="h_mobile_user_photo"/>
-                        </Link>
-                        :
-                        <Link to="/profile" className="header_mobile_user">
-                            <img src={user.photo} alt="user" className="h_mobile_user_photo"/>
-                        </Link>
                     }
                 </div>
             </section>

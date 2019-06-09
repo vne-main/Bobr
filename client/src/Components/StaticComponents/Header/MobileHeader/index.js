@@ -1,25 +1,24 @@
 import React, {Component, useState} from 'react'
 import './style.css';
 
+/* Icon */
+import BurgerIcon from '../../../../Static/img/header/burger.svg';
+
 /* Module */
-import CheeseburgerMenu from 'cheeseburger-menu'
-import HamburgerMenu from 'react-hamburger-menu'
+import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
 import SearchIcon from '@material-ui/icons/Search';
 
 class MenuContent extends Component {
 
     render() {
-        const {navigation} = this.props;
+        const {navigation, closeCallback} = this.props;
         return (
             <div className="menu-item">
                 <h3 className="header_logo mobile_burger_title">bobr</h3>
-                <Link
-                    to="/search"
-                    onClick={this.props.closeCallback}
-                >
+                <Link to="/search" onClick={closeCallback}>
                     <div className="burger_search">
-                        Поиск
+                        <span>Поиск</span>
                         <SearchIcon/>
                     </div>
                 </Link>
@@ -28,7 +27,7 @@ class MenuContent extends Component {
                         <Link
                             key={i}
                             to={el.link}
-                            onClick={this.props.closeCallback}
+                            onClick={closeCallback}
                         >
                             {el.title}
                         </Link>
@@ -39,31 +38,29 @@ class MenuContent extends Component {
     }
 }
 
-const Burger = ({navigation}) => {
+const MobileHeader = ({navigation}) => {
     const [menuOpen, changeOpen] = useState(false);
     return (
-        <div className="mobile_burger">
-            <CheeseburgerMenu
-                isOpen={menuOpen}
-                closeCallback={() => changeOpen(false)}>
+        <>
+            <img
+                src={BurgerIcon}
+                alt="burger_header"
+                className="mobile_burger"
+                onClick={() => changeOpen(true)}
+            />
+            <Drawer
+                open={menuOpen}
+                onClose={() => changeOpen(false)}
+                className="mobile_header"
+                anchor="left"
+            >
                 <MenuContent
                     closeCallback={() => changeOpen(false)}
                     navigation={navigation}
                 />
-            </CheeseburgerMenu>
-            <HamburgerMenu
-                isOpen={menuOpen}
-                menuClicked={() => changeOpen(true)}
-                width={25}
-                height={15}
-                strokeWidth={3}
-                rotate={0}
-                color='black'
-                borderRadius={0}
-                animationDuration={0.2}
-            />
-        </div>
+            </Drawer>
+        </>
     )
 };
 
-export default Burger;
+export default MobileHeader;
