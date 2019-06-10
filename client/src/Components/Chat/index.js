@@ -13,14 +13,11 @@ import {connect} from "react-redux";
 
 class Chat extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            ws: new WebSocket('ws://localhost:3002'),
-            message: "",
-            list: [],
-        }
-    }
+    state = {
+        ws: new WebSocket('ws://localhost:3002'),
+        message: "",
+        list: [],
+    };
 
     webSocket() {
         const {ws} = this.state;
