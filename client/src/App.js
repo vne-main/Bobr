@@ -46,6 +46,7 @@ class App extends Component {
             <BrowserRouter>
                 <div className={currentPage === "auth" ? "vh_block_auth" : "vh_block"}>
                     <div>
+
                         {currentPage !== "auth" && <Header/>}
                         <main className="container main">
                             <Switch>
