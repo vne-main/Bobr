@@ -16,12 +16,6 @@
     margin: 10px 0 5px 0;
 }
 
-.burger_search{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .menu-item a {
     display: block;
     padding: 20px 15px;
