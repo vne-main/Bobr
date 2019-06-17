@@ -9,7 +9,20 @@ import Drawer from "@material-ui/core/Drawer/Drawer";
 import {Link} from "react-router-dom";
 import SearchIcon from '@material-ui/icons/Search';
 
-const PanelContent = ({closeCallback}) => {
+const PanelContent = (props) => {
+
+    const {closeCallback} = props;
+
+    const openModal = (type) => {
+        const {openSettingsModal, openBugModal} = props.fnModal;
+        closeCallback();
+        if(type === 'bug') {
+            openBugModal();
+        } else if (type === 'settings'){
+            openSettingsModal();
+        }
+    };
+
     return (
         <div className="menu-item">
             <h3 className="header_logo mobile_burger_title">Панель</h3>
@@ -19,6 +32,12 @@ const PanelContent = ({closeCallback}) => {
                     <SearchIcon/>
                 </div>
             </Link>
+            <a onClick={() => openModal('bug')}>
+                Баги
+            </a>
+            <a onClick={() => openModal('settings')}>
+                Настройки
+            </a>
             <Link to="/signin" onClick={closeCallback}>
                 Выход
             </Link>
@@ -26,7 +45,7 @@ const PanelContent = ({closeCallback}) => {
     )
 };
 
-const MobilePanel = () => {
+const MobilePanel = (props) => {
     const [menuOpen, changeOpen] = useState(false);
     return (
         <>
@@ -42,7 +61,10 @@ const MobilePanel = () => {
                 className="mobile_header"
                 anchor="right"
             >
-                <PanelContent closeCallback={() => changeOpen(false)}/>
+                <PanelContent
+                    closeCallback={() => changeOpen(false)}
+                    fnModal={props}
+                />
             </Drawer>
         </>
     )

@@ -3,35 +3,23 @@ import React, {Component} from 'react';
 /* Module */
 import {Link} from "react-router-dom";
 
-/* Component*/
-import ModalSettings from "../../Modal/Settings";
-
 /* Icon */
 import SearchIcon from "@material-ui/icons/Search";
-import ModalBugReport from "../../Modal/BugReport";
 import SettingsIcon from '@material-ui/icons/Settings';
 
 class IconPanel extends Component {
 
-    state = {
-        modalBug: false,
-        modalSettings: false,
-    };
-
     render() {
-        const {user} = this.props;
-        const {modalBug, modalSettings} = this.state;
+        const {user, openBugModal, openSettingsModal} = this.props;
         return (
             <div className="header__icon_panel">
-                <ModalSettings open={modalSettings} fnClose={() => this.setState({modalSettings: false})}/>
-                <ModalBugReport open={modalBug} fnClose={() => this.setState({modalBug: false})}/>
                 <Link to="/search" className="header__search_icon">
                     <SearchIcon/>
                 </Link>
-                <div className="header__search_icon" onClick={() => this.setState({modalSettings: true})}>
+                <div className="header__search_icon" onClick={() => openSettingsModal()}>
                     <SettingsIcon/>
                 </div>
-                <div className="header__search_icon" onClick={() => this.setState({modalBug: true})}>
+                <div className="header__search_icon" onClick={() => openBugModal()}>
                     <svg viewBox="-40 1 511 511.99975" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="m418.527344 61.820312c-1.273438-.171874-127.230469-18.210937-180.101563-50.777343l-14.207031-8.757813c-4.960938-3.046875-11.199219-3.046875-16.15625 0l-14.21875 8.757813c-52.808594 32.539062-178.820312 50.605469-180.09375 50.777343-7.59375 1.078126-13.25 7.578126-13.25 15.246094v213.433594c0 121.726562 95.785156 221.5 215.640625 221.5 119.582031 0 215.640625-99.464844 215.640625-221.5v-213.433594c0-7.667968-5.65625-14.175781-13.253906-15.246094zm-17.542969 228.679688c0 105.492188-82.753906 190.707031-184.84375 190.707031-101.917969 0-184.847656-85.558593-184.847656-190.707031v-200.226562c35.199219-5.734376 130.691406-23.433594 178.710937-53.015626l6.136719-3.777343 6.136719 3.777343c48.019531 29.582032 143.511718 47.269532 178.707031 53.015626zm0 0"/>

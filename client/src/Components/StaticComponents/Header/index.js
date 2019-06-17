@@ -4,6 +4,8 @@ import './style.css';
 
 /* Component */
 import IconPanel from './IconPanel';
+import ModalSettings from "../Modal/Settings";
+import ModalBugReport from "../Modal/BugReport";
 
 /* MATERIAL */
 import MobileHeader from './MobileHeader';
@@ -21,19 +23,34 @@ class Header extends Component {
             // {link: "/chat", title: "Чат", page: "chat"},
             {link: "/different", title: "В разработке", page: "different"},
         ],
+        modalBug: false,
+        modalSettings: false,
     };
 
     render() {
-        const {navigation} = this.state;
+        const {navigation, modalSettings, modalBug} = this.state;
         const {currentPage, user, windowWidth} = this.props;
         return (
             <section className="header">
+                <ModalSettings
+                    open={modalSettings}
+                    fnClose={() => this.setState({modalSettings: false})}
+                    windowWidth={windowWidth}
+                />
+                <ModalBugReport
+                    open={modalBug}
+                    fnClose={() => this.setState({modalBug: false})}
+                    windowWidth={windowWidth}
+                />
                 <div className="container">
                     {windowWidth <= 800 ?
                         <>
                             <MobileHeader navigation={navigation}/>
                             <Link to="/" className="header_logo">bobr</Link>
-                            <MobilePanel navigation={navigation}/>
+                            <MobilePanel
+                                openBugModal={() => this.setState({modalBug: true})}
+                                openSettingsModal={() => this.setState({modalSettings: true})}
+                            />
                         </>
                         :
                         <>
@@ -53,7 +70,11 @@ class Header extends Component {
                                     })}
                                 </nav>
                             </div>
-                            <IconPanel user={user}/>
+                            <IconPanel
+                                user={user}
+                                openBugModal={() => this.setState({modalBug: true})}
+                                openSettingsModal={() => this.setState({modalSettings: true})}
+                            />
                         </>
                     }
                 </div>

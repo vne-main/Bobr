@@ -4,10 +4,9 @@ import Dialog from '@material-ui/core/Dialog';
 import CloseIcon from '../../../Static/img/modal/close.svg';
 
 const Modal = (Component) => {
-
     return class extends React.Component {
         render() {
-            const {open, fnClose} = {...this.props};
+            const {open, fnClose, windowWidth} = {...this.props};
             return (
                 <Dialog
                     open={open}
@@ -15,6 +14,7 @@ const Modal = (Component) => {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                     maxWidth="xs"
+                    fullScreen={windowWidth <= 800}
                     fullWidth={true}
                 >
                     <div className="modal__container">
