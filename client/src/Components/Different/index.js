@@ -30,7 +30,7 @@ class Different extends Component {
         const {differentPage} = this.state;
         return (
             <section>
-                <h3 className="title_h3 title_pages">Разное</h3>
+                <h3 className="title_h3 title_pages">В разработке</h3>
                 <div className="different_container">
                     {differentPage.map((el, i) => {
                         return (

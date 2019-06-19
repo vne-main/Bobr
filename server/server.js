@@ -1,11 +1,12 @@
 const logger = require('morgan'),
-      BodyParser = require('body-parser'),
-      postRouter = require('./routes/post-routes'),
-      userRouter = require('./routes/user-routes'),
-      chatRouter = require('./routes/chat-routes'),
-      express = require('express'),
-      cors = require('cors'),
-      app = express();
+    BodyParser = require('body-parser'),
+    postRouter = require('./routes/post-routes'),
+    userRouter = require('./routes/user-routes'),
+    chatRouter = require('./routes/chat-routes'),
+    express = require('express'),
+    cors = require('cors'),
+    app = express(),
+    io = require('socket.io')();
 
 app.use(cors({
     origin: "http://localhost",
@@ -22,21 +23,12 @@ app.listen(3001, function () {
     console.log("listen port: 3001")
 });
 
-const WebSocket = require('ws'),
-    wss = new WebSocket.Server({ port: 3002});
-
-wss.on('connection', ws => {
-    ws.on('message', message => {
-        const data = JSON.parse(message);
-        if (data === "close"){
-            wss.close();
-            console.info('close');
-        } else {
-            wss.clients.forEach(client => {
-                if (client.readyState === WebSocket.OPEN){
-                    client.send(data);
-                }
-            });
-        }
+io.on('connection', function(socket){
+    console.info('User connected');
+    socket.on('chat message', function(msg){
+        console.log('Message:', JSON.stringify(msg));
+        io.emit('chat message', msg);
     });
 });
+
+io.listen(3002);
