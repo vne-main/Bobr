@@ -28,8 +28,7 @@
     "nodemon": "^1.18.9",
     "os": "^0.1.1",
     "socket.io": "^2.2.0",
-    "subdomain": "^1.2.0",
-    "ws": "^6.2.0"
+    "subdomain": "^1.2.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
