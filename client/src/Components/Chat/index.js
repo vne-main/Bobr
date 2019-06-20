@@ -20,7 +20,31 @@ class Chat extends Component {
             socket: openSocket('http://localhost:3002'),
             login: `Bobr #${Math.random(1000).toFixed(3).split('.')[1]}`,
             message: "",
-            messageList: [],
+            messageList: [
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+                {"message":"s","login":"Bobr #165","time":"2019-06-20T15:51:10.133Z"},
+
+                ],
         };
         const sentMessage = this.sentMessage.bind(this);
         this.state.socket.on('chat message', function (msg) {
@@ -54,30 +78,42 @@ class Chat extends Component {
         return (
             <section>
                 <h3 className="title_h3 title_pages">Чат</h3>
-                <div className="chat_send">
-                    <textarea
-                        value={message}
-                        onChange={(e) => this.setState({message: e.target.value})}
-                        onKeyPress={(e) => e.charCode === 13 && this.sendMessage()}
-                        placeholder="Введите сообщение..."
-                    />
-                    <button
-                        className="blue_button"
-                        onClick={() => this.sendMessage()}
-                    >Отправить
-                    </button>
+
+                <div className="chat_container">
+
+                    <div className="chat_absolute">
+
+
+                        <ol className="chat_history">
+                            {messageList.map((el, i) => {
+                                const formatDate = new Date(el.time).toLocaleString().split(",")[1];
+                                return (
+                                    <li key={i}>
+                                        <span>{el.login}: {el.message}</span>
+                                        <span>{formatDate}</span>
+                                    </li>
+                                )
+                            })}
+                        </ol>
+
+                        <div className="chat_send">
+                            <textarea
+                                value={message}
+                                onChange={(e) => this.setState({message: e.target.value})}
+                                onKeyPress={(e) => e.charCode === 13 && this.sendMessage()}
+                                placeholder="Введите сообщение..."
+                            />
+                            <button
+                                className="blue_button"
+                                onClick={() => this.sendMessage()}
+                            >Отправить
+                            </button>
+                        </div>
+
+                    </div>
+
                 </div>
-                <ol className="chat_container">
-                    {messageList.map((el, i) => {
-                        const formatDate = new Date(el.time).toLocaleString().split(",")[1];
-                        return (
-                            <li key={i}>
-                                <span>{el.login}: {el.message}</span>
-                                <span>{formatDate}</span>
-                            </li>
-                        )
-                    })}
-                </ol>
+
             </section>
         )
     }

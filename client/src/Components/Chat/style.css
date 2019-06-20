@@ -1,20 +1,17 @@
-.chat_container{
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+.chat_container {
+    height: 100vh;
+    padding-bottom: 120px;
 }
 
-.chat_container li{
-    padding: 10px 20px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    background: #f7f7f7;
-    display: flex;
-    justify-content: space-between;
+.chat_absolute {
+    height: 100%;
+    position: relative;
 }
 
 .chat_send {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
     display: flex;
     margin: 20px 0 30px 0;
 }
@@ -25,6 +22,26 @@
 
 .chat_send button{
     border-radius: 0 3px 3px 0;
+}
+
+.chat_history{
+    top: 0;
+    bottom: 120px;
+    position: absolute;
+    overflow-y: scroll;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.chat_history li{
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: space-between;
 }
 
 @media only screen and (max-width: 750px) {
