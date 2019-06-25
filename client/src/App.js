@@ -42,12 +42,12 @@ class App extends Component {
 
     render() {
         const {currentPage, windowWidth} = this.props;
-        const notCurrent = ['auth', 'profile', 'channels'];
+        const notRightColumn = ['auth', 'profile', 'channels'];
+        const notFooter = ['auth'];
         return (
             <BrowserRouter>
                 <div className={currentPage === "auth" ? "vh_block_auth" : "vh_block"}>
                     <div>
-
                         {currentPage !== "auth" && <Header/>}
                         <main className="container main">
                             <Switch>
@@ -69,11 +69,11 @@ class App extends Component {
                                 <Route path="/about" component={About}/>
                                 <Route component={NotFound}/>
                             </Switch>
-                            {notCurrent.indexOf(currentPage) === -1 && windowWidth > 800 && <RightColumn/>}
+                            {notRightColumn.indexOf(currentPage) === -1 && windowWidth > 800 && <RightColumn/>}
                         </main>
                         <CatchError/>
                     </div>
-                    {currentPage !== "auth" && <Footer/>}
+                    {notFooter.indexOf(currentPage) === -1 && <Footer/>}
                 </div>
             </BrowserRouter>
         );
