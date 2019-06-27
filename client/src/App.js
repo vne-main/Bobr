@@ -3,7 +3,6 @@ import React, {Component} from "react";
 /* Module */
 import {Route, BrowserRouter, Switch} from 'react-router-dom';
 
-
 /* Components */
 import CatchError from './Components/StaticComponents/CatchError';
 import RightColumn from './Components/RightColumn';
