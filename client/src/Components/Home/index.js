@@ -36,6 +36,7 @@ class Home extends Component {
         if (!postList.length) getPostList();
     }
 
+
     render() {
         const {postList, loading} = this.props;
         const {sortIndex, sortArray, currentPage, initialPageSize} = this.state;
