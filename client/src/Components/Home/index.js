@@ -34,6 +34,7 @@ class Home extends Component {
         const {postList, changeCurrentPage, getPostList} = this.props;
         changeCurrentPage('home');
         if (!postList.length) getPostList();
+        
     }
 
 
