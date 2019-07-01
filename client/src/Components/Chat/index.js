@@ -12,7 +12,7 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            socket: openSocket('http://localhost:3012'),
+            socket: openSocket('http://localhost:3002'),
             login: `Bobr #${Math.random(1000).toFixed(3).split('.')[1]}`,
             message: "",
             messageList: [],
