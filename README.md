@@ -14,6 +14,9 @@
 - Html5
 - Css3
 - React.js (Redux, Router)
+  - Hook
+  - HOC
+  - saga
 - Node.js (Express)
 - WebSocket
 - MongoDB (Mongoose)
