@@ -12,15 +12,15 @@ class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            socket: openSocket('http://104.199.26.30:3002'),
+            // socket: openSocket('http://localhost:3002'),
             login: `Bobr #${Math.random(1000).toFixed(3).split('.')[1]}`,
             message: "",
             messageList: [],
         };
         const sentMessage = this.sentMessage.bind(this);
-        this.state.socket.on('chat message', function (msg) {
-            sentMessage(msg)
-        });
+        // this.state.socket.on('chat message', function (msg) {
+        //     sentMessage(msg)
+        // });
     }
 
     sentMessage(msg) {
@@ -62,7 +62,7 @@ class Chat extends Component {
                                     </li>
                                 )
                             })}
-                            <li>Добро пожаловать в тестовый чат!</li>
+                            <li>Чат находится в разработке...</li>
                         </ol>
                         <div className="chat_send">
                             <input
