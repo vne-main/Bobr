@@ -14,6 +14,10 @@
 - Html5
 - Css3
 - React.js (Redux, Router)
+  - Hook
+  - HOC
+  - Saga
+  - Socket.io
 - Node.js (Express)
 - WebSocket
 - MongoDB (Mongoose)
@@ -29,3 +33,5 @@
 - Чат
 - Личный кабенет
 - Сисок пользователей
+- Статистика
+- Общая информация о проекте
