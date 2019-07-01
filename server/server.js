@@ -31,4 +31,4 @@ io.on('connection', function(socket){
     });
 });
 
-io.listen(3002);
+io.listen(3012);
