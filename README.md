@@ -16,7 +16,8 @@
 - React.js (Redux, Router)
   - Hook
   - HOC
-  - saga
+  - Saga
+  - Socket.io
 - Node.js (Express)
 - WebSocket
 - MongoDB (Mongoose)
@@ -32,3 +33,5 @@
 - Чат
 - Личный кабенет
 - Сисок пользователей
+- Статистика
+- Общая информация о проекте
