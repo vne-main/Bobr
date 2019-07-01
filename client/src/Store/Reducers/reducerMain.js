@@ -16,6 +16,15 @@ const TitlePage = {
     search: "Поиск",
     chat: "Чат",
     different: "Разное",
+    about: "О сайте",
+    advertising: "Реклама",
+    documentation: "Документация",
+    help: "Помощь",
+    statistics: "Статистика",
+    work: "Работа",
+    notFound: "Не найдено :(",
+
+
 };
 
 export default (state = userState, action) => {

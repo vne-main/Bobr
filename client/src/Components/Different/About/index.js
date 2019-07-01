@@ -1,10 +1,8 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 
-/* Redux */
-import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../../Store/Actions/actionMain";
-import connect from "react-redux/es/connect/connect";
+/* Function */
+import {changePage} from "../../../Requsets/function";
 
 /* Img */
 import imgScreen1 from '../../../Static/img/about/screen_1.jpg';
@@ -21,35 +19,27 @@ const arrayScreen = [
     {title: "Чат", img: imgScreen5},
 ];
 
-class About extends Component {
+const About = () => {
 
-    componentDidMount() {
-        this.props.changeCurrentPage("different");
-    }
+    useEffect(() => {
+        changePage('about')
+    }, []);
 
-    render() {
-        return (
-            <section>
-                <h3 className="title_h3 title_pages">О сайте</h3>
-                <div className="about_container">
-                    {arrayScreen.map((el, i) => {
-                        return (
-                            <aside className="about_box" key={i}>
-                                <img src={el.img} alt="screen"/>
-                                <h4>{el.title}</h4>
-                            </aside>
-                        )
-                    })}
-                </div>
-            </section>
-        );
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    }
+    return (
+        <section>
+            <h3 className="title_h3 title_pages">О сайте</h3>
+            <div className="about_container">
+                {arrayScreen.map((el, i) => {
+                    return (
+                        <aside className="about_box" key={i}>
+                            <img src={el.img} alt="screen"/>
+                            <h4>{el.title}</h4>
+                        </aside>
+                    )
+                })}
+            </div>
+        </section>
+    );
 };
 
-export default connect("", mapDispatchToProps)(About);
+export default About;

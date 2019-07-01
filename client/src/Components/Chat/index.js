@@ -4,13 +4,8 @@ import './style.css';
 /* Module */
 import openSocket from 'socket.io-client';
 
-/* Img */
-
-/* Redux */
-import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/Actions/actionMain";
-import {connect} from "react-redux";
-
+/* Function */
+import {changePage} from "../../Requsets/function";
 
 class Chat extends Component {
 
@@ -47,7 +42,7 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-        this.props.changeCurrentPage("chat");
+        changePage("chat");
     }
 
     render() {
@@ -89,10 +84,4 @@ class Chat extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    }
-};
-
-export default connect("", mapDispatchToProps)(Chat);
+export default Chat;

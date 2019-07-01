@@ -10,7 +10,7 @@ import {error500} from "../../Requsets/function";
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/Actions/actionMain";
+import {changePage} from "../../Requsets/function";
 import {pushNewPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 
@@ -77,7 +77,7 @@ class Publish extends Component {
     };
 
     componentDidMount() {
-        this.props.changeCurrentPage("publish");
+        changePage('publish');
     }
 
     render() {
@@ -134,7 +134,6 @@ class Publish extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
         pushNewPost: bindActionCreators(pushNewPost, dispatch),
     }
 };

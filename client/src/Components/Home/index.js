@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './style.css';
 
+/* Function */
+import {changePage} from "../../Requsets/function";
+
 /* Components */
 import SelectStream from "./SelectStream";
 import TimePanel from "./TimePanel";
@@ -10,7 +13,6 @@ import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {getPostList} from "../../Store/Actions/actionPost";
 import {connect} from "react-redux";
 
@@ -24,19 +26,17 @@ class Home extends Component {
         currentPage: 1,
     };
 
-    changePages = (openPage) => {
+    changePagePosts = (openPage) => {
         if (openPage === this.state.currentPage) return;
         this.setState({currentPage: openPage});
         window.scrollTo(0, 0);
     };
 
     componentDidMount() {
-        const {postList, changeCurrentPage, getPostList} = this.props;
-        changeCurrentPage('home');
+        const {postList, getPostList} = this.props;
+        changePage('home');
         if (!postList.length) getPostList();
-        
     }
-
 
     render() {
         const {postList, loading} = this.props;
@@ -95,7 +95,7 @@ class Home extends Component {
                             return (
                                 <li
                                     key={i}
-                                    onClick={() => this.changePages(el)}
+                                    onClick={() => this.changePagePosts(el)}
                                     className={el === currentPage ? "pagination_active" : ""}
                                 >
                                     {el}
@@ -126,7 +126,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
         getPostList: bindActionCreators(getPostList, dispatch),
     }
 };

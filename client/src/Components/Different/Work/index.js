@@ -1,10 +1,8 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 
-/* Redux */
-import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../../Store/Actions/actionMain";
-import connect from "react-redux/es/connect/connect";
+/* Function */
+import {changePage} from "../../../Requsets/function";
 
 /* IMG */
 import imgWork1 from '../../../Static/img/work/work_1.svg';
@@ -21,42 +19,34 @@ const arrayWork = [
     {img: imgWork5, title: "Название работы #5", description: "Описание Работы #5", type: "type5"},
 ];
 
-class Work extends Component {
+const Work = () => {
 
-    componentDidMount() {
-        this.props.changeCurrentPage("different");
-    }
-
-    render() {
-        return (
-            <section>
-                <h3 className="title_h3 title_pages">Работа</h3>
-                <div className="work_container">
-                    {arrayWork.map((el, i) => {
-                        const {img, title, description, type} = el;
-                        return (
-                            <aside className="work_box" key={i}>
-                                <img src={img} alt="work" className="work_img"/>
-                                <div className="work_content">
-                                    <h4 className="">{title}</h4>
-                                    <p>{description}</p>
-                                    <button className="blue_button"
+    useEffect(() => {
+        changePage('work');
+    }, []);
+    return (
+        <section>
+            <h3 className="title_h3 title_pages">Работа</h3>
+            <div className="work_container">
+                {arrayWork.map((el, i) => {
+                    const {img, title, description, type} = el;
+                    return (
+                        <aside className="work_box" key={i}>
+                            <img src={img} alt="work" className="work_img"/>
+                            <div className="work_content">
+                                <h4 className="">{title}</h4>
+                                <p>{description}</p>
+                                <button className="blue_button"
                                         onClick={() => console.info(type)}
-                                    >Оставить заявку</button>
-                                </div>
-                            </aside>
-                        )
-                    })}
-                </div>
-            </section>
-        );
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    }
+                                >Оставить заявку
+                                </button>
+                            </div>
+                        </aside>
+                    )
+                })}
+            </div>
+        </section>
+    );
 };
 
-export default connect("", mapDispatchToProps)(Work);
+export default Work;

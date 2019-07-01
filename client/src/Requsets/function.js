@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {store} from '../index';
-import {actionCatchError} from '../Store/Actions/actionMain';
+import {changeCurrentPage, actionCatchError} from '../Store/Actions/actionMain';
 
 export const request = (method, url, data) => {
     return axios({
@@ -8,6 +8,10 @@ export const request = (method, url, data) => {
         url: url,
         data: data,
     });
+};
+
+export const changePage = (page) => {
+    store.dispatch(changeCurrentPage(page));
 };
 
 export const error500 = (err) => {

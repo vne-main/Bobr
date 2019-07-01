@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 /* Request */
 import {getPost} from '../../Requsets/apiPost';
+import {changePage} from "../../Requsets/function";
 
 /* Components */
 import PostSkeleton from "../StaticComponents/PostItem/Skeleton/index";
@@ -12,7 +13,6 @@ import NotFound from '../NotFound';
 
 /* Module */
 import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../Store/Actions/actionMain";
 import {changeCurrentPost} from "../../Store/Actions/actionPost";
 import connect from "react-redux/es/connect/connect";
 
@@ -24,10 +24,10 @@ class Post extends Component {
     };
 
     componentDidMount() {
-        this.props.changeCurrentPage("post");
         getPost()
             .then(res => {
                 this.props.changeCurrentPost(res.data);
+                document.title = `Bobr: ${res.data.title}`;
                 this.setState({skeleton: false});
             })
             .catch((err) => {
@@ -72,7 +72,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         changeCurrentPost: bindActionCreators(changeCurrentPost, dispatch),
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
     }
 };
 

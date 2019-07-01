@@ -1,30 +1,20 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 
-/* Redux */
-import {bindActionCreators} from "redux";
-import {changeCurrentPage} from "../../../Store/Actions/actionMain";
-import connect from "react-redux/es/connect/connect";
+/* Function */
+import {changePage} from "../../../Requsets/function";
 
-class Documentation extends Component {
+const Documentation = () => {
 
-    componentDidMount() {
-        this.props.changeCurrentPage("different");
-    }
+    useEffect(() => {
+        changePage('documentation');
+    }, []);
 
-    render() {
-        return (
-            <section>
-                <h3 className="title_h3 title_pages">Документация</h3>
-            </section>
-        );
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    }
+    return (
+        <section>
+            <h3 className="title_h3 title_pages">Документация</h3>
+        </section>
+    );
 };
 
-export default connect("", mapDispatchToProps)(Documentation);
+export default Documentation;
