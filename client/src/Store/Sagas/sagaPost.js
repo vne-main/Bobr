@@ -1,5 +1,5 @@
-import {call, put} from 'redux-saga/effects';
 import {POST} from "../Const";
+import {call, put} from 'redux-saga/effects';
 import {getPosts} from "../../Requsets/apiPost";
 import {error500} from "../../Requsets/function";
 
