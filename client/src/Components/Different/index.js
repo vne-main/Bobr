@@ -18,8 +18,8 @@ const Different = () => {
         {href: "/help", title: "Помощь"},
         {href: "/advertising", title: "Реклама"},
         {href: "/work", title: "Работа"},
-        {href: "/documentation", title: "Документация"},
         {href: "/about", title: "О сайте"},
+        {href: "/documentation", title: "Документация"},
     ];
 
     return (
