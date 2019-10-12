@@ -12,6 +12,7 @@
     "chart.js": "^2.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "prettier": "^1.18.2",
     "query-string": "^6.3.0",
     "react": "^16.8.6",
     "react-calendar": "^2.18.1",
@@ -30,6 +31,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+    "format": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
