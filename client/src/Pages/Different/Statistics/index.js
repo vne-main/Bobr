@@ -26,7 +26,7 @@ const Statistics = () => {
         <Bar />
       </aside>
       <aside className="statistics_block">
-        <h4 className="statistics_graph_h4">Просмотры</h4>
+        <h4 className="statistics_graph_h4">Сервисы</h4>
         <div className="statistics_doughnut">
           <div>
             <Doughnut />
