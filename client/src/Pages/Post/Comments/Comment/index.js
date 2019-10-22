@@ -1,11 +1,11 @@
 import React from 'react';
 
 /* IMG */
-import spImg2 from '../../../../Static/img/sponsor/sponsor_2.jpg';
-import arrowImg from '../../../../Static/img/stats/arrow.png';
+import spImg2 from 'Static/img/sponsor/sponsor_2.jpg';
+import arrowImg from 'Static/img/stats/arrow.png';
 
 /* Components */
-import Counter from '../../../../Common/Counter';
+import Counter from 'Common/Counter';
 
 export const Comment = props => {
   const { el, i } = props;

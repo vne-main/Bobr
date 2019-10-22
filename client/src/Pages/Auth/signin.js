@@ -9,8 +9,8 @@ import axios from 'axios';
 /* Redux */
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeCurrentPage } from '../../Store/Actions/actionMain';
-import { getUser } from '../../Store/Actions/actionUser';
+import { changeCurrentPage } from 'Store/Actions/actionMain';
+import { getUser } from 'Store/Actions/actionUser';
 
 class SignIn extends Component {
   state = {

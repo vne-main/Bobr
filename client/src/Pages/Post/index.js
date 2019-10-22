@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 
 /* Request */
-import { getPost } from '../../Requsets/apiPost';
-import { changePage } from '../../Requsets/function';
+import { getPost } from 'Requsets/apiPost';
+import { changePage } from 'Requsets/function';
 
 /* Components */
-import PostSkeleton from '../../Common/PostItem/Skeleton/index';
-import PostItem from '../../Common/PostItem';
+import PostSkeleton from 'Common/PostItem/Skeleton/index';
+import PostItem from 'Common/PostItem';
 import CommentsSkeleton from './Comments/Skeleton';
 import Comments from './Comments';
 import NotFound from '../NotFound';
 
 /* Module */
 import { bindActionCreators } from 'redux';
-import { changeCurrentPost } from '../../Store/Actions/actionPost';
+import { changeCurrentPost } from 'Store/Actions/actionPost';
 import connect from 'react-redux/es/connect/connect';
 
 class Post extends Component {

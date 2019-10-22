@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import Dialog from '@material-ui/core/Dialog';
-import CloseIcon from '../../Static/img/modal/close.svg';
+import CloseIcon from 'Static/img/modal/close.svg';
 
 const Modal = Component => {
   return class extends React.Component {

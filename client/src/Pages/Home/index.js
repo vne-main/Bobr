@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import './style.css';
 
 /* Function */
-import { changePage } from '../../Requsets/function';
+import { changePage } from 'Requsets/function';
 
 /* Components */
 import SelectStream from './SelectStream';
 import TimePanel from './TimePanel';
-import PostItem from '../../Common/PostItem';
-import PostItemMobile from '../../Common/PostItem/mobile';
-import PostSkeleton from '../../Common/PostItem/Skeleton/index';
+import { PostItem } from 'Common';
+import PostItemMobile from 'Common/PostItem/mobile';
+import PostSkeleton from 'Common/PostItem/Skeleton/index';
 
 /* Redux */
 import { bindActionCreators } from 'redux';
-import { getPostList } from '../../Store/Actions/actionPost';
+import { getPostList } from 'Store/Actions/actionPost';
 import { connect } from 'react-redux';
 
 class Home extends Component {

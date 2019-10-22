@@ -3,13 +3,13 @@ import './style.css';
 import SearchIcon from '@material-ui/icons/Search';
 
 /* Component */
-import PostItem from '../../Common/PostItem';
-import PostItemMobile from '../../Common/PostItem/mobile';
+import PostItem from 'Common/PostItem';
+import PostItemMobile from 'Common/PostItem/mobile';
 
 /* Redux */
 import { bindActionCreators } from 'redux';
-import { changeCurrentPage } from '../../Store/Actions/actionMain';
-import { searchPost, getPostList } from '../../Store/Actions/actionPost';
+import { changeCurrentPage } from 'Store/Actions/actionMain';
+import { searchPost, getPostList } from 'Store/Actions/actionPost';
 import connect from 'react-redux/es/connect/connect';
 
 class Search extends Component {

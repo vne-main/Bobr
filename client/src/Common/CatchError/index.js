@@ -5,7 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 
 /* Module */
 import { bindActionCreators } from 'redux';
-import { actionCatchError } from '../../Store/Actions/actionMain';
+import { actionCatchError } from 'Store/Actions/actionMain';
 import { connect } from 'react-redux';
 
 const CatchError = props => {
