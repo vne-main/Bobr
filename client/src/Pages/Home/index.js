@@ -1,27 +1,30 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Function */
-import { changePage } from 'Requsets/function';
+import { changePage } from "Requsets/function";
 
 /* Components */
-import SelectStream from './SelectStream';
-import TimePanel from './TimePanel';
-import { PostItem } from 'Common';
-import PostItemMobile from 'Common/PostItem/mobile';
-import PostSkeleton from 'Common/PostItem/Skeleton/index';
+import SelectStream from "./SelectStream";
+import TimePanel from "./TimePanel";
+import { PostItem } from "Common";
+import PostItemMobile from "Common/PostItem/mobile";
+import PostSkeleton from "Common/PostItem/Skeleton/index";
 
 /* Redux */
-import { bindActionCreators } from 'redux';
-import { getPostList } from 'Store/Actions/actionPost';
-import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { getPostList } from "Store/Actions/actionPost";
+import { connect } from "react-redux";
 
 class Home extends Component {
   state = {
     sortIndex: 0,
-    sortArray: ['Важное', 'Разное', 'Все подряд'],
+    sortArray: ["Важное", "Разное", "Все подряд"],
     initialPageSize: 4,
-    currentPage: 1,
+    currentPage: 1
   };
 
   changePagePosts = openPage => {
@@ -32,7 +35,7 @@ class Home extends Component {
 
   componentDidMount() {
     const { postList, getPostList } = this.props;
-    changePage('home');
+    changePage(PAGES_URL.home);
     if (!postList.length) getPostList();
   }
 
@@ -41,10 +44,11 @@ class Home extends Component {
     const { sortIndex, sortArray, currentPage, initialPageSize } = this.state;
     const paginationArr = postList.slice(
       (currentPage - 1) * initialPageSize,
-      (currentPage - 1) * initialPageSize + initialPageSize,
+      (currentPage - 1) * initialPageSize + initialPageSize
     );
     let btnArray = [];
-    for (let i = 0; i < postList.length / initialPageSize; i++) btnArray.push(i + 1);
+    for (let i = 0; i < postList.length / initialPageSize; i++)
+      btnArray.push(i + 1);
     return (
       <section>
         <SelectStream />
@@ -54,7 +58,7 @@ class Home extends Component {
               <span
                 key={i}
                 onClick={() => this.setState({ sortIndex: i })}
-                className={sortIndex === i ? 'tab_panel_active' : ''}
+                className={sortIndex === i ? "tab_panel_active" : ""}
               >
                 {el}
               </span>
@@ -96,7 +100,7 @@ class Home extends Component {
                     <li
                       key={i}
                       onClick={() => this.changePagePosts(el)}
-                      className={el === currentPage ? 'pagination_active' : ''}
+                      className={el === currentPage ? "pagination_active" : ""}
                     >
                       {el}
                     </li>
@@ -120,17 +124,17 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     postList: state.post.postList,
-    loading: state.post.loading,
+    loading: state.post.loading
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPostList: bindActionCreators(getPostList, dispatch),
+    getPostList: bindActionCreators(getPostList, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Home);

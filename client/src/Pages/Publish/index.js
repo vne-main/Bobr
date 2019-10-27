@@ -1,35 +1,41 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Module */
-import Chip from '@material-ui/core/Chip';
+import Chip from "@material-ui/core/Chip";
 
 /* Request */
-import { publishPost } from 'Requsets/apiPost';
-import { error500 } from 'Requsets/function';
+import { publishPost } from "Requsets/apiPost";
+import { changePage, error500 } from "Requsets/function";
 
 /* Redux */
-import { bindActionCreators } from 'redux';
-import { changePage } from 'Requsets/function';
-import { pushNewPost } from 'Store/Actions/actionPost';
-import connect from 'react-redux/es/connect/connect';
+import { bindActionCreators } from "redux";
+import { pushNewPost } from "Store/Actions/actionPost";
+import connect from "react-redux/es/connect/connect";
 
 class Publish extends Component {
-  state = {
-    title: '',
-    tags: '',
-    text: '',
-    status: '',
-    tagsData: ['Bobr'],
-  };
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      tags: "",
+      text: "",
+      status: "",
+      tagsData: ["Bobr"]
+    };
+    changePage(PAGES_URL.publish);
+  }
 
   writeTag(char) {
-    let searchIndex = char.indexOf(' ');
+    let searchIndex = char.indexOf(" ");
     if (searchIndex !== -1) {
-      if (char === ' ') return false;
+      if (char === " ") return false;
       let tagsArray = this.state.tagsData;
       tagsArray.push(char.trim());
-      this.setState({ tagsData: tagsArray, tags: '' });
+      this.setState({ tagsData: tagsArray, tags: "" });
     } else {
       this.setState({ tags: char });
     }
@@ -47,16 +53,16 @@ class Publish extends Component {
   successSend(newPost) {
     this.props.pushNewPost(newPost);
     this.setState({
-      status: 'Новость опубликована',
-      tagsData: ['Bobr'],
-      title: '',
-      tags: '',
-      text: '',
+      status: "Новость опубликована",
+      tagsData: ["Bobr"],
+      title: "",
+      tags: "",
+      text: ""
     });
   }
 
   sentPost() {
-    this.setState({ status: 'Пожалуйста, подождите...' });
+    this.setState({ status: "Пожалуйста, подождите..." });
     if (!this.checkData()) return false;
     const { title, text, tagsData } = this.state;
     publishPost(title, text, tagsData)
@@ -68,16 +74,14 @@ class Publish extends Component {
 
   checkData() {
     const { title, text, tagsData } = this.state;
-    if (title === '' || tagsData.length === 0 || text === '') {
-      this.setState({ status: 'Введите все данные' });
+    if (title === "" || tagsData.length === 0 || text === "") {
+      this.setState({ status: "Введите все данные" });
       return false;
     }
     return true;
   }
 
-  componentDidMount() {
-    changePage('publish');
-  }
+  componentDidMount() {}
 
   render() {
     const { title, tags, text, status } = this.state;
@@ -107,7 +111,12 @@ class Publish extends Component {
         <aside className="tags_array">
           {this.state.tagsData.map((data, i) => {
             return (
-              <Chip key={i} className="new_tag" label={data} onDelete={this.handleDelete(data)} />
+              <Chip
+                key={i}
+                className="new_tag"
+                label={data}
+                onDelete={this.handleDelete(data)}
+              />
             );
           })}
         </aside>
@@ -120,7 +129,10 @@ class Publish extends Component {
           />
         </aside>
         <div className="send_publish_panel">
-          <button className="blue_button publish_form" onClick={() => this.sentPost()}>
+          <button
+            className="blue_button publish_form"
+            onClick={() => this.sentPost()}
+          >
             Опубликовать
           </button>
           <p className="status_p">{status}</p>
@@ -132,11 +144,11 @@ class Publish extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    pushNewPost: bindActionCreators(pushNewPost, dispatch),
+    pushNewPost: bindActionCreators(pushNewPost, dispatch)
   };
 };
 
 export default connect(
-  '',
-  mapDispatchToProps,
+  "",
+  mapDispatchToProps
 )(Publish);

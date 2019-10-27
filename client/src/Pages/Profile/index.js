@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
+
+/* Request */
+import { changePage } from "Requsets/function";
 
 /* Module */
-import { Redirect } from 'react-router';
+import { Redirect } from "react-router";
 
 /* Redux */
-import connect from 'react-redux/es/connect/connect';
-import { bindActionCreators } from 'redux';
-import { logout } from 'Store/Actions/actionUser';
-import { changeCurrentPage } from 'Store/Actions/actionMain';
+import connect from "react-redux/es/connect/connect";
+import { bindActionCreators } from "redux";
+import { logout } from "Store/Actions/actionUser";
+import { changeCurrentPage } from "Store/Actions/actionMain";
 
 class Profile extends Component {
-  state = {
-    redirect: false,
-    sortIndex: 0,
-    sortArray: ['Ваши посты', 'Избранное'],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+      sortIndex: 0,
+      sortArray: ["Ваши посты", "Избранное"]
+    };
+    changePage(PAGES_URL.profile);
+  }
 
   authOut() {
     this.props.logout();
@@ -26,10 +36,6 @@ class Profile extends Component {
     this.setState({ sortIndex: index });
   }
 
-  componentDidMount() {
-    this.props.changeCurrentPage('profile');
-  }
-
   render() {
     const { user } = this.props;
     const { redirect, sortArray, sortIndex } = this.state;
@@ -37,7 +43,11 @@ class Profile extends Component {
     return (
       <section>
         <div className="profile_top">
-          <img src={user.photo} alt="user_photo" className="profile_user_photo" />
+          <img
+            src={user.photo}
+            alt="user_photo"
+            className="profile_user_photo"
+          />
           <div className="profile_btn_panel">
             <button className="blue_button">Настроить профиль</button>
             <button className="blue_button" onClick={() => this.authOut()}>
@@ -56,7 +66,7 @@ class Profile extends Component {
                 <span
                   key={i}
                   onClick={() => this.changeTab(i)}
-                  className={sortIndex === i ? 'tab_panel_active' : ''}
+                  className={sortIndex === i ? "tab_panel_active" : ""}
                 >
                   {el}
                 </span>
@@ -68,7 +78,7 @@ class Profile extends Component {
             <ol className="profile_user_info">
               <li>
                 <span>Зарегистрирован</span>
-                <span>{user.dateRegistration.split('T')[0]}</span>
+                <span>{user.dateRegistration.split("T")[0]}</span>
               </li>
               <li>
                 <span>Почта</span>
@@ -101,18 +111,18 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     currentPage: state.main.currentPage,
-    user: state.user.user,
+    user: state.user.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    logout: bindActionCreators(logout, dispatch),
+    logout: bindActionCreators(logout, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Profile);

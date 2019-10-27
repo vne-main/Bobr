@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
 
-/* Module */
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Function */
-import { changePage } from 'Requsets/function';
+import { changePage } from "Requsets/function";
 
 class Chat extends Component {
   constructor(props) {
@@ -14,11 +15,12 @@ class Chat extends Component {
       login: `Bobr #${
         Math.random(1000)
           .toFixed(3)
-          .split('.')[1]
+          .split(".")[1]
       }`,
-      message: '',
-      messageList: [],
+      message: "",
+      messageList: []
     };
+    changePage(PAGES_URL.chat);
     const sentMessage = this.sentMessage.bind(this);
     // this.state.socket.on('chat message', function (msg) {
     //     sentMessage(msg)
@@ -27,8 +29,8 @@ class Chat extends Component {
 
   sentMessage(msg) {
     this.setState({
-      message: '',
-      messageList: [msg].concat(this.state.messageList),
+      message: "",
+      messageList: [msg].concat(this.state.messageList)
     });
   }
 
@@ -38,13 +40,9 @@ class Chat extends Component {
     let msg = {
       message: message,
       login: login,
-      time: new Date(),
+      time: new Date()
     };
-    socket.emit('chat message', msg);
-  }
-
-  componentDidMount() {
-    changePage('chat');
+    socket.emit("chat message", msg);
   }
 
   render() {
@@ -56,7 +54,9 @@ class Chat extends Component {
           <div className="chat_absolute">
             <ol className="chat_history">
               {messageList.map((el, i) => {
-                const formatDate = new Date(el.time).toLocaleString().split(',')[1];
+                const formatDate = new Date(el.time)
+                  .toLocaleString()
+                  .split(",")[1];
                 return (
                   <li key={i}>
                     <span>
@@ -75,7 +75,10 @@ class Chat extends Component {
                 onKeyPress={e => e.charCode === 13 && this.sendMessage()}
                 placeholder="Введите сообщение..."
               />
-              <button className="blue_button" onClick={() => this.sendMessage()}>
+              <button
+                className="blue_button"
+                onClick={() => this.sendMessage()}
+              >
                 Отправить
               </button>
             </div>

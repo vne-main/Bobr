@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
-import './style.css';
+import React, { useEffect } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Function */
-import { changePage } from 'Requsets/function';
+import { changePage } from "Requsets/function";
 
 /* Components */
-import Graph from './Graph';
-import Doughnut from './Doughnut';
-import Bar from './Bar';
+import Graph from "./Graph";
+import Doughnut from "./Doughnut";
+import Bar from "./Bar";
 
 const Statistics = () => {
   useEffect(() => {
-    changePage('statistics');
+    changePage(PAGES_URL.statistics);
   }, []);
 
   return (

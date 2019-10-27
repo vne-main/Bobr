@@ -1,27 +1,30 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Requests */
-import { getUsersList } from 'Requsets/apiUser';
+import { getUsersList } from "Requsets/apiUser";
+import { changePage } from "Requsets/function";
 
 /* Components */
-import { User } from './User';
-import Skeleton from './Skeleton';
+import { User } from "./User";
+import Skeleton from "./Skeleton";
 
 /* IMG */
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
 
 /* Redux */
-import { bindActionCreators } from 'redux';
-import { changePage } from 'Requsets/function';
-import { searchUser } from 'Store/Actions/actionUser';
-import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { searchUser } from "Store/Actions/actionUser";
+import { connect } from "react-redux";
 
 class Users extends Component {
   componentDidMount() {
     const { usersList, searchUser } = this.props;
-    changePage('users');
-    searchUser('');
+    changePage(PAGES_URL.users);
+    searchUser("");
     if (usersList.length === 0) getUsersList();
   }
 
@@ -69,17 +72,17 @@ class Users extends Component {
 const mapStateToProps = state => {
   return {
     usersList: state.user.usersList,
-    searchUserList: state.user.searchUserList,
+    searchUserList: state.user.searchUserList
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchUser: bindActionCreators(searchUser, dispatch),
+    searchUser: bindActionCreators(searchUser, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Users);

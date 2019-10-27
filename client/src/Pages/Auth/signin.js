@@ -1,66 +1,70 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
+
+/* Function */
+import { changePage } from "Requsets/function";
 
 /* Module */
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
-import axios from 'axios';
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
+import axios from "axios";
 
 /* Redux */
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeCurrentPage } from 'Store/Actions/actionMain';
-import { getUser } from 'Store/Actions/actionUser';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { getUser } from "Store/Actions/actionUser";
 
 class SignIn extends Component {
-  state = {
-    login: '',
-    password: '',
-    status: '',
-    redirect: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: "",
+      password: "",
+      status: "",
+      redirect: false
+    };
+    changePage(PAGES_URL.signin);
+  }
 
   signIn() {
     const { login, password } = this.state;
     axios
-      .post('/auth/signin', {
+      .post("/auth/signin", {
         login: login,
-        password: password,
+        password: password
       })
       .then(res => {
         if (res.data.status === 502) {
-          this.setState({ status: 'Неверный никнейм или пароль' });
+          this.setState({ status: "Неверный никнейм или пароль" });
         } else {
           this.props.getUser(res.data);
           this.setState({
-            status: 'Выполняется вход...',
-            redirect: true,
+            status: "Выполняется вход...",
+            redirect: true
           });
         }
       })
       .catch(err => {
         console.error(err);
-        this.setState({ status: 'Ошибка сервера' });
+        this.setState({ status: "Ошибка сервера" });
       });
   }
 
   checkData() {
     let { login, password } = this.state;
-    this.setState({ status: 'Пожалуйста, подождите...' });
+    this.setState({ status: "Пожалуйста, подождите..." });
     login = login.trim();
     password = password.trim();
-    if (login === '') {
-      this.setState({ status: 'Введите логин / e-mail' });
-    } else if (password === '') {
-      this.setState({ status: 'Введите пароль' });
+    if (login === "") {
+      this.setState({ status: "Введите логин / e-mail" });
+    } else if (password === "") {
+      this.setState({ status: "Введите пароль" });
     } else {
       this.signIn();
     }
-  }
-
-  componentDidMount() {
-    this.props.changeCurrentPage('auth');
-    document.title = 'Bobr: Вход';
   }
 
   render() {
@@ -93,7 +97,10 @@ class SignIn extends Component {
               onKeyPress={e => e.charCode === 13 && this.checkData()}
             />
           </aside>
-          <button className="blue_button auth_btn" onClick={() => this.checkData()}>
+          <button
+            className="blue_button auth_btn"
+            onClick={() => this.checkData()}
+          >
             Войти
           </button>
           <p className="auth_status">{status}</p>
@@ -110,12 +117,11 @@ class SignIn extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-    getUser: bindActionCreators(getUser, dispatch),
+    getUser: bindActionCreators(getUser, dispatch)
   };
 };
 
 export default connect(
-  '',
-  mapDispatchToProps,
+  "",
+  mapDispatchToProps
 )(SignIn);

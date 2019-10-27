@@ -1,32 +1,37 @@
-import React, { Component } from 'react';
-import './style.css';
-import SearchIcon from '@material-ui/icons/Search';
+import React, { Component } from "react";
+import "./style.css";
+import SearchIcon from "@material-ui/icons/Search";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
+
+/* Function */
+import { changePage } from "Requsets/function";
 
 /* Component */
-import PostItem from 'Common/PostItem';
-import PostItemMobile from 'Common/PostItem/mobile';
+import PostItem from "Common/PostItem";
+import PostItemMobile from "Common/PostItem/mobile";
 
 /* Redux */
-import { bindActionCreators } from 'redux';
-import { changeCurrentPage } from 'Store/Actions/actionMain';
-import { searchPost, getPostList } from 'Store/Actions/actionPost';
-import connect from 'react-redux/es/connect/connect';
+import { bindActionCreators } from "redux";
+import { searchPost, getPostList } from "Store/Actions/actionPost";
+import connect from "react-redux/es/connect/connect";
 
 class Search extends Component {
   state = {
-    searchString: '',
+    searchString: ""
   };
 
   search() {
     const { searchString } = this.state;
-    if (searchString.trim() === '') return;
+    if (searchString.trim() === "") return;
     this.props.searchPost(searchString.trim());
   }
 
   componentDidMount() {
-    const { postList, changeCurrentPage, getPostList, searchPost } = this.props;
-    searchPost('');
-    changeCurrentPage('search');
+    const { postList, getPostList, searchPost } = this.props;
+    searchPost("");
+    changePage(PAGES_URL.search);
     if (!postList.length) getPostList();
   }
 
@@ -65,19 +70,18 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     searchList: state.post.searchList,
-    postList: state.post.postList,
+    postList: state.post.postList
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
     searchPost: bindActionCreators(searchPost, dispatch),
-    getPostList: bindActionCreators(getPostList, dispatch),
+    getPostList: bindActionCreators(getPostList, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Search);

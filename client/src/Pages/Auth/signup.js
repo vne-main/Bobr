@@ -1,74 +1,79 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
+
+/* Function */
+import { changePage } from "Requsets/function";
 
 /* Module */
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-/* Redux */
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { changeCurrentPage } from 'Store/Actions/actionMain';
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 class SignUp extends Component {
-  state = {
-    email: '',
-    login: '',
-    password: '',
-    rep_password: '',
-    status: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      login: "",
+      password: "",
+      rep_password: "",
+      status: ""
+    };
+    changePage(PAGES_URL.signup);
+  }
 
   signUp() {
     let { email, login, password } = this.state;
     axios
-      .post('/auth/signup', {
+      .post("/auth/signup", {
         email: email,
         login: login,
-        password: password,
+        password: password
       })
       .then(res => {
         if (res.data.status === 502) {
           switch (res.data.value) {
-            case 'email':
-              this.setState({ status: 'E-mail занят' });
+            case "email":
+              this.setState({ status: "E-mail занят" });
               break;
-            case 'login':
-              this.setState({ status: 'Никнейм занят' });
+            case "login":
+              this.setState({ status: "Никнейм занят" });
               break;
             default:
-              this.setState({ status: 'Ошибка сервера' });
+              this.setState({ status: "Ошибка сервера" });
               break;
           }
         } else {
           this.setState({
-            status: 'Вы зарегистрировались!',
-            rep_password: '',
-            email: '',
-            login: '',
-            password: '',
+            status: "Вы зарегистрировались!",
+            rep_password: "",
+            email: "",
+            login: "",
+            password: ""
           });
         }
       })
       .catch(err => {
         console.error(err);
-        this.setState({ status: 'Ошибка сервера' });
+        this.setState({ status: "Ошибка сервера" });
       });
   }
 
   checkData() {
     let { email, login, password, rep_password } = this.state;
-    this.setState({ status: 'Пожалуйста, подождите...' });
+    this.setState({ status: "Пожалуйста, подождите..." });
     email = email.trim();
     login = login.trim();
     password = password.trim();
-    if (email === '' || !this.validateEmail(email)) {
-      this.setState({ status: 'Введите корректный E-mail' });
+    if (email === "" || !this.validateEmail(email)) {
+      this.setState({ status: "Введите корректный E-mail" });
     } else if (login.length <= 4) {
-      this.setState({ status: 'Никнейм больше 4 символов' });
+      this.setState({ status: "Никнейм больше 4 символов" });
     } else if (password.length <= 8) {
-      this.setState({ status: 'Пароль должен быть больше 8 символов' });
+      this.setState({ status: "Пароль должен быть больше 8 символов" });
     } else if (password !== rep_password) {
-      this.setState({ status: 'Пароли не совпадают' });
+      this.setState({ status: "Пароли не совпадают" });
     } else {
       this.signUp();
     }
@@ -77,11 +82,6 @@ class SignUp extends Component {
   validateEmail(email) {
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  }
-
-  componentDidMount() {
-    this.props.changeCurrentPage('auth');
-    document.title = 'Bobr: Регистрация';
   }
 
   render() {
@@ -129,7 +129,10 @@ class SignUp extends Component {
               onKeyPress={e => e.charCode === 13 && this.checkData()}
             />
           </aside>
-          <button className="blue_button auth_btn" onClick={() => this.checkData()}>
+          <button
+            className="blue_button auth_btn"
+            onClick={() => this.checkData()}
+          >
             Зарегистрироваться
           </button>
           <p className="auth_status">{status}</p>
@@ -144,13 +147,4 @@ class SignUp extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
-  };
-};
-
-export default connect(
-  '',
-  mapDispatchToProps,
-)(SignUp);
+export default SignUp;

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
-import './style.css';
+import React, { useEffect } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Function */
-import { changePage } from 'Requsets/function';
+import { changePage } from "Requsets/function";
 
 const Documentation = () => {
   useEffect(() => {
-    changePage('documentation');
+    changePage(PAGES_URL.documentation);
   }, []);
 
   return (
