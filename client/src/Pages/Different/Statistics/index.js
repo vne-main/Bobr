@@ -25,7 +25,7 @@ const Statistics = () => {
         <Graph />
       </aside>
       <aside className="statistics_block">
-        <h4 className="statistics_graph_h4">Что-то ещё</h4>
+        <h4 className="statistics_graph_h4">Комментарии</h4>
         <Bar />
       </aside>
       <aside className="statistics_block">

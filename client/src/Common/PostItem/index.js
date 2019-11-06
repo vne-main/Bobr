@@ -1,45 +1,55 @@
-import React, { Component } from 'react';
-import './style.css';
+import React, { Component } from "react";
+import "./style.css";
+
+/* Const */
+import { PAGES_URL } from "Const/pages";
 
 /* Components */
-import PostPanel from './postPanel';
+import PostPanel from "./postPanel";
 
 /* Module */
-import { Link } from 'react-router-dom';
-import connect from 'react-redux/es/connect/connect';
+import { Link } from "react-router-dom";
+import connect from "react-redux/es/connect/connect";
 
 class PostItem extends Component {
+  textNews() {
+    const page = this.currentPage === PAGES_URL.post;
+  }
+
   render() {
-    const { post, currentPage } = this.props;
-    const timePost = new Date(post.time).toLocaleString();
+    const { currentPage } = this.props;
+    const { author_img, author_name, title, tags, text, time, _id } = this.props.post;
+    const timePost = new Date(time).toLocaleString();
     return (
       <section className="news_item">
         <div className="top_user">
-          <img src={post.author_img} alt="user_icon" className="user_icon" />
-          <p className="user_name">{post.author_name}</p>
+          <img src={author_img} alt="user_icon" className="user_icon" />
+          <p className="user_name">{author_name}</p>
           <p className="news_time">{timePost}</p>
         </div>
         <div className="content_title">
-          {currentPage !== 'post' ? (
-            <Link to={`/post/${post._id}`} className="title_news">
-              {post.title}
+          {currentPage !== PAGES_URL.post ? (
+            <Link to={`/post/${_id}`} className="title_news">
+              {title}
             </Link>
           ) : (
-            <h3 className="title_h3">{post.title}</h3>
+            <h3 className="title_h3">{title}</h3>
           )}
         </div>
-        <div className="heading_news">
-          {post.tags.map((tag, i) => {
-            return <p key={i}>{tag}</p>;
-          })}
-        </div>
-        <div className="text_news">{post.text}</div>
-        {currentPage !== 'post' && (
-          <Link to={`/post/${post._id}`} className="news_more">
+        {tags.length ? (
+          <div className="heading_news">
+            {tags.map((tag, i) => {
+              return <p key={i}>{tag}</p>;
+            })}
+          </div>
+        ) : null}
+        <div className="text_news">{text}</div>
+        {currentPage !== PAGES_URL.post && (
+          <Link to={`/post/${_id}`} className="news_more">
             Читать далее →
           </Link>
         )}
-        <PostPanel version="full" post={post} />
+        <PostPanel version="full" post={this.props.post} />
       </section>
     );
   }
@@ -47,7 +57,7 @@ class PostItem extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentPage: state.main.currentPage,
+    currentPage: state.main.currentPage
   };
 };
 

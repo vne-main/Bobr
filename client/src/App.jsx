@@ -12,25 +12,8 @@ import { Footer, Header, CatchError, RightColumn } from "./Common";
 /* Pages */
 import SignIn from "./Pages/Auth/signin";
 import SignUp from "./Pages/Auth/signup";
-import {
-  Chat,
-  Different,
-  Home,
-  NotFound,
-  Post,
-  Profile,
-  Publish,
-  Search,
-  Users
-} from "./Pages";
-import {
-  Advertising,
-  About,
-  Documentation,
-  Statistics,
-  Help,
-  Work
-} from "./Pages/Different/pages";
+import { Chat, Different, Home, NotFound, Post, Profile, Publish, Search, Users } from "./Pages";
+import { Advertising, About, Documentation, Statistics, Help, Work } from "./Pages/Different/pages";
 
 /* Redux */
 import { bindActionCreators } from "redux";
@@ -48,12 +31,8 @@ class App extends Component {
     const { currentPage, windowWidth } = this.props;
     return (
       <BrowserRouter>
-        <div
-          className={
-            AUTH_URLS.indexOf(currentPage) !== -1 ? "vh_block_auth" : "vh_block"
-          }
-        >
-          <div>
+        <div className={AUTH_URLS.indexOf(currentPage) !== -1 ? "vh_block_auth" : "vh_block"}>
+          <>
             {AUTH_URLS.indexOf(currentPage) === -1 && <Header />}
             <main className="container main">
               <Switch>
@@ -71,18 +50,14 @@ class App extends Component {
                 <Route path={PAGES_URL.help} component={Help} />
                 <Route path={PAGES_URL.advertising} component={Advertising} />
                 <Route path={PAGES_URL.work} component={Work} />
-                <Route
-                  path={PAGES_URL.documentation}
-                  component={Documentation}
-                />
+                <Route path={PAGES_URL.documentation} component={Documentation} />
                 <Route path={PAGES_URL.about} component={About} />
                 <Route component={NotFound} />
               </Switch>
-              {NOT_RIGHT_COLUMN.indexOf(currentPage) === -1 &&
-                windowWidth > 800 && <RightColumn />}
+              {NOT_RIGHT_COLUMN.indexOf(currentPage) === -1 && windowWidth > 800 && <RightColumn />}
             </main>
             <CatchError />
-          </div>
+          </>
           {AUTH_URLS.indexOf(currentPage) === -1 && <Footer />}
         </div>
       </BrowserRouter>

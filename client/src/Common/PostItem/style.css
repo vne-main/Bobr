@@ -1,160 +1,163 @@
 .news_item {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 0 0 40px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 0 40px 0;
 }
 
 /* Title */
 .top_user {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .user_icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-    border-radius: 3px;
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  border-radius: 3px;
 }
 
 .user_name {
-    color: #548eaa;
-    margin-right: 10px;
+  color: #548eaa;
+  margin-right: 10px;
 }
 
 .news_time {
-    color: #5e6973;
+  color: #5e6973;
 }
 
 .content_title {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .title_news {
-    font-size: 28px;
-    color: #333333;
-    font-weight: bold;
+  font-size: 28px;
+  color: #333333;
+  font-weight: bold;
 }
 
 .title_news:hover {
-    color: #77a8d0;
-    cursor: pointer;
+  color: #77a8d0;
+  cursor: pointer;
 }
 
 .title_h3 {
-    font-size: 28px;
-    color: #333333;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 28px;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .heading_news {
-    display: flex;
-    margin-bottom: 15px;
+  display: flex;
+  margin-bottom: 15px;
 }
 
 .heading_news p {
-    font-size: 14px;
-    color: #5e6973;
-    margin-right: 5px;
+  font-size: 14px;
+  color: #5e6973;
+  margin-right: 5px;
 }
 
 .heading_news p:after {
-    content: ',';
+  content: ",";
 }
 
 .heading_news p:last-child:after {
-    content: " ";
+  content: " ";
 }
 
 .text_news {
-    white-space: pre-wrap;
-    font-size: 16px;
-    margin-bottom: 20px;
+  white-space: pre-wrap;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .news_more {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 140px;
-    border: 1px solid #77a8d0;
-    padding: 0 13px;
-    height: 40px;
-    border-radius: 3px;
-    font-size: 13px;
-    margin-bottom: 20px;
-    color: #77a8d0;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  border: 1px solid #77a8d0;
+  padding: 0 13px;
+  height: 40px;
+  border-radius: 3px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  color: #77a8d0;
+  cursor: pointer;
 }
 
 .news_more:hover {
-    background: #77a8d0;
-    color: #ffffff;
+  background: #77a8d0;
+  color: #ffffff;
 }
 
 .news_stats {
-    width: 100%;
-    max-width: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border: 2px solid #e5e9eb;
-    border-radius: 5px;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 2px solid #e5e9eb;
+  border-radius: 5px;
 }
 
-.news_vote, .news_views, .news_favorite, .news_comments {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #548eaa;
+.news_vote,
+.news_views,
+.news_favorite,
+.news_comments {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #548eaa;
 }
 
 .news_vote img {
-    width: 10px;
+  width: 10px;
 }
 
 .news_vote i {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .stats_arrow_down {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .news_views img {
-    width: 30px;
-    margin-right: 5px;
+  width: 30px;
+  margin-right: 5px;
 }
 
 .news_favorite img {
-    width: 14px;
-    margin-right: 8px;
+  width: 14px;
+  margin-right: 8px;
 }
 
 .news_comments img {
-    width: 20px;
-    margin-right: 5px;
+  width: 20px;
+  margin-right: 5px;
 }
 
 /* Mobile */
 .m_post_news_item {
-    border-bottom: 2px solid #e5e9eb;
-    margin: 20px 0 !important;
-    padding-bottom: 10px;
+  border-bottom: 2px solid #e5e9eb;
+  margin: 20px 0 !important;
+  padding-bottom: 10px;
 }
 
 .m_post_title {
-    font-size: 24px !important;
-    margin: 10px 0;
+  font-size: 24px !important;
+  margin: 10px 0;
 }
 
 .m_post_news_stats {
-    margin-top: 10px;
-    border: 0 !important;
+  margin-top: 10px;
+  border: 0 !important;
 }
