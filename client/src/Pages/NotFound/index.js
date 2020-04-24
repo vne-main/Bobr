@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import "./style.css";
+import React, { useEffect } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* IMG */
-import NotFoundImg from "Static/img/404.png";
+import NotFoundImg from 'Static/img/404.png';
 
 const NotFound = () => {
   useEffect(() => {

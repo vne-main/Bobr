@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./style.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './style.css';
 
 /* Component */
-import IconPanel from "./IconPanel";
-import ModalSettings from "../Modal/Settings";
-import ModalBugReport from "../Modal/BugReport";
+import IconPanel from './IconPanel';
+import ModalSettings from '../Modal/Settings';
+import ModalBugReport from '../Modal/BugReport';
 
 /* MATERIAL */
-import MobileHeader from "./MobileHeader";
-import MobilePanel from "./MobilePanel";
+import MobileHeader from './MobileHeader';
+import MobilePanel from './MobilePanel';
 
 /* Redux */
-import connect from "react-redux/es/connect/connect";
+import connect from 'react-redux/es/connect/connect';
 
 class Header extends Component {
   state = {
     navigation: [
-      { link: "/publish", title: "Опубликовать", page: "publish" },
-      { link: "/users", title: "Пользователи", page: "users" },
-      { link: "/chat", title: "Чат", page: "chat" },
-      { link: "/different", title: "Разное", page: "different" }
+      { link: '/publish', title: 'Опубликовать', page: 'publish' },
+      { link: '/users', title: 'Пользователи', page: 'users' },
+      { link: '/chat', title: 'Чат', page: 'chat' },
+      { link: '/different', title: 'Разное', page: 'different' }
     ],
     modalBug: false,
     modalSettings: false,
@@ -28,7 +28,7 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    let publish = localStorage.getItem("admin");
+    let publish = localStorage.getItem('admin');
     if (publish) this.setState({ hiddenPublish: true });
   }
 
@@ -64,8 +64,8 @@ class Header extends Component {
                 <nav className="header_navigation">
                   {navigation.map((el, i) => {
                     return (
-                      <Link to={el.link} className={currentPage === el.link ? "active_page" : ""} key={i}>
-                        {!hiddenPublish && el.link === "/publish" ? "" : el.title}
+                      <Link to={el.link} className={currentPage === el.link ? 'active_page' : ''} key={i}>
+                        {!hiddenPublish && el.link === '/publish' ? '' : el.title}
                       </Link>
                     );
                   })}

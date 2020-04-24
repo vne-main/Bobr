@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Requests */
-import { getUsersList } from "Requsets/apiUser";
-import { changePage } from "Requsets/function";
+import { getUsersList } from 'Requsets/apiUser';
+import { changePage } from 'Requsets/function';
 
 /* Components */
-import { User } from "./User";
-import Skeleton from "./Skeleton";
+import { User } from './User';
+import Skeleton from './Skeleton';
 
 /* IMG */
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from '@material-ui/icons/Search';
 
 /* Redux */
-import { bindActionCreators } from "redux";
-import { searchUser } from "Store/Actions/actionUser";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { searchUser } from 'Store/Actions/actionUser';
+import { connect } from 'react-redux';
 
 class Users extends Component {
   componentDidMount() {
     const { usersList, searchUser } = this.props;
     changePage(PAGES_URL.users);
-    searchUser("");
+    searchUser('');
     if (usersList.length === 0) getUsersList();
   }
 
@@ -34,11 +34,7 @@ class Users extends Component {
       <section>
         <h3 className="title_h3 title_pages">Пользователи</h3>
         <div className="search_panel">
-          <input
-            type="text"
-            placeholder="Найти пользователя"
-            onChange={e => searchUser(e.target.value)}
-          />
+          <input type="text" placeholder="Найти пользователя" onChange={e => searchUser(e.target.value)} />
           <SearchIcon />
         </div>
         <div className="table_user">

@@ -1,11 +1,11 @@
-import { MAIN } from "../Const";
-import { PAGES_TITLE } from "Const/pages";
+import { MAIN } from '../Const';
+import { PAGES_TITLE } from 'Const/pages';
 
 const userState = {
-  currentPage: "",
+  currentPage: '',
   windowWidth: window.innerWidth,
   showError: false,
-  textError: ""
+  textError: ''
 };
 
 export default (state = userState, action) => {

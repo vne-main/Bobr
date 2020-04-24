@@ -1,49 +1,49 @@
-import React, { useEffect } from "react";
-import "./style.css";
+import React, { useEffect } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* IMG */
-import imgWork1 from "Static/img/work/work_1.svg";
-import imgWork2 from "Static/img/work/work_2.svg";
-import imgWork3 from "Static/img/work/work_3.svg";
-import imgWork4 from "Static/img/work/work_4.svg";
-import imgWork5 from "Static/img/work/work_5.svg";
+import imgWork1 from 'Static/img/work/work_1.svg';
+import imgWork2 from 'Static/img/work/work_2.svg';
+import imgWork3 from 'Static/img/work/work_3.svg';
+import imgWork4 from 'Static/img/work/work_4.svg';
+import imgWork5 from 'Static/img/work/work_5.svg';
 
 const arrayWork = [
   {
     img: imgWork1,
-    title: "Название работы #1",
-    description: "Описание Работы #1",
-    type: "type1"
+    title: 'Название работы #1',
+    description: 'Описание Работы #1',
+    type: 'type1'
   },
   {
     img: imgWork2,
-    title: "Название работы #2",
-    description: "Описание Работы #2",
-    type: "type2"
+    title: 'Название работы #2',
+    description: 'Описание Работы #2',
+    type: 'type2'
   },
   {
     img: imgWork3,
-    title: "Название работы #3",
-    description: "Описание Работы #3",
-    type: "type3"
+    title: 'Название работы #3',
+    description: 'Описание Работы #3',
+    type: 'type3'
   },
   {
     img: imgWork4,
-    title: "Название работы #4",
-    description: "Описание Работы #4",
-    type: "type4"
+    title: 'Название работы #4',
+    description: 'Описание Работы #4',
+    type: 'type4'
   },
   {
     img: imgWork5,
-    title: "Название работы #5",
-    description: "Описание Работы #5",
-    type: "type5"
+    title: 'Название работы #5',
+    description: 'Описание Работы #5',
+    type: 'type5'
   }
 ];
 
@@ -63,10 +63,7 @@ const Work = () => {
               <div className="work_content">
                 <h4 className="">{title}</h4>
                 <p>{description}</p>
-                <button
-                  className="blue_button"
-                  onClick={() => console.info(type)}
-                >
+                <button className="blue_button" onClick={() => console.info(type)}>
                   Оставить заявку
                 </button>
               </div>

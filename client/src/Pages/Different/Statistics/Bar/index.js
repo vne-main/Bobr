@@ -18,21 +18,21 @@ class Bar extends Component {
             ticks: {
               beginAtZero: false,
               fontColor: '#8798AD',
-              fontSize: 14,
-            },
-          },
+              fontSize: 14
+            }
+          }
         ],
         xAxes: [
           {
             ticks: {
               beginAtZero: false,
               fontColor: '#8798AD',
-              fontSize: 14,
-            },
-          },
-        ],
-      },
-    },
+              fontSize: 14
+            }
+          }
+        ]
+      }
+    }
   };
 
   genData() {
@@ -52,9 +52,9 @@ class Bar extends Component {
           borderColor: '#3091F1',
           backgroundColor: 'rgba(136, 136, 136, 0.3)',
           label: ['1', '2', '3', '4', '5'],
-          data: this.genData(),
-        },
-      ],
+          data: this.genData()
+        }
+      ]
     };
 
     return (

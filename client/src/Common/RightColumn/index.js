@@ -11,20 +11,20 @@ import MyCalendar from './Calendar';
 import StatisticsBox from './StatisticsBox';
 
 const RightColumn = ({ currentPage }) => {
-	return (
-		<section className="main_right">
-			<MyCalendar />
-			{currentPage === 'users' && <StatisticsBox />}
-			<Sponsors />
-			{currentPage !== 'users' && <Streams />}
-		</section>
-	);
+  return (
+    <section className="main_right">
+      <MyCalendar />
+      {currentPage === 'users' && <StatisticsBox />}
+      <Sponsors />
+      {currentPage !== 'users' && <Streams />}
+    </section>
+  );
 };
 
 const mapStateToProps = state => {
-	return {
-		currentPage: state.main.currentPage,
-	};
+  return {
+    currentPage: state.main.currentPage
+  };
 };
 
 export default connect(mapStateToProps)(RightColumn);

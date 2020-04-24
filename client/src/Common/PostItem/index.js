@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Components */
-import PostPanel from "./postPanel";
+import PostPanel from './postPanel';
 
 /* Module */
-import { Link } from "react-router-dom";
-import connect from "react-redux/es/connect/connect";
+import { Link } from 'react-router-dom';
+import connect from 'react-redux/es/connect/connect';
 
 class PostItem extends Component {
   textNews() {

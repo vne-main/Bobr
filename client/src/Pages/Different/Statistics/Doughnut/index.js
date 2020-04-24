@@ -20,16 +20,16 @@ class StaticChart extends React.Component {
               data: this.genData(),
               backgroundColor: ['#FFE22E', '#3091F1', '#FF5C3C'],
               hoverBorderColor: ['#FFE22E', '#3091F1', '#FF5C3C'],
-              hoverBackgroundColor: ['#FFE22E', '#3091F1', '#FF5C3C'],
-            },
-          ],
+              hoverBackgroundColor: ['#FFE22E', '#3091F1', '#FF5C3C']
+            }
+          ]
         }}
         width={160}
         height={160}
         options={{
           legend: false,
           // cutoutPercentage: 80,
-          maintainAspectRatio: false,
+          maintainAspectRatio: false
         }}
       />
     );

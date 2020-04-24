@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import "./style.css";
+import React, { useEffect } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* Img */
-import imgScreen1 from "Static/img/about/screen_1.jpg";
-import imgScreen2 from "Static/img/about/screen_2.jpg";
-import imgScreen3 from "Static/img/about/screen_3.jpg";
-import imgScreen4 from "Static/img/about/screen_4.jpg";
-import imgScreen5 from "Static/img/about/screen_5.jpg";
+import imgScreen1 from 'Static/img/about/screen_1.jpg';
+import imgScreen2 from 'Static/img/about/screen_2.jpg';
+import imgScreen3 from 'Static/img/about/screen_3.jpg';
+import imgScreen4 from 'Static/img/about/screen_4.jpg';
+import imgScreen5 from 'Static/img/about/screen_5.jpg';
 
 const arrayScreen = [
-  { title: "Главная", img: imgScreen1 },
-  { title: "Пользователи", img: imgScreen2 },
-  { title: "Пост", img: imgScreen3 },
-  { title: "Разное", img: imgScreen4 },
-  { title: "Чат", img: imgScreen5 }
+  { title: 'Главная', img: imgScreen1 },
+  { title: 'Пользователи', img: imgScreen2 },
+  { title: 'Пост', img: imgScreen3 },
+  { title: 'Разное', img: imgScreen4 },
+  { title: 'Чат', img: imgScreen5 }
 ];
 
 const About = () => {

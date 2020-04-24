@@ -6,7 +6,7 @@ class ModalBugReport extends React.Component {
   state = {
     status: '',
     name: '',
-    text: '',
+    text: ''
   };
 
   sendForm() {
@@ -24,7 +24,7 @@ class ModalBugReport extends React.Component {
 
         name: '',
 
-        text: '',
+        text: ''
       });
     }
   }

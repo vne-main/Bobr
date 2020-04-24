@@ -18,6 +18,6 @@
       "*": ["*"]
     }
   },
-  "include": ["src/**/*", "test"],
+  "include": ["src/**/*", "test", "setupEnzyme.js"],
   "exclude": ["node_modules", "build", "test"]
 }

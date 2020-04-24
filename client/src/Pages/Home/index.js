@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* Components */
-import SelectStream from "./SelectStream";
-import TimePanel from "./TimePanel";
-import { PostItem } from "Common";
-import PostItemMobile from "Common/PostItem/mobile";
-import PostSkeleton from "Common/PostItem/Skeleton/index";
+import SelectStream from './SelectStream';
+import TimePanel from './TimePanel';
+import { PostItem } from 'Common';
+import PostItemMobile from 'Common/PostItem/mobile';
+import PostSkeleton from 'Common/PostItem/Skeleton/index';
 
 /* Redux */
-import { bindActionCreators } from "redux";
-import { getPostList } from "Store/Actions/actionPost";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { getPostList } from 'Store/Actions/actionPost';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   state = {
     sortIndex: 0,
-    sortArray: ["Важное", "Разное", "Все подряд"],
+    sortArray: ['Важное', 'Разное', 'Все подряд'],
     initialPageSize: 4,
     currentPage: 1
   };
@@ -47,8 +47,7 @@ class Home extends Component {
       (currentPage - 1) * initialPageSize + initialPageSize
     );
     let btnArray = [];
-    for (let i = 0; i < postList.length / initialPageSize; i++)
-      btnArray.push(i + 1);
+    for (let i = 0; i < postList.length / initialPageSize; i++) btnArray.push(i + 1);
     return (
       <section>
         <SelectStream />
@@ -58,7 +57,7 @@ class Home extends Component {
               <span
                 key={i}
                 onClick={() => this.setState({ sortIndex: i })}
-                className={sortIndex === i ? "tab_panel_active" : ""}
+                className={sortIndex === i ? 'tab_panel_active' : ''}
               >
                 {el}
               </span>
@@ -100,7 +99,7 @@ class Home extends Component {
                     <li
                       key={i}
                       onClick={() => this.changePagePosts(el)}
-                      className={el === currentPage ? "pagination_active" : ""}
+                      className={el === currentPage ? 'pagination_active' : ''}
                     >
                       {el}
                     </li>

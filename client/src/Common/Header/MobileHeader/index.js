@@ -30,18 +30,8 @@ const MobileHeader = ({ navigation }) => {
   const [menuOpen, changeOpen] = useState(false);
   return (
     <>
-      <img
-        src={BurgerIcon}
-        alt="burger_header"
-        className="mobile_burger"
-        onClick={() => changeOpen(true)}
-      />
-      <Drawer
-        open={menuOpen}
-        onClose={() => changeOpen(false)}
-        className="mobile_header"
-        anchor="left"
-      >
+      <img src={BurgerIcon} alt="burger_header" className="mobile_burger" onClick={() => changeOpen(true)} />
+      <Drawer open={menuOpen} onClose={() => changeOpen(false)} className="mobile_header" anchor="left">
         <HeaderContent closeCallback={() => changeOpen(false)} navigation={navigation} />
       </Drawer>
     </>

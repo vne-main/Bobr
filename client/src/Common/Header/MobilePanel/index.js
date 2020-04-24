@@ -44,18 +44,8 @@ const MobilePanel = props => {
   const [menuOpen, changeOpen] = useState(false);
   return (
     <>
-      <img
-        src={BurgerIcon}
-        alt="burger_header"
-        className="mobile_burger"
-        onClick={() => changeOpen(true)}
-      />
-      <Drawer
-        open={menuOpen}
-        onClose={() => changeOpen(false)}
-        className="mobile_header"
-        anchor="right"
-      >
+      <img src={BurgerIcon} alt="burger_header" className="mobile_burger" onClick={() => changeOpen(true)} />
+      <Drawer open={menuOpen} onClose={() => changeOpen(false)} className="mobile_header" anchor="right">
         <PanelContent closeCallback={() => changeOpen(false)} fnModal={props} />
       </Drawer>
     </>

@@ -1,36 +1,36 @@
-import React, { Component } from "react";
-import "./style.css";
-import SearchIcon from "@material-ui/icons/Search";
+import React, { Component } from 'react';
+import './style.css';
+import SearchIcon from '@material-ui/icons/Search';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* Component */
-import PostItem from "Common/PostItem";
-import PostItemMobile from "Common/PostItem/mobile";
+import PostItem from 'Common/PostItem';
+import PostItemMobile from 'Common/PostItem/mobile';
 
 /* Redux */
-import { bindActionCreators } from "redux";
-import { searchPost, getPostList } from "Store/Actions/actionPost";
-import connect from "react-redux/es/connect/connect";
+import { bindActionCreators } from 'redux';
+import { searchPost, getPostList } from 'Store/Actions/actionPost';
+import connect from 'react-redux/es/connect/connect';
 
 class Search extends Component {
   state = {
-    searchString: ""
+    searchString: ''
   };
 
   search() {
     const { searchString } = this.state;
-    if (searchString.trim() === "") return;
+    if (searchString.trim() === '') return;
     this.props.searchPost(searchString.trim());
   }
 
   componentDidMount() {
     const { postList, getPostList, searchPost } = this.props;
-    searchPost("");
+    searchPost('');
     changePage(PAGES_URL.search);
     if (!postList.length) getPostList();
   }
@@ -41,11 +41,7 @@ class Search extends Component {
       <section>
         <h3 className="title_h3 title_pages">Поиск постов</h3>
         <div className="search_panel">
-          <input
-            type="text"
-            placeholder="Поиск постов"
-            onChange={e => searchPost(e.target.value)}
-          />
+          <input type="text" placeholder="Поиск постов" onChange={e => searchPost(e.target.value)} />
           <SearchIcon />
         </div>
         <div className="search_list">

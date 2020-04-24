@@ -16,7 +16,7 @@ import { addNewComment } from 'Store/Actions/actionPost';
 class Comments extends Component {
   state = {
     text: '',
-    status: '',
+    status: ''
   };
 
   addComment() {
@@ -31,7 +31,7 @@ class Comments extends Component {
         this.props.addNewComment(res.data);
         this.setState({
           text: '',
-          status: 'Ваш комментарий опубликован',
+          status: 'Ваш комментарий опубликован'
         });
       })
       .catch(err => error500(err));
@@ -69,17 +69,17 @@ class Comments extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentPost: state.post.currentPost,
+    currentPost: state.post.currentPost
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNewComment: bindActionCreators(addNewComment, dispatch),
+    addNewComment: bindActionCreators(addNewComment, dispatch)
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Comments);

@@ -1,21 +1,21 @@
-import React, { useEffect } from "react";
-import "./style.css";
+import React, { useEffect } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL, PAGES_TITLE } from "Const/pages";
+import { PAGES_URL, PAGES_TITLE } from 'Const/pages';
 
 /* Module */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 /* Function */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 const Different = () => {
   useEffect(() => {
     changePage(PAGES_URL.different);
   }, []);
 
-  const differentPage = ["statistics", "help", "advertising", "work", "about", "documentation"];
+  const differentPage = ['statistics', 'help', 'advertising', 'work', 'about', 'documentation'];
 
   return (
     <section>

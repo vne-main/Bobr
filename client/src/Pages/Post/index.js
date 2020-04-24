@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Request */
-import { getPost } from "Requsets/apiPost";
-import { changePage } from "Requsets/function";
+import { getPost } from 'Requsets/apiPost';
+import { changePage } from 'Requsets/function';
 
 /* Components */
-import PostSkeleton from "Common/PostItem/Skeleton/index";
-import PostItem from "Common/PostItem";
-import CommentsSkeleton from "./Comments/Skeleton";
-import Comments from "./Comments";
-import NotFound from "../NotFound";
+import PostSkeleton from 'Common/PostItem/Skeleton/index';
+import PostItem from 'Common/PostItem';
+import CommentsSkeleton from './Comments/Skeleton';
+import Comments from './Comments';
+import NotFound from '../NotFound';
 
 /* Module */
-import { bindActionCreators } from "redux";
-import { changeCurrentPost } from "Store/Actions/actionPost";
-import connect from "react-redux/es/connect/connect";
+import { bindActionCreators } from 'redux';
+import { changeCurrentPost } from 'Store/Actions/actionPost';
+import connect from 'react-redux/es/connect/connect';
 
 class Post extends Component {
   state = {
@@ -54,10 +54,7 @@ class Post extends Component {
             ) : (
               <div>
                 <PostItem post={currentPost} />
-                <Comments
-                  comments={currentPost.comments}
-                  postId={currentPost._id}
-                />
+                <Comments comments={currentPost.comments} postId={currentPost._id} />
               </div>
             )}
           </div>

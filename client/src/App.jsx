@@ -1,37 +1,37 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 /* Const */
-import { PAGES_URL, NOT_RIGHT_COLUMN, AUTH_URLS } from "Const/pages";
+import { PAGES_URL, NOT_RIGHT_COLUMN, AUTH_URLS } from 'Const/pages';
 
 /* Module */
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 /* Components */
-import { Footer, Header, CatchError, RightColumn } from "./Common";
+import { Footer, Header, CatchError, RightColumn } from './Common';
 
 /* Pages */
-import SignIn from "./Pages/Auth/signin";
-import SignUp from "./Pages/Auth/signup";
-import { Chat, Different, Home, NotFound, Post, Profile, Publish, Search, Users } from "./Pages";
-import { Advertising, About, Documentation, Statistics, Help, Work } from "./Pages/Different/pages";
+import SignIn from './Pages/Auth/signin';
+import SignUp from './Pages/Auth/signup';
+import { Chat, Different, Home, NotFound, Post, Profile, Publish, Search, Users } from './Pages';
+import { Advertising, About, Documentation, Statistics, Help, Work } from './Pages/Different/pages';
 
 /* Redux */
-import { bindActionCreators } from "redux";
-import { changeWindowWidth } from "./Store/Actions/actionMain";
-import { getUser } from "./Store/Actions/actionUser";
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { changeWindowWidth } from './Store/Actions/actionMain';
+import { getUser } from './Store/Actions/actionUser';
+import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
-    document.getElementById("preloader").remove();
-    window.addEventListener("resize", this.props.changeWindowWidth);
+    document.getElementById('preloader').remove();
+    window.addEventListener('resize', this.props.changeWindowWidth);
   }
 
   render() {
     const { currentPage, windowWidth } = this.props;
     return (
       <BrowserRouter>
-        <div className={AUTH_URLS.indexOf(currentPage) !== -1 ? "vh_block_auth" : "vh_block"}>
+        <div className={AUTH_URLS.indexOf(currentPage) !== -1 ? 'vh_block_auth' : 'vh_block'}>
           <>
             {AUTH_URLS.indexOf(currentPage) === -1 && <Header />}
             <main className="container main">

@@ -18,21 +18,21 @@ class Graph extends Component {
             ticks: {
               beginAtZero: false,
               fontColor: '#8798AD',
-              fontSize: 14,
-            },
-          },
+              fontSize: 14
+            }
+          }
         ],
         xAxes: [
           {
             ticks: {
               beginAtZero: false,
               fontColor: '#8798AD',
-              fontSize: 14,
-            },
-          },
-        ],
-      },
-    },
+              fontSize: 14
+            }
+          }
+        ]
+      }
+    }
   };
 
   render() {
@@ -44,9 +44,9 @@ class Graph extends Component {
           borderColor: '#333333',
           backgroundColor: 'rgba(136, 136, 136, 0.3)',
           label: ['Test'],
-          data: ['1', '7', '2', '13', '14', '5', '5', '1', '8', '3'],
-        },
-      ],
+          data: ['1', '7', '2', '13', '14', '5', '5', '1', '8', '3']
+        }
+      ]
     };
 
     return (

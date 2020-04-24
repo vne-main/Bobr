@@ -22,18 +22,18 @@ const CatchError = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    actionCatchError: bindActionCreators(actionCatchError, dispatch),
+    actionCatchError: bindActionCreators(actionCatchError, dispatch)
   };
 };
 
 const mapStateToProps = state => {
   return {
     showError: state.main.showError,
-    textError: state.main.textError,
+    textError: state.main.textError
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(CatchError);

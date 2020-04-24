@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+import './style.css';
 
 /* Const */
-import { PAGES_URL } from "Const/pages";
+import { PAGES_URL } from 'Const/pages';
 
 /* Request */
-import { changePage } from "Requsets/function";
+import { changePage } from 'Requsets/function';
 
 /* Module */
-import { Redirect } from "react-router";
+import { Redirect } from 'react-router';
 
 /* Redux */
-import connect from "react-redux/es/connect/connect";
-import { bindActionCreators } from "redux";
-import { logout } from "Store/Actions/actionUser";
-import { changeCurrentPage } from "Store/Actions/actionMain";
+import connect from 'react-redux/es/connect/connect';
+import { bindActionCreators } from 'redux';
+import { logout } from 'Store/Actions/actionUser';
+import { changeCurrentPage } from 'Store/Actions/actionMain';
 
 class Profile extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Profile extends Component {
     this.state = {
       redirect: false,
       sortIndex: 0,
-      sortArray: ["Ваши посты", "Избранное"]
+      sortArray: ['Ваши посты', 'Избранное']
     };
     changePage(PAGES_URL.profile);
   }
@@ -43,11 +43,7 @@ class Profile extends Component {
     return (
       <section>
         <div className="profile_top">
-          <img
-            src={user.photo}
-            alt="user_photo"
-            className="profile_user_photo"
-          />
+          <img src={user.photo} alt="user_photo" className="profile_user_photo" />
           <div className="profile_btn_panel">
             <button className="blue_button">Настроить профиль</button>
             <button className="blue_button" onClick={() => this.authOut()}>
@@ -63,11 +59,7 @@ class Profile extends Component {
           <aside className="profile_posts tab_panel">
             {sortArray.map((el, i) => {
               return (
-                <span
-                  key={i}
-                  onClick={() => this.changeTab(i)}
-                  className={sortIndex === i ? "tab_panel_active" : ""}
-                >
+                <span key={i} onClick={() => this.changeTab(i)} className={sortIndex === i ? 'tab_panel_active' : ''}>
                   {el}
                 </span>
               );
@@ -78,7 +70,7 @@ class Profile extends Component {
             <ol className="profile_user_info">
               <li>
                 <span>Зарегистрирован</span>
-                <span>{user.dateRegistration.split("T")[0]}</span>
+                <span>{user.dateRegistration.split('T')[0]}</span>
               </li>
               <li>
                 <span>Почта</span>
