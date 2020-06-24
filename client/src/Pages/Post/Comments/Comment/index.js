@@ -14,7 +14,7 @@ export const Comment = props => {
       <div className="comment_title">
         <div className="top_user">
           <div className="flex_comm_name">
-            <img src={spImg2} alt="user_icon" className="user_icon" />
+            <img src={require('../../../../Image/user.jpg')} alt="user_icon" className="user_icon" />
             <p className="user_name">{el.author_name}</p>
           </div>
           <p className="news_time">{new Date(el.time).toLocaleString()}</p>

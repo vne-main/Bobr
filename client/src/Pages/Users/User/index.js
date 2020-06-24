@@ -6,7 +6,7 @@ export const User = props => {
     <aside className="row_table_user">
       <div className="t_user">
         <div className="t_user_icon">
-          <img src={el.photo} alt="user_icon" />
+          <img src={require('../../../Image/user.jpg')} alt="user_icon" />
         </div>
         <div className="t_user_info">
           <span className="t_user_name">{el.login}</span>

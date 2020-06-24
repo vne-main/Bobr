@@ -9,7 +9,7 @@ class MobilePost extends Component {
     return (
       <section className="news_item m_post_news_item">
         <div className="top_user">
-          <img src={post.author_img} alt="user_icon" className="user_icon" />
+          <img src={require('../../Image/user.jpg')} alt="user_icon" className="user_icon" />
           <p className="user_name">{post.author_name}</p>
           <p className="news_time">{timePost}</p>
         </div>

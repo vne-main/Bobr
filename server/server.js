@@ -21,8 +21,8 @@ postRouter(app);
 userRouter(app);
 chatRouter(app);
 
-app.listen(3001, function () {
-  console.log("listen port: 3001");
+app.listen(3003, function () {
+  console.log("listen port: 3003");
 });
 
 io.on("connection", function (socket) {
@@ -33,4 +33,4 @@ io.on("connection", function (socket) {
   });
 });
 
-io.listen(3002);
+io.listen(3004);

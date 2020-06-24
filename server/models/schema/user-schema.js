@@ -10,7 +10,7 @@ const userSchema = new Schema({
   gender: { type: String, default: "другой" },
   photo: {
     type: String,
-    default: "https://storage.googleapis.com/vasenking/user_icon/user_0.jpg",
+    default: "user_0.jpg",
   },
   favorites: { type: [String], default: [] },
   likes: { type: [String], default: [] },

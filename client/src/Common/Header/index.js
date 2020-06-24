@@ -65,7 +65,7 @@ class Header extends Component {
                   {navigation.map((el, i) => {
                     return (
                       <Link to={el.link} className={currentPage === el.link ? 'active_page' : ''} key={i}>
-                        {!hiddenPublish && el.link === '/publish' ? '' : el.title}
+                        {el.title}
                       </Link>
                     );
                   })}
