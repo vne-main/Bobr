@@ -23,7 +23,7 @@
     "http-proxy-middleware": "^0.19.1",
     "ip": "^1.1.5",
     "md5": "^2.2.1",
-    "mongoose": "^5.4.11",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "os": "^0.1.1",
